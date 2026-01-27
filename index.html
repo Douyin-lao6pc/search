@@ -60,7 +60,6 @@
             background-repeat: no-repeat;
             transition: background-color 0.3s ease, background-image 0.3s ease;
         }
-        /* 胶囊按钮样式 */
         .capsule-btn {
             border-radius: 9999px;
             transition: all 0.2s ease;
@@ -77,7 +76,6 @@
             transform: scale(0.98);
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
-        /* 波纹动效容器 */
         .ripple-container {
             position: relative;
             overflow: hidden;
@@ -90,7 +88,6 @@
             animation: ripple 0.6s ease-out;
             pointer-events: none;
         }
-        /* 搜索区域样式 */
         .search-input {
             border-radius: 9999px 0 0 9999px;
             border: 1px solid #000000;
@@ -109,45 +106,13 @@
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .search-btn:active {
             transform: scale(0.98);
         }
-        /* 延迟显示样式 */
-        .delay-text {
-            font-size: 12px;
-            margin-left: 8px;
-        }
-        .delay-green {
-            color: #2ecc71;
-        }
-        .delay-yellow {
-            color: #f39c12;
-        }
-        .delay-red {
-            color: #e74c3c;
-        }
-        /* 最快引擎提示样式 */
-        .fastest-engine {
-            font-size: 14px;
-            margin-top: 8px;
-            color: #333;
-        }
-        /* 测试按钮样式 */
-        .test-btn {
-            margin-top: 8px;
-            padding: 4px 12px;
-            font-size: 12px;
-            border-radius: 8px;
-            border: 1px solid #000;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .test-btn:hover {
-            background: rgba(0,0,0,0.05);
-        }
-        /* 模态框样式 - 核心修改：背景色跟随主题 */
         .modal {
             position: fixed;
             top: 0;
@@ -201,7 +166,6 @@
         .radio-option.selected {
             background-color: rgba(0,0,0,0.1);
         }
-        /* 刷新按钮样式 */
         .refresh-btn {
             margin-right: 8px;
             padding: 4px;
@@ -218,7 +182,6 @@
         .refresh-btn.show {
             display: flex;
         }
-        /* 文件名显示样式 */
         .filename-label {
             font-size: 12px;
             color: #666;
@@ -228,7 +191,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        /* 单选按钮样式 - 颜色跟随深对比色 */
         .radio-option input[type="radio"] {
             -webkit-appearance: none;
             appearance: none;
@@ -254,7 +216,6 @@
             background-color: white;
             border-radius: 50%;
         }
-        /* 模态框底部按钮 - 颜色跟随深对比色 */
         .modal-footer {
             display: flex;
             gap: 12px;
@@ -280,7 +241,95 @@
         .modal-footer .confirm-btn:hover {
             background-color: rgba(0,0,0,0.05);
         }
-        /* 响应式适配 */
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+        .volume-control .material-icons {
+            color: inherit;
+            font-size: 20px;
+        }
+        .volume-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(0,0,0,0.2);
+            outline: none;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: currentColor;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        #localMusic, #localWallpaper {
+            display: none;
+        }
+        /* 音乐播放暂停按钮样式 - 右下角悬浮 */
+        .music-control-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            z-index: 900;
+        }
+        .music-control-btn:active {
+            transform: scale(0.95);
+        }
+        /* 折叠菜单核心样式 */
+        .menu-container {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .menu-toggle-btn {
+            border-radius: 9999px;
+            padding: 8px 16px;
+            border: 1px solid #000;
+            cursor: pointer;
+            background: white/90;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .menu-toggle-btn:active {
+            transform: scale(0.98);
+        }
+        .menu-content {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 4px;
+        }
+        .menu-content.show {
+            display: flex;
+        }
         @media (max-width: 768px) {
             .time-display {
                 font-size: 4rem !important;
@@ -293,49 +342,58 @@
     <link rel="icon" href="icon.ico" type="image/x-icon">
 </head>
 <body class="cherry-pink/30">
-    <!-- 左上角功能按钮 -->
-    <div class="absolute top-4 left-4 flex flex-col gap-4 z-10">
-        <button class="capsule-btn ripple-container" id="wallpaperBtn" style="background-color: #FFF0F5;">
-            <span class="material-icons">wallpaper</span>
-            <span>壁纸</span>
+    <!-- 左上角折叠菜单 -->
+    <div class="menu-container">
+        <button class="menu-toggle-btn ripple-container" id="menuToggleBtn" style="background-color: #FFF0F5;">
+            <span class="material-icons">menu</span>
+            <span id="menuToggleText">打开菜单</span>
         </button>
-        <button class="capsule-btn ripple-container" id="themeBtn" style="background-color: #FFF0F5;">
-            <span class="material-icons">palette</span>
-            <span>主题颜色</span>
-        </button>
+        <div class="menu-content" id="menuContent">
+            <button class="capsule-btn ripple-container" id="wallpaperBtn" style="background-color: #FFF0F5;">
+                <span class="material-icons">wallpaper</span>
+                <span>壁纸</span>
+            </button>
+            <button class="capsule-btn ripple-container" id="themeBtn" style="background-color: #FFF0F5;">
+                <span class="material-icons">palette</span>
+                <span>主题颜色</span>
+            </button>
+            <button class="capsule-btn ripple-container" id="musicBtn" style="background-color: #FFF0F5;">
+                <span class="material-icons">music_note</span>
+                <span>背景音乐</span>
+            </button>
+            <button class="capsule-btn ripple-container" id="aboutBtn" style="background-color: #FFF0F5;">
+                <span class="material-icons">info</span>
+                <span>关于</span>
+            </button>
+            <button class="capsule-btn ripple-container" id="resetBtn" style="background-color: #FFF0F5;">
+                <span class="material-icons">restore</span>
+                <span>恢复默认</span>
+            </button>
+        </div>
     </div>
 
-    <!-- 右下角恢复默认按钮 -->
-    <button class="capsule-btn ripple-container absolute bottom-4 right-4 z-10" id="resetBtn" style="background-color: #FFF0F5;">
-        <span class="material-icons">restore</span>
-        <span>恢复默认</span>
-    </button>
+    <!-- 右下角音乐播放/暂停控制按钮 -->
+    <div class="music-control-btn ripple-container" id="musicControlBtn" style="background-color: #FFF0F5; display: none;">
+        <span class="material-icons" style="color: #AA6666; font-size: 24px;" id="musicControlIcon">play_arrow</span>
+    </div>
 
-    <!-- 核心内容区 -->
+    <!-- 页面核心内容区（时间、日期、搜索） -->
     <div class="flex flex-col items-center justify-center min-h-screen px-4">
         <div class="time-display text-7xl font-bold text-gray-800 mb-2" id="time">00:00:00</div>
-        <div class="text-lg text-gray-700 mb-8 text-center" id="date">2026/01/26        星期一</div>
+        <div class="text-lg text-gray-700 mb-8 text-center" id="date">2026/01/27        星期二</div>
         
         <div class="w-full max-w-2xl mb-4">
             <div class="flex items-center justify-center">
-                <input type="text" class="search-input" id="searchInput" placeholder="请输入搜索内容...">
-                <button class="search-btn" id="searchBtn" style="background-color: #FFF0F5;">
-                    <span class="material-icons">search</span>
+                <input type="text" class="search-input" id="searchInput" placeholder="请输入搜索内容或网址...">
+                <button class="search-btn ripple-container" id="searchBtn" style="background-color: #FFF0F5;">
+                    <span class="material-icons" id="searchIcon">search</span>
                 </button>
             </div>
             <div class="mt-4 flex flex-col items-center">
                 <button class="capsule-btn ripple-container" id="engineBtn" style="background-color: #FFF0F5;">
                     <span class="material-icons">search</span>
-                    <span id="currentEngineText">当前搜索引擎：必应</span>
+                    <span id="currentEngineText">当前搜索引擎：微软必应-国内版</span>
                 </button>
-                <!-- 新增：手动测试按钮 -->
-                <button class="test-btn" id="testDelayBtn" style="border-color: #AA6666; color: #AA6666;">
-                    <span class="material-icons" style="font-size: 14px;">refresh</span> 测试延迟
-                </button>
-            </div>
-            <!-- 新增：当前最快引擎显示 -->
-            <div class="flex justify-center fastest-engine" id="fastestEngineText">
-                当前访问最快：必应（80ms）
             </div>
         </div>
     </div>
@@ -345,24 +403,28 @@
         <div class="modal-content" style="background-color: #FFF0F5;">
             <div class="modal-title" style="color: #AA6666;">选择搜索引擎</div>
             <div class="radio-group">
-                <label class="radio-option ripple-container selected" id="bingOption">
-                    <span>必应<span class="delay-text delay-green" id="bingDelay">80ms</span></span>
-                    <input type="radio" name="engine" value="bing" checked style="border: 2px solid #AA6666; background-color: #AA6666;">
+                <label class="radio-option ripple-container selected" id="bingCnOption">
+                    <span>微软必应-国内版</span>
+                    <input type="radio" name="engine" value="bing-cn" checked style="border: 2px solid #AA6666; background-color: #AA6666;">
+                </label>
+                <label class="radio-option ripple-container" id="bingIntlOption">
+                    <span>微软必应-国际版</span>
+                    <input type="radio" name="engine" value="bing-intl" style="border: 2px solid #AA6666; background-color: transparent;">
                 </label>
                 <label class="radio-option ripple-container" id="googleOption">
-                    <span>Google<span class="delay-text delay-red" id="googleDelay">❌ 不可访问</span></span>
+                    <span>Google</span>
                     <input type="radio" name="engine" value="google" style="border: 2px solid #AA6666; background-color: transparent;">
                 </label>
                 <label class="radio-option ripple-container" id="baiduOption">
-                    <span>百度<span class="delay-text delay-green" id="baiduDelay">60ms</span></span>
+                    <span>百度</span>
                     <input type="radio" name="engine" value="baidu" style="border: 2px solid #AA6666; background-color: transparent;">
                 </label>
                 <label class="radio-option ripple-container" id="360Option">
-                    <span>360<span class="delay-text delay-yellow" id="360Delay">150ms</span></span>
+                    <span>360</span>
                     <input type="radio" name="engine" value="360" style="border: 2px solid #AA6666; background-color: transparent;">
                 </label>
                 <label class="radio-option ripple-container" id="sogouOption">
-                    <span>搜狗<span class="delay-text delay-yellow" id="sogouDelay">180ms</span></span>
+                    <span>搜狗</span>
                     <input type="radio" name="engine" value="sogou" style="border: 2px solid #AA6666; background-color: transparent;">
                 </label>
             </div>
@@ -403,12 +465,11 @@
         </div>
     </div>
 
-    <!-- 主题色设置弹窗 -->
+    <!-- 主题颜色设置弹窗 -->
     <div class="modal" id="themeModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
             <div class="modal-title" style="color: #AA6666;">Google原生Android主题色</div>
             <div class="radio-group" id="colorOptions">
-                <!-- 颜色选项由JS动态生成 -->
             </div>
             <div class="modal-footer">
                 <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeThemeModal">取消</button>
@@ -417,7 +478,52 @@
         </div>
     </div>
 
-    <!-- 恢复默认确认弹窗 -->
+    <!-- 背景音乐设置弹窗 -->
+    <div class="modal" id="musicModal">
+        <div class="modal-content" style="background-color: #FFF0F5;">
+            <div class="modal-title" style="color: #AA6666;">背景音乐设置</div>
+            <div class="radio-group">
+                <label class="radio-option ripple-container selected" id="noneMusicOption">
+                    <span>无背景音乐</span>
+                    <input type="radio" name="musicType" value="none" checked style="border: 2px solid #AA6666; background-color: #AA6666;">
+                </label>
+                <label class="radio-option ripple-container" id="defaultMusicOption">
+                    <span>默认背景音乐</span>
+                    <input type="radio" name="musicType" value="default" style="border: 2px solid #AA6666; background-color: transparent;">
+                </label>
+                <label class="radio-option ripple-container" id="localMusicOption">
+                    <span>本地音乐</span>
+                    <span class="filename-label" id="localMusicName"></span>
+                    <input type="radio" name="musicType" value="local" style="border: 2px solid #AA6666; background-color: transparent;">
+                </label>
+            </div>
+            <div class="volume-control">
+                <span class="material-icons">volume_up</span>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="0.5" style="color: #AA6666;">
+            </div>
+            <input type="file" id="localMusic" accept="audio/*" class="hidden">
+            <div class="modal-footer">
+                <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeMusicModal">取消</button>
+                <button class="confirm-btn" style="border-color: #AA6666; color: #AA6666;" id="confirmMusic">确认</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音乐权限受限提示弹窗 -->
+    <div class="modal" id="musicPermissionModal">
+        <div class="modal-content" style="background-color: #FFF0F5;">
+            <div class="modal-title" style="color: #AA6666;">浏览器权限提示</div>
+            <div style="color: #AA6666; margin-bottom: 24px; font-size: 14px; line-height: 1.5;">
+                因浏览器自动播放权限受限，背景音乐无法自动启动，请手动选择以下操作
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="musicPermissionCancel">不播放并关闭</button>
+                <button class="confirm-btn" style="border-color: #AA6666; color: #AA6666;" id="musicPermissionConfirm">开始播放并关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 恢复默认设置确认弹窗 -->
     <div class="modal" id="resetModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
             <div class="modal-title" style="color: #AA6666;">确认恢复默认设置？</div>
@@ -429,59 +535,35 @@
     </div>
 
     <script>
-        let currentEngine = 'bing'; // 默认改为必应
+        // 全局状态变量
+        let currentEngine = 'bing-cn';
         let currentTheme = 'cherry-pink';
         let currentThemeColor = '#FFF0F5';
-        let currentDarkColor = '#AA6666'; // 比主题色深50%
+        let currentDarkColor = '#AA6666';
         let wallpaperType = 'network';
         let wallpaperUrl = '';
         let localFileName = '';
-        let localFilePath = ''; // 新增：存储本地文件完整路径
-        // 搜索引擎配置 - 预设延迟+降级方案
+        let localFileBase64 = '';
+        let localMusicFileName = '';
+        let localMusicBase64 = '';
+        let musicType = 'none';
+        let musicVolume = 0.5;
+        let audioPlayer = new Audio();
+        let userInteracted = false;
+        let isMusicPlaying = false;
+        let isMenuOpen = false;
+
+        // 搜索引擎配置
         const engineConfig = {
-            'bing': { 
-                name: '必应', 
-                searchUrl: 'https://www.bing.com/search?q=',
-                testUrl: 'https://www.bing.com/favicon.ico',
-                delay: 80, // 预设延迟
-                defaultDelay: 80,
-                color: 'delay-green'
-            },
-            'google': { 
-                name: 'Google', 
-                searchUrl: 'https://www.google.com/search?q=',
-                testUrl: 'https://www.google.com/favicon.ico',
-                delay: -1,
-                defaultDelay: -1,
-                color: 'delay-red',
-                isUnreachable: true 
-            },
-            'baidu': { 
-                name: '百度', 
-                searchUrl: 'https://www.baidu.com/s?wd=',
-                testUrl: 'https://www.baidu.com/favicon.ico',
-                delay: 60, // 预设延迟
-                defaultDelay: 60,
-                color: 'delay-green'
-            },
-            '360': { 
-                name: '360', 
-                searchUrl: 'https://www.so.com/s?q=',
-                testUrl: 'https://www.so.com/favicon.ico',
-                delay: 150, // 预设延迟
-                defaultDelay: 150,
-                color: 'delay-yellow'
-            },
-            'sogou': { 
-                name: '搜狗', 
-                searchUrl: 'https://www.sogou.com/web?query=',
-                testUrl: 'https://www.sogou.com/favicon.ico',
-                delay: 180, // 预设延迟
-                defaultDelay: 180,
-                color: 'delay-yellow'
-            }
+            'bing-cn': { name: '微软必应-国内版', searchUrl: 'https://cn.bing.com/search?q=', testUrl: 'https://cn.bing.com/favicon.ico', isUnreachable: false },
+            'bing-intl': { name: '微软必应-国际版', searchUrl: 'https://www.bing.com/search?q=', testUrl: 'https://www.bing.com/favicon.ico', isUnreachable: false },
+            'google': { name: 'Google', searchUrl: 'https://www.google.com/search?q=', testUrl: 'https://www.google.com/favicon.ico' },
+            'baidu': { name: '百度', searchUrl: 'https://www.baidu.com/s?wd=', testUrl: 'https://www.baidu.com/favicon.ico', isUnreachable: false },
+            '360': { name: '360', searchUrl: 'https://www.so.com/s?q=', testUrl: 'https://www.so.com/favicon.ico', isUnreachable: false },
+            'sogou': { name: '搜狗', searchUrl: 'https://www.sogou.com/web?query=', testUrl: 'https://www.sogou.com/favicon.ico', isUnreachable: false }
         };
-        // 颜色映射表：名称 -> (类名, 主题色, 深50%对比色)
+
+        // 主题颜色配置
         const colorMap = {
             '雾霾蓝': ['haze-blue', '#E0E9FF', '#8099CC'],
             '薄荷绿': ['mint-green', '#E6FFFA', '#86CCCC'],
@@ -500,74 +582,130 @@
             '西柚红': ['grapefruit-red', '#FFE0E6', '#BB7076']
         };
 
-        // 等待DOM完全加载后再执行初始化
+        // 页面加载完成初始化
         document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('click', markUserInteraction);
+            document.addEventListener('touchstart', markUserInteraction);
+            
             init();
-            // 初始化时直接显示预设延迟和最快引擎
-            updateAllEngineDelayDisplay();
-            updateFastestEngine();
-            // 加载本地壁纸（核心修复）
             loadLocalWallpaperIfExists();
+            loadLocalMusicIfExists();
+            checkMusicModeAndShowPermissionModal();
+            bindMenuEvents();
+            // 绑定搜索栏输入监听（核心新增：网址识别+图标切换）
+            bindSearchInputListener();
         });
 
+        // 标记用户已完成首次交互
+        function markUserInteraction() {
+            if (!userInteracted) {
+                userInteracted = true;
+            }
+        }
+
+        // 检测音乐模式，若为默认/本地音乐则弹出权限提示
+        function checkMusicModeAndShowPermissionModal() {
+            if ((musicType === 'default' || musicType === 'local') && (localMusicBase64 || musicType === 'default')) {
+                document.getElementById('musicPermissionModal').style.display = 'flex';
+                document.getElementById('musicControlBtn').style.display = 'flex';
+            }
+        }
+
+        // 文件转Base64
+        function fileToBase64(file, callback) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                callback(e.target.result);
+            };
+            reader.onerror = function() {
+                alert('文件读取失败，请选择有效文件！');
+                callback(null);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // 全局初始化
         function init() {
-            // 1. 加载本地存储的设置（优先级最高）
             loadSettings();
-            // 2. 初始化颜色选项（根据当前主题生成）
             initColorOptions();
-            // 3. 强制同步所有元素的主题色（关键步骤）
             syncAllElementsTheme();
-            // 4. 更新时间日期
             updateTimeDate();
             setInterval(updateTimeDate, 1000);
-            // 5. 初始化壁纸（网络壁纸/无壁纸）
-            if (wallpaperType === 'network' && !localFilePath) {
+            if (wallpaperType === 'network' && !localFileBase64) {
                 setRandomWallpaper(false);
                 showRefreshBtn(true);
             } else if (wallpaperType === 'none') {
                 setNoWallpaper();
             }
-            // 6. 更新当前引擎显示文字
             updateCurrentEngineText();
-            // 7. 绑定所有事件
             bindEvents();
+            audioPlayer.volume = musicVolume;
+            audioPlayer.loop = true;
+            document.getElementById('volumeSlider').value = musicVolume;
+            updateMusicControlButton();
         }
 
-        // 核心修复：加载本地壁纸（若存在）
+        // 加载本地壁纸
         function loadLocalWallpaperIfExists() {
-            if (wallpaperType === 'local' && localFilePath) {
-                // 尝试直接通过路径加载本地文件
-                const img = new Image();
-                // 本地文件路径需要用file://协议
-                img.src = localFilePath.startsWith('file://') ? localFilePath : `file://${localFilePath}`;
-                
-                img.onload = function() {
-                    document.body.style.backgroundImage = `url(${img.src})`;
-                    document.body.style.backgroundColor = '';
-                    // 更新弹窗选中状态
-                    document.querySelector('input[name="wallpaperType"][value="local"]').checked = true;
-                    document.querySelector('input[name="wallpaperType"][value="network"]').checked = false;
-                    updateSelectedHighlight();
-                    showRefreshBtn(false);
-                    // 显示文件名
-                    document.getElementById('localFilename').textContent = localFileName;
-                };
-                
-                img.onerror = function() {
-                    // 文件不存在/被移动，降级为网络壁纸
-                    alert('本地壁纸文件不存在或已被移动，自动切换为网络壁纸');
-                    wallpaperType = 'network';
-                    localFilePath = '';
-                    localFileName = '';
-                    setRandomWallpaper(true);
-                    saveSettings();
-                };
+            if (wallpaperType === 'local' && localFileBase64) {
+                document.body.style.backgroundImage = `url(${localFileBase64})`;
+                document.body.style.backgroundColor = '';
+                document.querySelector('input[name="wallpaperType"][value="local"]').checked = true;
+                document.querySelector('input[name="wallpaperType"][value="network"]').checked = false;
+                updateSelectedHighlight();
+                showRefreshBtn(false);
+                document.getElementById('localFilename').textContent = localFileName;
             }
         }
 
-        // 核心函数：强制同步所有元素的主题色和深对比色
+        // 加载本地音乐
+        function loadLocalMusicIfExists() {
+            if (musicType === 'local' && localMusicBase64) {
+                document.querySelector('input[name="musicType"][value="local"]').checked = true;
+                document.querySelector('input[name="musicType"][value="none"]').checked = false;
+                updateSelectedHighlight();
+                document.getElementById('localMusicName').textContent = localMusicFileName;
+                audioPlayer.src = localMusicBase64;
+                document.getElementById('musicControlBtn').style.display = 'flex';
+            } else if (musicType === 'default') {
+                document.querySelector('input[name="musicType"][value="default"]').checked = true;
+                document.querySelector('input[name="musicType"][value="none"]').checked = false;
+                updateSelectedHighlight();
+                audioPlayer.src = 'music.mp3';
+                document.getElementById('musicControlBtn').style.display = 'flex';
+            }
+        }
+
+        // 播放音乐（带权限校验）
+        function playMusic() {
+            if (userInteracted && (musicType === 'default' || musicType === 'local')) {
+                audioPlayer.play().then(() => {
+                    isMusicPlaying = true;
+                    updateMusicControlButton();
+                }).catch(err => {
+                    console.log('音乐播放失败:', err);
+                    alert('音乐播放失败，请检查文件或重试！');
+                });
+            }
+        }
+
+        // 暂停音乐
+        function pauseMusic() {
+            audioPlayer.pause();
+            isMusicPlaying = false;
+            updateMusicControlButton();
+        }
+
+        // 更新播放/暂停按钮状态
+        function updateMusicControlButton() {
+            const icon = document.getElementById('musicControlIcon');
+            icon.textContent = isMusicPlaying ? 'pause' : 'play_arrow';
+            document.getElementById('musicControlBtn').style.backgroundColor = currentThemeColor;
+            icon.style.color = currentDarkColor;
+        }
+
+        // 同步所有元素主题颜色
         function syncAllElementsTheme() {
-            // 1. 更新body类名和背景色（无壁纸时）
             document.body.className = `${currentTheme}/30`;
             if (wallpaperType === 'none') {
                 document.body.style.backgroundColor = currentThemeColor;
@@ -575,85 +713,66 @@
                 document.body.style.backgroundColor = '';
             }
 
-            // 2. 更新所有功能按钮背景色
             const functionBtns = [
                 document.getElementById('wallpaperBtn'),
                 document.getElementById('themeBtn'),
+                document.getElementById('musicBtn'),
+                document.getElementById('aboutBtn'),
                 document.getElementById('resetBtn'),
                 document.getElementById('engineBtn'),
-                document.getElementById('searchBtn')
+                document.getElementById('searchBtn'),
+                document.getElementById('menuToggleBtn')
             ];
             functionBtns.forEach(btn => {
                 if (btn) btn.style.backgroundColor = currentThemeColor;
             });
 
-            // 3. 更新所有弹窗的样式
             const modals = document.querySelectorAll('.modal-content');
             const modalTitles = document.querySelectorAll('.modal-title');
-            const modalTexts = document.querySelectorAll('.radio-option span:not(.filename-label):not(.material-icons):not(.delay-text)');
+            const modalTexts = document.querySelectorAll('.radio-option span:not(.filename-label):not(.material-icons)');
             const modalBtns = document.querySelectorAll('.modal-footer button');
             const allRadios = document.querySelectorAll('.radio-option input[type="radio"]');
+            const volumeSlider = document.getElementById('volumeSlider');
+            const searchIcon = document.getElementById('searchIcon');
 
-            modals.forEach(modal => {
-                modal.style.backgroundColor = currentThemeColor;
-            });
-            modalTitles.forEach(title => {
-                title.style.color = currentDarkColor;
-            });
-            modalTexts.forEach(text => {
-                text.style.color = currentDarkColor;
-            });
+            modals.forEach(modal => modal.style.backgroundColor = currentThemeColor);
+            modalTitles.forEach(title => title.style.color = currentDarkColor);
+            modalTexts.forEach(text => text.style.color = currentDarkColor);
             modalBtns.forEach(btn => {
                 btn.style.borderColor = currentDarkColor;
                 btn.style.color = currentDarkColor;
             });
-
-            // 4. 更新所有单选框样式
             allRadios.forEach(radio => {
                 radio.style.border = `2px solid ${currentDarkColor}`;
-                if (radio.checked) {
-                    radio.style.backgroundColor = currentDarkColor;
-                } else {
-                    radio.style.backgroundColor = 'transparent';
-                }
+                radio.style.backgroundColor = radio.checked ? currentDarkColor : 'transparent';
             });
+            volumeSlider.style.color = currentDarkColor;
+            searchIcon.style.color = currentDarkColor; // 同步搜索图标颜色
 
-            // 5. 更新脉冲动画颜色
             document.styleSheets[1].cssRules[1].style.boxShadow = `0 0 0 0 ${currentDarkColor}`;
-
-            // 6. 更新选中高亮
             updateSelectedHighlight();
+            updateMusicControlButton();
         }
 
-        // 显示/隐藏刷新按钮
+        // 显示/隐藏壁纸刷新按钮
         function showRefreshBtn(show) {
             const refreshBtn = document.getElementById('refreshWallpaperBtn');
-            if (show) {
-                refreshBtn.classList.add('show');
-            } else {
-                refreshBtn.classList.remove('show');
-            }
+            show ? refreshBtn.classList.add('show') : refreshBtn.classList.remove('show');
         }
 
-        // 颜色加深工具函数：hex转rgb再加深50%
+        // 颜色加深工具函数
         function darkenColor(hex, percent = 50) {
-            // 去除#号
             hex = hex.replace(/^#/, '');
-            // 转成rgb
             let r = parseInt(hex.substring(0, 2), 16);
             let g = parseInt(hex.substring(2, 4), 16);
             let b = parseInt(hex.substring(4, 6), 16);
-            // 加深颜色
             r = Math.floor(r * (1 - percent / 100));
             g = Math.floor(g * (1 - percent / 100));
             b = Math.floor(b * (1 - percent / 100));
-            // 转回hex
-            r = r.toString(16).padStart(2, '0');
-            g = g.toString(16).padStart(2, '0');
-            b = b.toString(16).padStart(2, '0');
-            return `#${r}${g}${b}`;
+            return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
         }
 
+        // 更新时间和日期
         function updateTimeDate() {
             const now = new Date();
             const hours = now.getHours().toString().padStart(2, '0');
@@ -664,116 +783,15 @@
             const month = (now.getMonth() + 1).toString().padStart(2, '0');
             const day = now.getDate().toString().padStart(2, '0');
             const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-            const weekDay = weekDays[now.getDay()];
-            document.getElementById('date').textContent = `${year}/${month}/${day}        ${weekDay}`;
+            document.getElementById('date').textContent = `${year}/${month}/${day}        ${weekDays[now.getDay()]}`;
         }
 
-        // 极简检测：只在用户点击时触发，失败直接用预设值
-        function testAllEngineDelay() {
-            // 显示加载中
-            Object.keys(engineConfig).forEach(key => {
-                const engine = engineConfig[key];
-                if (!engine.isUnreachable) {
-                    const delayElement = document.getElementById(`${key}Delay`);
-                    if (delayElement) {
-                        delayElement.className = 'delay-text';
-                        delayElement.textContent = '加载中...';
-                    }
-                }
-            });
-
-            // 同时检测所有引擎（并行加载，最快完成）
-            const promises = Object.keys(engineConfig).map(key => {
-                return new Promise((resolve) => {
-                    const engine = engineConfig[key];
-                    if (engine.isUnreachable) {
-                        resolve({ key, delay: -1 });
-                        return;
-                    }
-
-                    const img = new Image();
-                    const startTime = performance.now();
-                    img.src = `${engine.testUrl}?t=${Date.now()}`;
-                    img.crossOrigin = 'Anonymous';
-
-                    img.onload = function() {
-                        const endTime = performance.now();
-                        const delay = Math.floor(endTime - startTime);
-                        resolve({ key, delay });
-                    };
-
-                    img.onerror = img.ontimeout = function() {
-                        // 失败用预设值
-                        resolve({ key, delay: engine.defaultDelay });
-                    };
-
-                    img.timeout = 3000;
-                });
-            });
-
-            // 所有检测完成后更新
-            Promise.all(promises).then(results => {
-                results.forEach(result => {
-                    const engine = engineConfig[result.key];
-                    engine.delay = result.delay;
-                    // 更新颜色
-                    if (result.delay <= 100) {
-                        engine.color = 'delay-green';
-                    } else if (result.delay <= 300) {
-                        engine.color = 'delay-yellow';
-                    } else {
-                        engine.color = 'delay-red';
-                    }
-                });
-                // 更新显示
-                updateAllEngineDelayDisplay();
-                updateFastestEngine();
-            });
-        }
-
-        // 更新所有引擎延迟显示
-        function updateAllEngineDelayDisplay() {
-            Object.keys(engineConfig).forEach(key => {
-                const engine = engineConfig[key];
-                const delayElement = document.getElementById(`${key}Delay`);
-                if (!delayElement) return;
-
-                if (engine.isUnreachable) {
-                    delayElement.className = 'delay-text delay-red';
-                    delayElement.textContent = '❌ 不可访问';
-                } else {
-                    delayElement.className = `delay-text ${engine.color}`;
-                    delayElement.textContent = `${engine.delay}ms`;
-                }
-            });
-        }
-
-        // 更新最快引擎显示
-        function updateFastestEngine() {
-            let fastestKey = currentEngine;
-            let fastestDelay = Infinity;
-
-            Object.keys(engineConfig).forEach(key => {
-                const engine = engineConfig[key];
-                if (!engine.isUnreachable && engine.delay > 0 && engine.delay < fastestDelay) {
-                    fastestDelay = engine.delay;
-                    fastestKey = key;
-                }
-            });
-
-            const fastestEngine = engineConfig[fastestKey];
-            let delayClass = fastestEngine.color;
-            document.getElementById('fastestEngineText').innerHTML = 
-                `当前访问最快：<span>${fastestEngine.name}</span> (<span class="${delayClass}">${fastestDelay}ms</span>)`;
-        }
-
-        // 更新当前引擎显示文字
+        // 更新当前搜索引擎文本
         function updateCurrentEngineText() {
-            const engineName = engineConfig[currentEngine].name;
-            document.getElementById('currentEngineText').textContent = `当前搜索引擎：${engineName}`;
+            document.getElementById('currentEngineText').textContent = `当前搜索引擎：${engineConfig[currentEngine].name}`;
         }
 
-        // 新增：isSave参数控制是否保存设置，刷新时不保存
+        // 设置随机网络壁纸
         function setRandomWallpaper(isSave = true) {
             const width = screen.width;
             const height = screen.height;
@@ -782,59 +800,52 @@
             document.body.style.backgroundColor = '';
             if (isSave) {
                 wallpaperType = 'network';
-                localFilePath = ''; // 清除本地路径
+                localFileBase64 = '';
                 localFileName = '';
                 saveSettings();
             }
             adjustTextColorForBackground();
         }
 
+        // 关闭壁纸，使用主题色
         function setNoWallpaper() {
             document.body.style.backgroundImage = 'none';
             document.body.style.backgroundColor = currentThemeColor;
             wallpaperType = 'none';
-            localFilePath = ''; // 清除本地路径
+            localFileBase64 = '';
             localFileName = '';
             saveSettings();
             adjustTextColorForBackground();
         }
 
-        // 初始化颜色选项 - 强制选中当前主题
+        // 初始化主题颜色选项
         function initColorOptions() {
             const colorContainer = document.getElementById('colorOptions');
             colorContainer.innerHTML = '';
-
             for (const [colorName, [colorClass, colorCode, darkCode]] of Object.entries(colorMap)) {
                 const isSelected = colorClass === currentTheme;
-                
                 const radioOption = document.createElement('label');
                 radioOption.className = `radio-option ripple-container ${isSelected ? 'selected' : ''}`;
-                
                 const span = document.createElement('span');
                 span.textContent = `${colorName}（${colorCode}）`;
                 span.style.color = currentDarkColor;
-                
                 const radio = document.createElement('input');
                 radio.type = 'radio';
                 radio.name = 'themeColor';
                 radio.value = colorClass;
                 radio.checked = isSelected;
-                // 直接设置单选框样式
                 radio.style.border = `2px solid ${currentDarkColor}`;
                 radio.style.backgroundColor = isSelected ? currentDarkColor : 'transparent';
-                
                 radioOption.appendChild(span);
                 radioOption.appendChild(radio);
                 colorContainer.appendChild(radioOption);
             }
         }
 
-        // 应用主题色 - 直接修改变量+强制同步
+        // 应用选中的主题颜色
         function applyTheme() {
             const selectedRadio = document.querySelector('input[name="themeColor"]:checked');
             if (!selectedRadio) return;
-
-            // 获取选中的主题信息
             const selectedClass = selectedRadio.value;
             for (const [name, [cls, code, darkCode]] of Object.entries(colorMap)) {
                 if (cls === selectedClass) {
@@ -844,15 +855,12 @@
                     break;
                 }
             }
-
-            // 强制同步所有元素
             syncAllElementsTheme();
-            // 保存设置
             saveSettings();
-            // 调整文字颜色
             adjustTextColorForBackground();
         }
 
+        // 根据背景调整文字颜色
         function adjustTextColorForBackground() {
             const timeElement = document.getElementById('time');
             const dateElement = document.getElementById('date');
@@ -875,7 +883,6 @@
                 };
                 img.src = bgImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
             } else {
-                // 无壁纸时根据主题色亮度判断
                 const rgb = currentThemeColor.match(/\d+/g) || [255,255,255];
                 const brightness = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
                 timeElement.style.color = brightness < 0.5 ? 'white' : 'black';
@@ -883,22 +890,75 @@
             }
         }
 
+        // 核心新增：网址验证正则（支持带/不带http(s)、带/不带www的域名/IP）
+        function isUrl(str) {
+            const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$|^\d{1,3}(\.\d{1,3}){3}(:\d+)?(\/.*)?$/;
+            return urlRegex.test(str.trim());
+        }
+
+        // 核心新增：补全网址协议（无http/https时自动添加https）
+        function completeUrl(url) {
+            const trimmedUrl = url.trim();
+            if (!/^https?:\/\//i.test(trimmedUrl)) {
+                return `https://${trimmedUrl}`;
+            }
+            return trimmedUrl;
+        }
+
+        // 优化搜索功能：智能识别网址/关键词，分别处理
         function search() {
             const keyword = document.getElementById('searchInput').value.trim();
             if (!keyword) {
-                alert('请输入搜索内容！');
+                alert('请输入搜索内容或网址！');
                 return;
             }
+
+            // 识别为网址：直接跳转
+            if (isUrl(keyword)) {
+                const fullUrl = completeUrl(keyword);
+                window.open(fullUrl, '_self');
+                return;
+            }
+
+            // 识别为关键词：走原搜索引擎逻辑
             const engine = engineConfig[currentEngine];
-            if (engine.isUnreachable) {
-                alert(`${engine.name}在当前网络环境下无法访问，请选择其他搜索引擎！`);
-                return;
+            if (currentEngine === 'google') {
+                if (confirm('谷歌暂不支持中国大陆直接访问，如需访问请配置网络代理！')) {
+                    window.open(`${engine.searchUrl}${encodeURIComponent(keyword)}`, '_self');
+                }
+            } else {
+                if (engine.isUnreachable) {
+                    alert(`${engine.name}在当前网络环境下无法访问，请选择其他搜索引擎！`);
+                    return;
+                }
+                window.open(`${engine.searchUrl}${encodeURIComponent(keyword)}`, '_self');
             }
-            const searchUrl = `${engine.searchUrl}${encodeURIComponent(keyword)}`;
-            window.open(searchUrl, '_self');
         }
 
-        // 保存设置：新增本地文件路径存储
+        // 核心新增：绑定搜索栏输入监听，实时切换图标
+        function bindSearchInputListener() {
+            const searchInput = document.getElementById('searchInput');
+            const searchIcon = document.getElementById('searchIcon');
+
+            searchInput.addEventListener('input', function() {
+                const value = this.value.trim();
+                // 有内容且是网址：显示右箭头（arrow_forward）；否则显示放大镜（search）
+                if (value && isUrl(value)) {
+                    searchIcon.textContent = 'arrow_forward';
+                } else {
+                    searchIcon.textContent = 'search';
+                }
+            });
+
+            // 失焦时若为空，恢复放大镜图标
+            searchInput.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    searchIcon.textContent = 'search';
+                }
+            });
+        }
+
+        // 保存设置到本地存储
         function saveSettings() {
             const settings = {
                 currentEngine,
@@ -908,51 +968,58 @@
                 wallpaperType,
                 wallpaperUrl,
                 localFileName,
-                localFilePath // 保存本地文件路径
+                localFileBase64,
+                musicType,
+                localMusicFileName,
+                localMusicBase64,
+                musicVolume,
+                isMenuOpen
             };
             localStorage.setItem('browserHomeSettings', JSON.stringify(settings));
         }
 
-        // 加载设置：新增本地文件路径读取
+        // 从本地存储加载设置
         function loadSettings() {
             const saved = localStorage.getItem('browserHomeSettings');
             if (saved) {
                 const settings = JSON.parse(saved);
-                currentEngine = settings.currentEngine || 'bing';
+                currentEngine = settings.currentEngine || 'bing-cn';
                 currentTheme = settings.currentTheme || 'cherry-pink';
                 currentThemeColor = settings.currentThemeColor || '#FFF0F5';
                 currentDarkColor = settings.currentDarkColor || '#AA6666';
                 wallpaperType = settings.wallpaperType || 'network';
                 wallpaperUrl = settings.wallpaperUrl || '';
                 localFileName = settings.localFileName || '';
-                localFilePath = settings.localFilePath || ''; // 读取本地文件路径
-                
-                // 设置搜索引擎选中状态
-                const engineRadio = document.querySelector(`input[name="engine"][value="${currentEngine}"]`);
-                if (engineRadio) engineRadio.checked = true;
-                
-                // 设置壁纸类型选中状态
-                const wallpaperRadio = document.querySelector(`input[name="wallpaperType"][value="${wallpaperType}"]`);
-                if (wallpaperRadio) wallpaperRadio.checked = true;
+                localFileBase64 = settings.localFileBase64 || '';
+                musicType = settings.musicType || 'none';
+                localMusicFileName = settings.localMusicFileName || '';
+                localMusicBase64 = settings.localMusicBase64 || '';
+                musicVolume = settings.musicVolume || 0.5;
+                isMenuOpen = settings.isMenuOpen || false;
 
-                // 更新搜索引擎显示文本
+                document.querySelector(`input[name="engine"][value="${currentEngine}"]`).checked = true;
+                document.querySelector(`input[name="wallpaperType"][value="${wallpaperType}"]`).checked = true;
+                document.querySelector(`input[name="musicType"][value="${musicType}"]`).checked = true;
+                document.getElementById('localFilename').textContent = localFileName;
+                document.getElementById('localMusicName').textContent = localMusicFileName;
+
+                if (isMenuOpen) {
+                    document.getElementById('menuContent').classList.add('show');
+                    document.getElementById('menuToggleText').textContent = '关闭菜单';
+                    document.querySelector('#menuToggleBtn .material-icons').textContent = 'close';
+                }
+
                 updateCurrentEngineText();
-                
-                // 恢复壁纸（本地壁纸在loadLocalWallpaperIfExists中处理）
-                if (wallpaperType === 'network' && !localFilePath) {
+                if (wallpaperType === 'network' && !localFileBase64) {
                     document.body.style.backgroundImage = `url(${wallpaperUrl})`;
                 } else if (wallpaperType === 'none') {
                     document.body.style.backgroundImage = 'none';
                     document.body.style.backgroundColor = currentThemeColor;
                 }
-
-                // 显示本地文件名
-                if (localFileName) {
-                    document.getElementById('localFilename').textContent = localFileName;
-                }
             }
         }
 
+        // 更新单选框选中高亮
         function updateSelectedHighlight() {
             document.querySelectorAll('.radio-option').forEach(option => {
                 option.classList.remove('selected');
@@ -962,8 +1029,42 @@
             });
         }
 
+        // 折叠菜单专属事件绑定
+        function bindMenuEvents() {
+            const menuToggleBtn = document.getElementById('menuToggleBtn');
+            const menuContent = document.getElementById('menuContent');
+            const menuToggleText = document.getElementById('menuToggleText');
+            const menuIcon = menuToggleBtn.querySelector('.material-icons');
+
+            menuToggleBtn.addEventListener('click', function() {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    menuContent.classList.add('show');
+                    menuToggleText.textContent = '关闭菜单';
+                    menuIcon.textContent = 'close';
+                } else {
+                    menuContent.classList.remove('show');
+                    menuToggleText.textContent = '打开菜单';
+                    menuIcon.textContent = 'menu';
+                }
+                saveSettings();
+            });
+
+            window.addEventListener('click', function(e) {
+                const menuContainer = document.querySelector('.menu-container');
+                if (!menuContainer.contains(e.target) && isMenuOpen) {
+                    isMenuOpen = false;
+                    menuContent.classList.remove('show');
+                    menuToggleText.textContent = '打开菜单';
+                    menuIcon.textContent = 'menu';
+                    saveSettings();
+                }
+            });
+        }
+
+        // 绑定所有页面其他事件
         function bindEvents() {
-            // 波纹动效
+            // 波纹效果事件
             document.querySelectorAll('.ripple-container').forEach(container => {
                 container.addEventListener('click', function(e) {
                     const ripple = document.createElement('span');
@@ -978,185 +1079,227 @@
                 });
             });
 
-            // 手动测试延迟按钮
-            document.getElementById('testDelayBtn').addEventListener('click', () => {
-                testAllEngineDelay();
+            // 关于按钮
+            document.getElementById('aboutBtn').addEventListener('click', () => {
+                alert('定制浏览器主页 V1.0\n开发者：老六说电脑');
             });
 
-            // 搜索引擎弹窗
-            document.getElementById('engineBtn').addEventListener('click', () => {
-                document.getElementById('engineModal').style.display = 'flex';
-                // 打开弹窗时刷新一次延迟（可选）
-                testAllEngineDelay();
-            });
-            document.getElementById('closeEngineModal').addEventListener('click', () => {
-                document.getElementById('engineModal').style.display = 'none';
-            });
+            // 搜索引擎弹窗事件
+            document.getElementById('engineBtn').addEventListener('click', () => document.getElementById('engineModal').style.display = 'flex');
+            document.getElementById('closeEngineModal').addEventListener('click', () => document.getElementById('engineModal').style.display = 'none');
             document.getElementById('confirmEngine').addEventListener('click', () => {
-                const selected = document.querySelector('input[name="engine"]:checked');
-                if (selected) {
-                    currentEngine = selected.value;
-                    updateCurrentEngineText();
-                    saveSettings();
-                }
+                currentEngine = document.querySelector('input[name="engine"]:checked').value;
+                updateCurrentEngineText();
+                saveSettings();
                 document.getElementById('engineModal').style.display = 'none';
             });
 
-            // 壁纸弹窗 - 核心优化事件绑定
+            // 壁纸弹窗事件
             document.getElementById('wallpaperBtn').addEventListener('click', () => {
                 document.getElementById('wallpaperModal').style.display = 'flex';
-                // 打开弹窗时根据选中状态显示/隐藏刷新按钮
-                const isNetworkSelected = document.querySelector('input[name="wallpaperType"][value="network"]').checked;
-                showRefreshBtn(isNetworkSelected);
+                showRefreshBtn(document.querySelector('input[name="wallpaperType"][value="network"]').checked);
             });
-            document.getElementById('closeWallpaperModal').addEventListener('click', () => {
-                document.getElementById('wallpaperModal').style.display = 'none';
-            });
+            document.getElementById('closeWallpaperModal').addEventListener('click', () => document.getElementById('wallpaperModal').style.display = 'none');
             document.getElementById('confirmWallpaper').addEventListener('click', () => {
-                const selected = document.querySelector('input[name="wallpaperType"]:checked');
-                if (selected) {
-                    const selectedType = selected.value;
-                    if (selectedType === 'network') {
-                        setRandomWallpaper();
-                    } else if (selectedType === 'none') {
-                        setNoWallpaper();
-                    }
-                    // 本地图片已在选择时处理
+                const selectedType = document.querySelector('input[name="wallpaperType"]:checked').value;
+                if (selectedType === 'network') {
+                    setRandomWallpaper();
+                } else if (selectedType === 'none') {
+                    setNoWallpaper();
                 }
                 document.getElementById('wallpaperModal').style.display = 'none';
             });
 
-            // 刷新按钮点击事件
+            // 壁纸刷新按钮
             document.getElementById('refreshWallpaperBtn').addEventListener('click', function(e) {
-                e.stopPropagation(); // 阻止触发radio的change事件
-                setRandomWallpaper(false); // 刷新不保存设置
+                e.stopPropagation();
+                setRandomWallpaper(false);
             });
 
-            // 壁纸类型切换事件 - 控制刷新按钮显示/隐藏
+            // 本地壁纸选择
             document.querySelectorAll('input[name="wallpaperType"]').forEach(radio => {
                 radio.addEventListener('change', function() {
-                    const isNetwork = this.value === 'network';
-                    showRefreshBtn(isNetwork);
-                    
-                    // 点击本地图片时直接触发文件选择
+                    showRefreshBtn(this.value === 'network');
                     if (this.value === 'local') {
                         document.getElementById('localWallpaper').click();
                     }
                 });
             });
 
-            // 本地壁纸选择优化 - 记录路径+持久化
+            // 本地壁纸文件上传
             document.getElementById('localWallpaper').addEventListener('change', function(e) {
                 const file = e.target.files[0];
                 if (file) {
                     localFileName = file.name;
-                    // 记录本地文件完整路径（关键修复）
-                    localFilePath = URL.createObjectURL(file); // 生成本地可访问的路径
-                    
-                    const img = new Image();
-                    img.src = localFilePath;
-                    
-                    img.onload = function() {
-                        document.body.style.backgroundImage = `url(${localFilePath})`;
-                        document.body.style.backgroundColor = '';
-                        wallpaperType = 'local';
-                        // 显示文件名
-                        document.getElementById('localFilename').textContent = localFileName;
-                        // 自动选中本地图片选项
-                        document.querySelector('input[name="wallpaperType"][value="local"]').checked = true;
-                        updateSelectedHighlight();
-                        saveSettings(); // 保存路径和类型
-                        adjustTextColorForBackground();
-                    };
-                    
-                    img.onerror = function() {
-                        alert('无法加载选中的图片，请选择其他图片');
-                        localFilePath = '';
-                        localFileName = '';
-                    };
+                    fileToBase64(file, (base64) => {
+                        if (base64) {
+                            localFileBase64 = base64;
+                            document.body.style.backgroundImage = `url(${localFileBase64})`;
+                            document.body.style.backgroundColor = '';
+                            wallpaperType = 'local';
+                            document.getElementById('localFilename').textContent = localFileName;
+                            document.querySelector('input[name="wallpaperType"][value="local"]').checked = true;
+                            updateSelectedHighlight();
+                            saveSettings();
+                            adjustTextColorForBackground();
+                        }
+                    });
                 }
             });
 
-            // 主题色弹窗 - 打开时强制同步选中状态
+            // 主题颜色弹窗事件
             document.getElementById('themeBtn').addEventListener('click', () => {
-                // 重新初始化颜色选项，确保选中当前主题
                 initColorOptions();
                 document.getElementById('themeModal').style.display = 'flex';
             });
-            document.getElementById('closeThemeModal').addEventListener('click', () => {
-                document.getElementById('themeModal').style.display = 'none';
-            });
+            document.getElementById('closeThemeModal').addEventListener('click', () => document.getElementById('themeModal').style.display = 'none');
             document.getElementById('confirmTheme').addEventListener('click', () => {
                 applyTheme();
                 document.getElementById('themeModal').style.display = 'none';
             });
 
-            // 搜索功能
+            // 背景音乐弹窗事件
+            document.getElementById('musicBtn').addEventListener('click', () => {
+                document.getElementById('musicModal').style.display = 'flex';
+                document.getElementById('volumeSlider').value = musicVolume;
+            });
+            document.getElementById('closeMusicModal').addEventListener('click', () => document.getElementById('musicModal').style.display = 'none');
+            document.getElementById('confirmMusic').addEventListener('click', () => {
+                const selectedType = document.querySelector('input[name="musicType"]:checked').value;
+                musicType = selectedType;
+                audioPlayer.pause();
+                isMusicPlaying = false;
+
+                if (musicType === 'none') {
+                    localMusicBase64 = '';
+                    localMusicFileName = '';
+                    document.getElementById('localMusicName').textContent = '';
+                    document.getElementById('musicControlBtn').style.display = 'none';
+                } else if (musicType === 'default') {
+                    audioPlayer.src = 'music.mp3';
+                    document.getElementById('musicControlBtn').style.display = 'flex';
+                    checkMusicModeAndShowPermissionModal();
+                } else if (musicType === 'local' && localMusicBase64) {
+                    audioPlayer.src = localMusicBase64;
+                    document.getElementById('musicControlBtn').style.display = 'flex';
+                    checkMusicModeAndShowPermissionModal();
+                }
+                saveSettings();
+                updateMusicControlButton();
+                document.getElementById('musicModal').style.display = 'none';
+            });
+
+            // 本地音乐选择
+            document.querySelectorAll('input[name="musicType"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'local') {
+                        document.getElementById('localMusic').click();
+                    }
+                });
+            });
+
+            // 本地音乐文件上传
+            document.getElementById('localMusic').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    localMusicFileName = file.name;
+                    fileToBase64(file, (base64) => {
+                        if (base64) {
+                            localMusicBase64 = base64;
+                            document.getElementById('localMusicName').textContent = localMusicFileName;
+                            document.querySelector('input[name="musicType"][value="local"]').checked = true;
+                            updateSelectedHighlight();
+                            saveSettings();
+                            audioPlayer.src = localMusicBase64;
+                            document.getElementById('musicControlBtn').style.display = 'flex';
+                        }
+                    });
+                }
+            });
+
+            // 音量调节
+            document.getElementById('volumeSlider').addEventListener('input', function() {
+                musicVolume = parseFloat(this.value);
+                audioPlayer.volume = musicVolume;
+                saveSettings();
+            });
+
+            // 音乐播放/暂停按钮点击事件
+            document.getElementById('musicControlBtn').addEventListener('click', function() {
+                isMusicPlaying ? pauseMusic() : playMusic();
+            });
+
+            // 音乐权限提示弹窗事件
+            document.getElementById('musicPermissionConfirm').addEventListener('click', function() {
+                playMusic();
+                document.getElementById('musicPermissionModal').style.display = 'none';
+            });
+            document.getElementById('musicPermissionCancel').addEventListener('click', function() {
+                document.getElementById('musicPermissionModal').style.display = 'none';
+            });
+
+            // 搜索按钮和回车事件
             document.getElementById('searchBtn').addEventListener('click', search);
             document.getElementById('searchInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') search();
             });
 
-            // 恢复默认
-            document.getElementById('resetBtn').addEventListener('click', () => {
-                document.getElementById('resetModal').style.display = 'flex';
-            });
+            // 恢复默认设置弹窗事件
+            document.getElementById('resetBtn').addEventListener('click', () => document.getElementById('resetModal').style.display = 'flex');
+            document.getElementById('cancelReset').addEventListener('click', () => document.getElementById('resetModal').style.display = 'none');
             document.getElementById('confirmReset').addEventListener('click', () => {
                 localStorage.removeItem('browserHomeSettings');
-                currentEngine = 'bing'; // 恢复默认必应
+                currentEngine = 'bing-cn';
                 currentTheme = 'cherry-pink';
                 currentThemeColor = '#FFF0F5';
                 currentDarkColor = '#AA6666';
                 wallpaperType = 'network';
                 localFileName = '';
-                localFilePath = ''; // 清除本地路径
-                
-                // 重置搜索引擎配置为默认
-                engineConfig.bing.delay = 80;
-                engineConfig.baidu.delay = 60;
-                engineConfig['360'].delay = 150;
-                engineConfig.sogou.delay = 180;
-                
-                // 重置单选按钮状态
-                document.querySelector('input[name="engine"][value="bing"]').checked = true;
+                localFileBase64 = '';
+                musicType = 'none';
+                localMusicFileName = '';
+                localMusicBase64 = '';
+                musicVolume = 0.5;
+                audioPlayer.pause();
+                isMusicPlaying = false;
+                audioPlayer.src = 'music.mp3';
+                isMenuOpen = false;
+
+                document.querySelector('input[name="engine"][value="bing-cn"]').checked = true;
                 document.querySelector('input[name="wallpaperType"][value="network"]').checked = true;
+                document.querySelector('input[name="musicType"][value="none"]').checked = true;
                 document.getElementById('localFilename').textContent = '';
-                
-                // 重新初始化颜色选项
+                document.getElementById('localMusicName').textContent = '';
+                document.getElementById('volumeSlider').value = 0.5;
+                document.getElementById('searchInput').value = '';
+                document.getElementById('searchIcon').textContent = 'search'; // 恢复搜索图标为放大镜
+
+                document.getElementById('menuContent').classList.remove('show');
+                document.getElementById('menuToggleText').textContent = '打开菜单';
+                document.querySelector('#menuToggleBtn .material-icons').textContent = 'menu';
+
                 initColorOptions();
-                // 强制同步所有元素
                 syncAllElementsTheme();
-                
-                // 更新显示
                 updateCurrentEngineText();
-                updateAllEngineDelayDisplay();
-                updateFastestEngine();
                 setRandomWallpaper();
                 document.getElementById('resetModal').style.display = 'none';
-                alert('已恢复默认设置！');
-            });
-            document.getElementById('cancelReset').addEventListener('click', () => {
-                document.getElementById('resetModal').style.display = 'none';
+                alert('已成功恢复默认设置！');
             });
 
-            // 点击模态框外部关闭
+            // 点击弹窗外部关闭弹窗
             window.addEventListener('click', function(e) {
-                const modals = ['engineModal', 'wallpaperModal', 'themeModal', 'resetModal'];
+                const modals = ['engineModal', 'wallpaperModal', 'themeModal', 'musicModal', 'resetModal', 'musicPermissionModal'];
                 modals.forEach(modalId => {
                     const modal = document.getElementById(modalId);
-                    if (e.target === modal) {
-                        modal.style.display = 'none';
-                    }
+                    if (e.target === modal) modal.style.display = 'none';
                 });
             });
 
-            // 单选按钮选中时更新高亮和样式
+            // 单选框变化事件
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     updateSelectedHighlight();
-                    // 如果是主题色单选框，实时预览样式
                     if (this.name === 'themeColor') {
-                        // 获取临时深对比色
                         let tempDark = currentDarkColor;
                         for (const [name, [cls, code, darkCode]] of Object.entries(colorMap)) {
                             if (cls === this.value) {
@@ -1164,9 +1307,7 @@
                                 break;
                             }
                         }
-                        // 临时更新单选框样式预览
-                        const allRadios = document.querySelectorAll('.radio-option input[type="radio"]');
-                        allRadios.forEach(r => {
+                        document.querySelectorAll('.radio-option input[type="radio"]').forEach(r => {
                             r.style.border = `2px solid ${tempDark}`;
                             r.style.backgroundColor = r === this ? tempDark : 'transparent';
                         });
