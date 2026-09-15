@@ -201,6 +201,7 @@
             cursor: pointer;
             position: relative;
             transition: all 0.2s ease;
+            flex-shrink: 0;
         }
         .radio-option input[type="radio"]:checked {
             animation: radio-pulse 0.3s ease-out;
@@ -241,60 +242,8 @@
         .modal-footer .confirm-btn:hover {
             background-color: rgba(0,0,0,0.05);
         }
-        .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            padding: 0 8px;
-        }
-        .volume-control .material-icons {
-            color: inherit;
-            font-size: 20px;
-        }
-        .volume-slider {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 4px;
-            border-radius: 2px;
-            background: rgba(0,0,0,0.2);
-            outline: none;
-        }
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: currentColor;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .volume-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-        }
-        #localMusic, #localWallpaper {
+        #localWallpaper {
             display: none;
-        }
-        /* 音乐播放暂停按钮样式 - 右下角悬浮 */
-        .music-control-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
-            z-index: 900;
-        }
-        .music-control-btn:active {
-            transform: scale(0.95);
         }
         /* 折叠菜单核心样式 */
         .menu-container {
@@ -379,6 +328,431 @@
             font-size: 14px;
             color: #666;
         }
+
+        /* ============ 底部快捷栏样式 ============ */
+        .quick-bar {
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px;
+            border-radius: 9999px;
+            border: 1px solid #000;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            z-index: 800;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.25s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .quick-bar.collapsed {
+            right: auto;
+            padding: 0;
+            border: none;
+            background: transparent !important;
+            box-shadow: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .quick-bar.collapsed .quick-nav-btn,
+        .quick-bar.collapsed .quick-items {
+            display: none;
+        }
+        .quick-collapse-btn,
+        .quick-nav-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            background: transparent;
+        }
+        .quick-collapse-btn:active,
+        .quick-nav-btn:active {
+            transform: scale(0.9);
+        }
+        .quick-collapse-btn .material-icons,
+        .quick-nav-btn .material-icons {
+            font-size: 20px;
+        }
+        .quick-bar.collapsed .quick-collapse-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+        }
+        .quick-bar.collapsed .quick-collapse-btn .material-icons {
+            font-size: 24px;
+        }
+        .quick-items {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 2px 4px;
+            min-width: 0;
+        }
+        .quick-items::-webkit-scrollbar {
+            display: none;
+        }
+        .quick-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 9999px;
+            border: 1px solid rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.7);
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.3s ease, border-color 0.3s ease;
+            font-size: 13px;
+            user-select: none;
+        }
+        .quick-item:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.95);
+        }
+        .quick-item:active {
+            transform: scale(0.96);
+        }
+        .quick-item-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            overflow: hidden;
+            line-height: 1;
+        }
+        .quick-item-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .quick-empty-tip {
+            font-size: 13px;
+            opacity: 0.6;
+            padding: 0 12px;
+            white-space: nowrap;
+        }
+
+        /* 快捷栏管理弹窗 */
+        .quick-add-form {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .quick-add-form input {
+            flex: 1;
+            min-width: 90px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid;
+            outline: none;
+            font-size: 13px;
+            background: transparent;
+            transition: border-color 0.2s ease;
+        }
+        .quick-add-form input::placeholder {
+            opacity: 0.5;
+        }
+        .quick-add-form button {
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            background: transparent;
+            transition: background-color 0.2s ease;
+            flex-shrink: 0;
+        }
+        .quick-add-form button:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        .quick-add-form button .material-icons {
+            font-size: 16px;
+        }
+        .quick-manage-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-radius: 12px;
+            margin: 6px 0;
+            background-color: rgba(0,0,0,0.05);
+            gap: 8px;
+        }
+        .quick-manage-info {
+            flex: 1;
+            min-width: 0;
+            text-align: left;
+        }
+        .quick-manage-name {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .quick-manage-url {
+            font-size: 11px;
+            opacity: 0.65;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .quick-manage-actions {
+            display: flex;
+            gap: 2px;
+            flex-shrink: 0;
+        }
+        .quick-manage-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease, opacity 0.2s ease;
+        }
+        .quick-manage-btn:hover {
+            background-color: rgba(0,0,0,0.1);
+        }
+        .quick-manage-btn .material-icons {
+            font-size: 16px;
+        }
+        .quick-manage-btn.disabled {
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* ============ 天气模块样式（紧凑横排） ============ */
+        .weather-widget {
+            position: fixed;
+            top: 4px;
+            right: 4px;
+            z-index: 900;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 14px;
+            height: 36px;
+            border-radius: 9999px;
+            border: 1px solid;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
+            user-select: none;
+            cursor: pointer;
+            font-size: 13px;
+            line-height: 1;
+            white-space: nowrap;
+            color: inherit;
+            max-width: 60vw;
+            overflow: hidden;
+        }
+        .weather-widget:hover {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+        .weather-widget:active {
+            transform: scale(0.98);
+        }
+        .weather-widget.hidden {
+            opacity: 0;
+            transform: translateY(-8px);
+            pointer-events: none;
+        }
+        .weather-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .weather-icon-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+        .weather-icon-wrap .material-icons {
+            font-size: 18px;
+        }
+        .weather-temp {
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .weather-desc {
+            font-size: 12px;
+            opacity: 0.85;
+            flex-shrink: 0;
+        }
+        .weather-city {
+            font-size: 12px;
+            opacity: 0.6;
+            flex-shrink: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .weather-loading-tip {
+            font-size: 12px;
+            opacity: 0.7;
+            padding: 0 4px;
+        }
+
+        /* 天气设置弹窗 */
+        .weather-switch-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background-color: rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+        }
+        .weather-switch-label {
+            font-size: 14px;
+        }
+        .weather-toggle {
+            width: 44px;
+            height: 24px;
+            border-radius: 9999px;
+            border: 1px solid;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            flex-shrink: 0;
+        }
+        .weather-toggle::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            transition: transform 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .weather-toggle.on::after {
+            transform: translateX(20px);
+        }
+        #weatherSettingsPanel {
+            animation: fadeInPanel 0.25s ease-out;
+        }
+        @keyframes fadeInPanel {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #weatherSettingsPanel .radio-group {
+            flex: none;
+            max-height: none;
+            overflow: visible;
+            margin-bottom: 12px;
+        }
+        .weather-auto-tip {
+            font-size: 13px;
+            text-align: left;
+            padding: 8px 4px;
+            min-height: 20px;
+            margin-bottom: 10px;
+            opacity: 0.85;
+        }
+        .weather-locate-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 1px solid;
+            background: transparent;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background-color 0.2s ease;
+        }
+        .weather-locate-btn:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        .weather-locate-btn:active {
+            transform: scale(0.98);
+        }
+        .weather-locate-btn .material-icons {
+            font-size: 16px;
+        }
+        .weather-form {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .weather-form input {
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid;
+            outline: none;
+            font-size: 13px;
+            background: transparent;
+        }
+        .weather-form input::placeholder {
+            opacity: 0.5;
+        }
+        .weather-form button {
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            background: transparent;
+            transition: background-color 0.2s ease;
+            flex-shrink: 0;
+        }
+        .weather-form button:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        .weather-form button .material-icons {
+            font-size: 16px;
+        }
+        .weather-result-tip {
+            font-size: 12px;
+            min-height: 18px;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
         @media (max-width: 768px) {
             .time-display {
                 font-size: 4rem !important;
@@ -386,12 +760,43 @@
             .search-input {
                 max-width: 400px;
             }
+            .quick-bar {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                padding: 6px;
+                gap: 4px;
+            }
+            .quick-item {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+            .weather-widget {
+                top: 4px;
+                right: 4px;
+                height: 34px;
+                padding: 0 10px;
+                gap: 4px;
+            }
+            .weather-temp {
+                font-size: 13px;
+            }
+            .weather-desc, .weather-city {
+                font-size: 11px;
+            }
+            .weather-icon-wrap {
+                width: 16px;
+                height: 16px;
+            }
+            .weather-icon-wrap .material-icons {
+                font-size: 16px;
+            }
         }
     </style>
     <link rel="icon" href="icon.ico" type="image/x-icon">
 </head>
 <body class="cherry-pink/30">
-    <!-- 左上角折叠菜单 - 新增历史记录按钮 -->
+    <!-- 左上角折叠菜单 -->
     <div class="menu-container">
         <button class="menu-toggle-btn ripple-container" id="menuToggleBtn" style="background-color: #FFF0F5;">
             <span class="material-icons">menu</span>
@@ -406,15 +811,18 @@
                 <span class="material-icons">palette</span>
                 <span>主题颜色</span>
             </button>
-            <button class="capsule-btn ripple-container" id="musicBtn" style="background-color: #FFF0F5;">
-                <span class="material-icons">music_note</span>
-                <span>背景音乐</span>
+            <button class="capsule-btn ripple-container" id="weatherBtn" style="background-color: #FFF0F5;">
+                <span class="material-icons">cloud</span>
+                <span>天气显示</span>
+            </button>
+            <button class="capsule-btn ripple-container" id="quickBarBtn" style="background-color: #FFF0F5;">
+                <span class="material-icons">bookmarks</span>
+                <span>快捷栏</span>
             </button>
             <button class="capsule-btn ripple-container" id="aboutBtn" style="background-color: #FFF0F5;">
                 <span class="material-icons">info</span>
                 <span>关于</span>
             </button>
-            <!-- 新增：历史记录按钮（恢复默认上方） -->
             <button class="capsule-btn ripple-container" id="historyBtn" style="background-color: #FFF0F5;">
                 <span class="material-icons">history</span>
                 <span>历史记录</span>
@@ -426,13 +834,20 @@
         </div>
     </div>
 
-    <!-- 右下角音乐播放/暂停控制按钮 -->
-    <div class="music-control-btn ripple-container" id="musicControlBtn" style="background-color: #FFF0F5; display: none;">
-        <span class="material-icons" style="color: #AA6666; font-size: 24px;" id="musicControlIcon">play_arrow</span>
+    <!-- ============ 右上角天气显示（紧凑横排，点击跳转 Ventusky） ============ -->
+    <div class="weather-widget hidden" id="weatherWidget" title="点击打开 Ventusky 天气地图">
+        <div id="weatherLoading" class="weather-loading-tip">加载中...</div>
+        <div id="weatherContent" class="weather-content" style="display: none;">
+            <span class="weather-icon-wrap" id="weatherIconWrap"></span>
+            <span class="weather-temp" id="weatherTemp">--°C</span>
+            <span class="weather-desc" id="weatherDesc"></span>
+            <span class="weather-city" id="weatherCity"></span>
+        </div>
+        <div id="weatherError" class="weather-loading-tip" style="display: none;">天气暂不可用</div>
     </div>
 
-    <!-- 页面核心内容区（时间、日期、搜索）- 保留原有点击容器 -->
-    <div class="flex flex-col items-center justify-center min-h-screen px-4">
+    <!-- 页面核心内容区（时间、日期、搜索） -->
+    <div class="flex flex-col items-center justify-center min-h-screen px-4" style="padding-bottom: 90px;">
         <div class="cursor-pointer" id="dateTimeContainer" style="user-select: none;">
             <div class="time-display text-7xl font-bold text-gray-800 mb-2" id="time">00:00:00</div>
             <div class="text-lg text-gray-700 mb-8 text-center" id="date">2026/01/27        星期二</div>
@@ -452,6 +867,20 @@
                 </button>
             </div>
         </div>
+    </div>
+
+    <!-- ============ 底部快捷栏 ============ -->
+    <div class="quick-bar" id="quickBar">
+        <button class="quick-collapse-btn ripple-container" id="quickCollapseBtn" title="展开快捷栏">
+            <span class="material-icons" id="quickCollapseIcon">keyboard_arrow_up</span>
+        </button>
+        <button class="quick-nav-btn ripple-container" id="quickPrevBtn" title="向左切换">
+            <span class="material-icons">chevron_left</span>
+        </button>
+        <div class="quick-items" id="quickItems"></div>
+        <button class="quick-nav-btn ripple-container" id="quickNextBtn" title="向右切换">
+            <span class="material-icons">chevron_right</span>
+        </button>
     </div>
 
     <!-- 搜索引擎选择弹窗 -->
@@ -534,44 +963,55 @@
         </div>
     </div>
 
-    <!-- 背景音乐设置弹窗 -->
-    <div class="modal" id="musicModal">
+    <!-- ============ 天气设置弹窗 ============ -->
+    <div class="modal" id="weatherModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
-            <div class="modal-title" style="color: #AA6666;">背景音乐设置</div>
-            <div class="radio-group">
-                <label class="radio-option ripple-container selected" id="noneMusicOption">
-                    <span>无背景音乐</span>
-                    <input type="radio" name="musicType" value="none" checked style="border: 2px solid #AA6666; background-color: #AA6666;">
-                </label>
-                <label class="radio-option ripple-container" id="defaultMusicOption">
-                    <span>默认背景音乐</span>
-                    <input type="radio" name="musicType" value="default" style="border: 2px solid #AA6666; background-color: transparent;">
-                </label>
-                <label class="radio-option ripple-container" id="localMusicOption">
-                    <span>本地音乐</span>
-                    <span class="filename-label" id="localMusicName"></span>
-                    <input type="radio" name="musicType" value="local" style="border: 2px solid #AA6666; background-color: transparent;">
-                </label>
+            <div class="modal-title" style="color: #AA6666;">天气显示设置</div>
+            <div class="weather-switch-row">
+                <span class="weather-switch-label" id="weatherSwitchLabel">显示天气</span>
+                <div class="weather-toggle" id="weatherToggle"></div>
             </div>
-            <div class="volume-control">
-                <span class="material-icons">volume_up</span>
-                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="0.5" style="color: #AA6666;">
+            <div id="weatherSettingsPanel" style="display: none;">
+                <div class="radio-group">
+                    <label class="radio-option ripple-container selected" id="weatherAutoModeOption">
+                        <span>自动定位当前城市</span>
+                        <input type="radio" name="weatherMode" value="auto" checked style="border: 2px solid #AA6666; background-color: #AA6666;">
+                    </label>
+                    <label class="radio-option ripple-container" id="weatherManualModeOption">
+                        <span>手动设置城市</span>
+                        <input type="radio" name="weatherMode" value="manual" style="border: 2px solid #AA6666; background-color: transparent;">
+                    </label>
+                </div>
+                <div id="weatherAutoPanel">
+                    <div class="weather-auto-tip" id="weatherAutoTip">点击下方按钮获取当前位置</div>
+                    <button class="weather-locate-btn ripple-container" id="weatherLocateBtn">
+                        <span class="material-icons">my_location</span>
+                        <span>定位当前位置</span>
+                    </button>
+                </div>
+                <div id="weatherManualPanel" style="display: none;">
+                    <div class="weather-form">
+                        <input type="text" id="weatherCityInput" placeholder="输入城市名，如 北京" maxlength="20">
+                        <button id="weatherSearchBtn" class="ripple-container">
+                            <span class="material-icons">search</span>
+                            <span>搜索</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="weather-result-tip" id="weatherResultTip"></div>
             </div>
-            <input type="file" id="localMusic" accept="audio/*" class="hidden">
             <div class="modal-footer">
-                <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeMusicModal">取消</button>
-                <button class="confirm-btn" style="border-color: #AA6666; color: #AA6666;" id="confirmMusic">确认</button>
+                <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeWeatherModal">关闭</button>
+                <button class="confirm-btn" style="border-color: #AA6666; color: #AA6666;" id="confirmWeather">保存</button>
             </div>
         </div>
     </div>
 
-    <!-- 新增：历史记录弹窗（样式与其他弹窗完全统一） -->
+    <!-- 历史记录弹窗 -->
     <div class="modal" id="historyModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
             <div class="modal-title" style="color: #AA6666;">搜索历史记录</div>
-            <!-- 历史记录列表容器（复用radio-group的滚动/布局样式） -->
             <div class="radio-group" id="historyList" style="margin-bottom: 16px;">
-                <!-- 历史记录项由JS动态生成 -->
             </div>
             <div class="modal-footer">
                 <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeHistoryModal">关闭</button>
@@ -580,16 +1020,22 @@
         </div>
     </div>
 
-    <!-- 音乐权限受限提示弹窗 -->
-    <div class="modal" id="musicPermissionModal">
-        <div class="modal-content" style="background-color: #FFF0F5;">
-            <div class="modal-title" style="color: #AA6666;">浏览器权限提示</div>
-            <div style="color: #AA6666; margin-bottom: 24px; font-size: 14px; line-height: 1.5;">
-                因浏览器自动播放权限受限，背景音乐无法自动启动，请手动选择以下操作
+    <!-- ============ 快捷栏管理弹窗 ============ -->
+    <div class="modal" id="quickBarModal">
+        <div class="modal-content" style="background-color: #FFF0F5; max-width: 460px;">
+            <div class="modal-title" style="color: #AA6666;">快捷栏管理</div>
+            <div class="quick-add-form">
+                <input type="text" id="quickNameInput" placeholder="名称" maxlength="12">
+                <input type="text" id="quickUrlInput" placeholder="网址，如 github.com">
+                <button id="quickAddBtn" class="ripple-container">
+                    <span class="material-icons">add</span>
+                    <span>添加</span>
+                </button>
+            </div>
+            <div class="radio-group" id="quickManageList" style="margin-bottom: 16px;">
             </div>
             <div class="modal-footer">
-                <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="musicPermissionCancel">不播放并关闭</button>
-                <button class="confirm-btn" style="border-color: #AA6666; color: #AA6666;" id="musicPermissionConfirm">开始播放并关闭</button>
+                <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeQuickBarModal">关闭</button>
             </div>
         </div>
     </div>
@@ -606,7 +1052,9 @@
     </div>
 
     <script>
-        // 全局状态变量 - 新增历史记录相关
+        // ================================================================
+        // 全局状态变量
+        // ================================================================
         let currentEngine = 'bing-cn';
         let currentTheme = 'cherry-pink';
         let currentThemeColor = '#FFF0F5';
@@ -615,15 +1063,25 @@
         let wallpaperUrl = '';
         let localFileName = '';
         let localFileBase64 = '';
-        let localMusicFileName = '';
-        let localMusicBase64 = '';
-        let musicType = 'none';
-        let musicVolume = 0.5;
-        let audioPlayer = new Audio();
-        let userInteracted = false;
-        let isMusicPlaying = false;
         let isMenuOpen = false;
-        let searchHistory = []; // 新增：搜索历史数组
+        let searchHistory = [];
+
+        // ===== 快捷栏全局状态 =====
+        const DEFAULT_QUICK_ITEMS = [];
+        let quickBarItems = [];
+        let isQuickBarCollapsed = true;
+
+        // ===== 天气模块全局状态 =====
+        let weatherEnabled = false;
+        let weatherMode = 'auto';       // 'auto' 自动定位 / 'manual' 手动设置
+        let weatherCity = '';           // 城市名
+        let weatherLat = null;          // 经纬度
+        let weatherLon = null;
+        let weatherTimer = null;        // 自动刷新定时器
+        let isLocating = false;         // 定位中标志
+
+        // Ventusky 官网地址
+        const VENTUSKY_URL = 'https://www.ventusky.com/';
 
         // 搜索引擎配置
         const engineConfig = {
@@ -656,38 +1114,19 @@
 
         // 页面加载完成初始化
         document.addEventListener('DOMContentLoaded', function() {
-            document.addEventListener('click', markUserInteraction);
-            document.addEventListener('touchstart', markUserInteraction);
-            
-            // 时间日期区域单击跳转事件
             document.getElementById('dateTimeContainer').addEventListener('click', function() {
                 window.location.href = 'https://douyin-lao6pc.github.io/search/date.html';
             });
             
             init();
             loadLocalWallpaperIfExists();
-            loadLocalMusicIfExists();
-            checkMusicModeAndShowPermissionModal();
             bindMenuEvents();
             bindSearchInputListener();
-            loadSearchHistory(); // 新增：加载历史记录
-            renderSearchHistory(); // 新增：渲染历史记录
+            loadSearchHistory();
+            renderSearchHistory();
+            initQuickBar();
+            initWeather();
         });
-
-        // 标记用户已完成首次交互
-        function markUserInteraction() {
-            if (!userInteracted) {
-                userInteracted = true;
-            }
-        }
-
-        // 检测音乐模式，若为默认/本地音乐则弹出权限提示
-        function checkMusicModeAndShowPermissionModal() {
-            if ((musicType === 'default' || musicType === 'local') && (localMusicBase64 || musicType === 'default')) {
-                document.getElementById('musicPermissionModal').style.display = 'flex';
-                document.getElementById('musicControlBtn').style.display = 'flex';
-            }
-        }
 
         // 文件转Base64
         function fileToBase64(file, callback) {
@@ -717,11 +1156,7 @@
             }
             updateCurrentEngineText();
             bindEvents();
-            audioPlayer.volume = musicVolume;
-            audioPlayer.loop = true;
-            document.getElementById('volumeSlider').value = musicVolume;
-            updateMusicControlButton();
-            bindHistoryEvents(); // 新增：绑定历史记录相关事件
+            bindHistoryEvents();
         }
 
         // 加载本地壁纸
@@ -737,53 +1172,7 @@
             }
         }
 
-        // 加载本地音乐
-        function loadLocalMusicIfExists() {
-            if (musicType === 'local' && localMusicBase64) {
-                document.querySelector('input[name="musicType"][value="local"]').checked = true;
-                document.querySelector('input[name="musicType"][value="none"]').checked = false;
-                updateSelectedHighlight();
-                document.getElementById('localMusicName').textContent = localMusicFileName;
-                audioPlayer.src = localMusicBase64;
-                document.getElementById('musicControlBtn').style.display = 'flex';
-            } else if (musicType === 'default') {
-                document.querySelector('input[name="musicType"][value="default"]').checked = true;
-                document.querySelector('input[name="musicType"][value="none"]').checked = false;
-                updateSelectedHighlight();
-                audioPlayer.src = 'music.mp3';
-                document.getElementById('musicControlBtn').style.display = 'flex';
-            }
-        }
-
-        // 播放音乐（带权限校验）
-        function playMusic() {
-            if (userInteracted && (musicType === 'default' || musicType === 'local')) {
-                audioPlayer.play().then(() => {
-                    isMusicPlaying = true;
-                    updateMusicControlButton();
-                }).catch(err => {
-                    console.log('音乐播放失败:', err);
-                    alert('音乐播放失败，请检查文件或重试！');
-                });
-            }
-        }
-
-        // 暂停音乐
-        function pauseMusic() {
-            audioPlayer.pause();
-            isMusicPlaying = false;
-            updateMusicControlButton();
-        }
-
-        // 更新播放/暂停按钮状态
-        function updateMusicControlButton() {
-            const icon = document.getElementById('musicControlIcon');
-            icon.textContent = isMusicPlaying ? 'pause' : 'play_arrow';
-            document.getElementById('musicControlBtn').style.backgroundColor = currentThemeColor;
-            icon.style.color = currentDarkColor;
-        }
-
-        // 同步所有元素主题颜色 - 新增同步历史记录弹窗
+        // 同步所有元素主题颜色
         function syncAllElementsTheme() {
             document.body.className = `${currentTheme}/30`;
             if (wallpaperType === 'none') {
@@ -795,9 +1184,10 @@
             const functionBtns = [
                 document.getElementById('wallpaperBtn'),
                 document.getElementById('themeBtn'),
-                document.getElementById('musicBtn'),
+                document.getElementById('weatherBtn'),
+                document.getElementById('quickBarBtn'),
                 document.getElementById('aboutBtn'),
-                document.getElementById('historyBtn'), // 新增：历史记录按钮
+                document.getElementById('historyBtn'),
                 document.getElementById('resetBtn'),
                 document.getElementById('engineBtn'),
                 document.getElementById('searchBtn'),
@@ -809,12 +1199,11 @@
 
             const modals = document.querySelectorAll('.modal-content');
             const modalTitles = document.querySelectorAll('.modal-title');
-            const modalTexts = document.querySelectorAll('.radio-option span:not(.filename-label):not(.material-icons), .history-item-info *'); // 新增：历史记录文本
+            const modalTexts = document.querySelectorAll('.radio-option span:not(.filename-label):not(.material-icons), .history-item-info *');
             const modalBtns = document.querySelectorAll('.modal-footer button');
             const allRadios = document.querySelectorAll('.radio-option input[type="radio"]');
-            const volumeSlider = document.getElementById('volumeSlider');
             const searchIcon = document.getElementById('searchIcon');
-            const historyDeleteIcons = document.querySelectorAll('.history-delete-btn .material-icons'); // 新增：历史记录删除图标
+            const historyDeleteIcons = document.querySelectorAll('.history-delete-btn .material-icons');
 
             modals.forEach(modal => modal.style.backgroundColor = currentThemeColor);
             modalTitles.forEach(title => title.style.color = currentDarkColor);
@@ -827,22 +1216,20 @@
                 radio.style.border = `2px solid ${currentDarkColor}`;
                 radio.style.backgroundColor = radio.checked ? currentDarkColor : 'transparent';
             });
-            volumeSlider.style.color = currentDarkColor;
             searchIcon.style.color = currentDarkColor;
-            historyDeleteIcons.forEach(icon => icon.style.color = currentDarkColor); // 新增：同步删除图标颜色
+            historyDeleteIcons.forEach(icon => icon.style.color = currentDarkColor);
 
             document.styleSheets[1].cssRules[1].style.boxShadow = `0 0 0 0 ${currentDarkColor}`;
             updateSelectedHighlight();
-            updateMusicControlButton();
+            applyQuickBarTheme();
+            applyWeatherTheme();
         }
 
-        // 显示/隐藏壁纸刷新按钮
         function showRefreshBtn(show) {
             const refreshBtn = document.getElementById('refreshWallpaperBtn');
             show ? refreshBtn.classList.add('show') : refreshBtn.classList.remove('show');
         }
 
-        // 颜色加深工具函数
         function darkenColor(hex, percent = 50) {
             hex = hex.replace(/^#/, '');
             let r = parseInt(hex.substring(0, 2), 16);
@@ -854,7 +1241,6 @@
             return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
         }
 
-        // 更新时间和日期
         function updateTimeDate() {
             const now = new Date();
             const hours = now.getHours().toString().padStart(2, '0');
@@ -868,12 +1254,10 @@
             document.getElementById('date').textContent = `${year}/${month}/${day}        ${weekDays[now.getDay()]}`;
         }
 
-        // 更新当前搜索引擎文本
         function updateCurrentEngineText() {
             document.getElementById('currentEngineText').textContent = `当前搜索引擎：${engineConfig[currentEngine].name}`;
         }
 
-        // 设置随机网络壁纸
         function setRandomWallpaper(isSave = true) {
             const width = screen.width;
             const height = screen.height;
@@ -889,7 +1273,6 @@
             adjustTextColorForBackground();
         }
 
-        // 关闭壁纸，使用主题色
         function setNoWallpaper() {
             document.body.style.backgroundImage = 'none';
             document.body.style.backgroundColor = currentThemeColor;
@@ -900,7 +1283,6 @@
             adjustTextColorForBackground();
         }
 
-        // 初始化主题颜色选项
         function initColorOptions() {
             const colorContainer = document.getElementById('colorOptions');
             colorContainer.innerHTML = '';
@@ -924,7 +1306,6 @@
             }
         }
 
-        // 应用选中的主题颜色
         function applyTheme() {
             const selectedRadio = document.querySelector('input[name="themeColor"]:checked');
             if (!selectedRadio) return;
@@ -942,7 +1323,6 @@
             adjustTextColorForBackground();
         }
 
-        // 根据背景调整文字颜色
         function adjustTextColorForBackground() {
             const timeElement = document.getElementById('time');
             const dateElement = document.getElementById('date');
@@ -972,13 +1352,11 @@
             }
         }
 
-        // 网址验证正则（支持带/不带http(s)、带/不带www的域名/IP）
         function isUrl(str) {
             const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$|^\d{1,3}(\.\d{1,3}){3}(:\d+)?(\/.*)?$/;
             return urlRegex.test(str.trim());
         }
 
-        // 补全网址协议（无http/https时自动添加https）
         function completeUrl(url) {
             const trimmedUrl = url.trim();
             if (!/^https?:\/\//i.test(trimmedUrl)) {
@@ -987,38 +1365,29 @@
             return trimmedUrl;
         }
 
-        // 新增：记录搜索历史
         function recordSearchHistory(content) {
             const trimmedContent = content.trim();
             if (!trimmedContent) return;
-            // 判定类型：网址/文字搜索
             const type = isUrl(trimmedContent) ? '网址' : '文字搜索';
-            // 获取当前时间（格式化：YYYY/MM/DD HH:mm:ss）
             const now = new Date();
             const time = `${now.getFullYear()}/${(now.getMonth()+1).toString().padStart(2, '0')}/${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
-            // 获取当前搜索引擎名称
             const engine = engineConfig[currentEngine].name;
-            // 生成历史记录项（带唯一ID，用于删除）
             const historyItem = {
-                id: Date.now() + Math.random().toString(36).substr(2, 5), // 唯一ID
+                id: Date.now() + Math.random().toString(36).substr(2, 5),
                 content: trimmedContent,
                 type,
                 time,
                 engine
             };
-            // 加入历史记录（头部添加，最新的在最前面）
             searchHistory.unshift(historyItem);
-            // 保存并重新渲染
             saveSearchHistory();
             renderSearchHistory();
         }
 
-        // 新增：保存搜索历史到本地存储
         function saveSearchHistory() {
             localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
         }
 
-        // 新增：从本地存储加载搜索历史
         function loadSearchHistory() {
             const saved = localStorage.getItem('searchHistory');
             if (saved) {
@@ -1026,11 +1395,9 @@
             }
         }
 
-        // 新增：渲染搜索历史列表
         function renderSearchHistory() {
             const historyList = document.getElementById('historyList');
             historyList.innerHTML = '';
-            // 无历史记录时显示提示
             if (searchHistory.length === 0) {
                 const emptyTip = document.createElement('div');
                 emptyTip.className = 'history-empty';
@@ -1039,13 +1406,11 @@
                 historyList.appendChild(emptyTip);
                 return;
             }
-            // 遍历生成历史记录项
             searchHistory.forEach(item => {
                 const historyItem = document.createElement('div');
                 historyItem.className = 'history-item ripple-container';
-                historyItem.dataset.id = item.id; // 绑定唯一ID
+                historyItem.dataset.id = item.id;
 
-                // 信息区域
                 const infoDiv = document.createElement('div');
                 infoDiv.className = 'history-item-info';
 
@@ -1060,21 +1425,17 @@
                 infoDiv.appendChild(contentSpan);
                 infoDiv.appendChild(metaSpan);
 
-                // 删除按钮
                 const deleteBtn = document.createElement('div');
                 deleteBtn.className = 'history-delete-btn ripple-container';
                 deleteBtn.innerHTML = `<span class="material-icons" style="font-size: 16px; color: ${currentDarkColor};">delete</span>`;
-                // 绑定单条删除事件
                 deleteBtn.addEventListener('click', function(e) {
-                    e.stopPropagation(); // 阻止冒泡触发波纹效果
+                    e.stopPropagation();
                     deleteSingleHistory(item.id);
                 });
 
-                // 历史项点击事件：将内容填入搜索框
                 historyItem.addEventListener('click', function() {
                     document.getElementById('searchInput').value = item.content;
                     document.getElementById('historyModal').style.display = 'none';
-                    // 同步更新搜索图标
                     const searchIcon = document.getElementById('searchIcon');
                     searchIcon.textContent = isUrl(item.content) ? 'arrow_forward' : 'search';
                 });
@@ -1085,16 +1446,12 @@
             });
         }
 
-        // 新增：删除单条历史记录
         function deleteSingleHistory(id) {
-            // 过滤掉对应ID的项
             searchHistory = searchHistory.filter(item => item.id !== id);
-            // 保存并重新渲染
             saveSearchHistory();
             renderSearchHistory();
         }
 
-        // 新增：清空全部历史记录
         function clearAllHistory() {
             if (confirm('确定要清空所有搜索历史记录吗？此操作不可恢复！')) {
                 searchHistory = [];
@@ -1103,7 +1460,6 @@
             }
         }
 
-        // 优化搜索功能：智能识别网址/关键词 + 新增记录历史
         function search() {
             const keyword = document.getElementById('searchInput').value.trim();
             if (!keyword) {
@@ -1111,17 +1467,14 @@
                 return;
             }
 
-            // 新增：先记录历史，再处理跳转
             recordSearchHistory(keyword);
 
-            // 识别为网址：直接跳转
             if (isUrl(keyword)) {
                 const fullUrl = completeUrl(keyword);
                 window.open(fullUrl, '_self');
                 return;
             }
 
-            // 识别为关键词：走原搜索引擎逻辑
             const engine = engineConfig[currentEngine];
             if (currentEngine === 'google') {
                 if (confirm('谷歌暂不支持中国大陆直接访问，如需访问请配置网络代理！')) {
@@ -1136,7 +1489,6 @@
             }
         }
 
-        // 绑定搜索栏输入监听，实时切换图标
         function bindSearchInputListener() {
             const searchInput = document.getElementById('searchInput');
             const searchIcon = document.getElementById('searchIcon');
@@ -1157,7 +1509,6 @@
             });
         }
 
-        // 保存设置到本地存储 - 恢复默认时清空历史记录
         function saveSettings() {
             const settings = {
                 currentEngine,
@@ -1168,16 +1519,16 @@
                 wallpaperUrl,
                 localFileName,
                 localFileBase64,
-                musicType,
-                localMusicFileName,
-                localMusicBase64,
-                musicVolume,
-                isMenuOpen
+                isMenuOpen,
+                weatherEnabled,
+                weatherMode,
+                weatherCity,
+                weatherLat,
+                weatherLon
             };
             localStorage.setItem('browserHomeSettings', JSON.stringify(settings));
         }
 
-        // 从本地存储加载设置
         function loadSettings() {
             const saved = localStorage.getItem('browserHomeSettings');
             if (saved) {
@@ -1190,17 +1541,16 @@
                 wallpaperUrl = settings.wallpaperUrl || '';
                 localFileName = settings.localFileName || '';
                 localFileBase64 = settings.localFileBase64 || '';
-                musicType = settings.musicType || 'none';
-                localMusicFileName = settings.localMusicFileName || '';
-                localMusicBase64 = settings.localMusicBase64 || '';
-                musicVolume = settings.musicVolume || 0.5;
                 isMenuOpen = settings.isMenuOpen || false;
+                weatherEnabled = settings.weatherEnabled || false;
+                weatherMode = settings.weatherMode || 'auto';
+                weatherCity = settings.weatherCity || '';
+                weatherLat = settings.weatherLat || null;
+                weatherLon = settings.weatherLon || null;
 
                 document.querySelector(`input[name="engine"][value="${currentEngine}"]`).checked = true;
                 document.querySelector(`input[name="wallpaperType"][value="${wallpaperType}"]`).checked = true;
-                document.querySelector(`input[name="musicType"][value="${musicType}"]`).checked = true;
                 document.getElementById('localFilename').textContent = localFileName;
-                document.getElementById('localMusicName').textContent = localMusicFileName;
 
                 if (isMenuOpen) {
                     document.getElementById('menuContent').classList.add('show');
@@ -1218,7 +1568,6 @@
             }
         }
 
-        // 更新单选框选中高亮
         function updateSelectedHighlight() {
             document.querySelectorAll('.radio-option').forEach(option => {
                 option.classList.remove('selected');
@@ -1228,7 +1577,6 @@
             });
         }
 
-        // 折叠菜单专属事件绑定
         function bindMenuEvents() {
             const menuToggleBtn = document.getElementById('menuToggleBtn');
             const menuContent = document.getElementById('menuContent');
@@ -1261,24 +1609,837 @@
             });
         }
 
-        // 新增：历史记录专属事件绑定
         function bindHistoryEvents() {
-            // 打开历史记录弹窗
             document.getElementById('historyBtn').addEventListener('click', function() {
-                renderSearchHistory(); // 每次打开重新渲染，保证最新
+                renderSearchHistory();
                 document.getElementById('historyModal').style.display = 'flex';
             });
-            // 关闭历史记录弹窗
             document.getElementById('closeHistoryModal').addEventListener('click', function() {
                 document.getElementById('historyModal').style.display = 'none';
             });
-            // 清空全部历史记录
             document.getElementById('clearAllHistory').addEventListener('click', clearAllHistory);
         }
 
-        // 绑定所有页面其他事件
+        /* ==================================================
+         *                快捷栏核心逻辑
+         * ================================================== */
+        function getDomain(url) {
+            let u = (url || '').trim();
+            u = u.replace(/^https?:\/\//i, '');
+            u = u.split('/')[0];
+            u = u.split('?')[0];
+            u = u.split('#')[0];
+            return u;
+        }
+
+        function stringToColor(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            const hue = Math.abs(hash) % 360;
+            return `hsl(${hue}, 55%, 55%)`;
+        }
+
+        function initQuickBar() {
+            loadQuickBarData();
+            renderQuickBar();
+            bindQuickBarEvents();
+            requestAnimationFrame(() => requestAnimationFrame(updateQuickScrollButtons));
+        }
+
+        function loadQuickBarData() {
+            const saved = localStorage.getItem('quickBarItems');
+            if (saved) {
+                try {
+                    quickBarItems = JSON.parse(saved) || [];
+                } catch (e) {
+                    quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
+                }
+            } else {
+                quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
+            }
+            if (!Array.isArray(quickBarItems)) {
+                quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
+            }
+
+            const savedCollapsed = localStorage.getItem('quickBarCollapsed');
+            isQuickBarCollapsed = savedCollapsed === null ? true : savedCollapsed === 'true';
+
+            const quickBar = document.getElementById('quickBar');
+            if (isQuickBarCollapsed) {
+                quickBar.classList.add('collapsed');
+                document.getElementById('quickCollapseIcon').textContent = 'keyboard_arrow_up';
+                document.getElementById('quickCollapseBtn').title = '展开快捷栏';
+            } else {
+                quickBar.classList.remove('collapsed');
+                document.getElementById('quickCollapseIcon').textContent = 'keyboard_arrow_down';
+                document.getElementById('quickCollapseBtn').title = '收起快捷栏';
+            }
+        }
+
+        function saveQuickBarData() {
+            localStorage.setItem('quickBarItems', JSON.stringify(quickBarItems));
+            localStorage.setItem('quickBarCollapsed', isQuickBarCollapsed ? 'true' : 'false');
+        }
+
+        function renderQuickBar() {
+            const container = document.getElementById('quickItems');
+            container.innerHTML = '';
+
+            if (quickBarItems.length === 0) {
+                const emptyTip = document.createElement('div');
+                emptyTip.className = 'quick-empty-tip';
+                emptyTip.textContent = '暂无快捷方式，请在菜单中管理';
+                container.appendChild(emptyTip);
+                applyQuickBarTheme();
+                requestAnimationFrame(updateQuickScrollButtons);
+                return;
+            }
+
+            quickBarItems.forEach(item => {
+                container.appendChild(createQuickItemElement(item));
+            });
+
+            applyQuickBarTheme();
+            requestAnimationFrame(() => requestAnimationFrame(updateQuickScrollButtons));
+        }
+
+        function createQuickItemElement(item) {
+            const el = document.createElement('div');
+            el.className = 'quick-item';
+            el.title = item.url;
+
+            const iconEl = document.createElement('span');
+            iconEl.className = 'quick-item-icon';
+
+            const domain = getDomain(item.url);
+
+            const iconSources = [];
+            if (domain) {
+                iconSources.push(`https://${domain}/favicon.ico`);
+                iconSources.push(`https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`);
+            }
+
+            let sourceIndex = 0;
+            const img = document.createElement('img');
+            img.alt = '';
+            img.referrerPolicy = 'no-referrer';
+
+            const fallbackToLetter = function() {
+                img.remove();
+                iconEl.style.backgroundColor = stringToColor(item.name || domain || '?');
+                iconEl.textContent = (item.name || domain || '?').charAt(0).toUpperCase();
+            };
+
+            img.onerror = function() {
+                sourceIndex++;
+                if (sourceIndex < iconSources.length) {
+                    img.src = iconSources[sourceIndex];
+                } else {
+                    fallbackToLetter();
+                }
+            };
+
+            if (iconSources.length > 0) {
+                img.src = iconSources[0];
+                iconEl.appendChild(img);
+            } else {
+                fallbackToLetter();
+            }
+
+            const nameEl = document.createElement('span');
+            nameEl.className = 'quick-item-name';
+            nameEl.textContent = item.name;
+
+            el.appendChild(iconEl);
+            el.appendChild(nameEl);
+
+            el.addEventListener('click', function() {
+                window.open(completeUrl(item.url), '_self');
+            });
+
+            return el;
+        }
+
+        function updateQuickScrollButtons() {
+            const container = document.getElementById('quickItems');
+            const prevBtn = document.getElementById('quickPrevBtn');
+            const nextBtn = document.getElementById('quickNextBtn');
+            if (!container || !prevBtn || !nextBtn) return;
+
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            const canLeft = container.scrollLeft > 2;
+            const canRight = maxScroll > 2 && container.scrollLeft < maxScroll - 2;
+
+            prevBtn.style.opacity = canLeft ? '1' : '0.3';
+            nextBtn.style.opacity = canRight ? '1' : '0.3';
+            prevBtn.style.pointerEvents = canLeft ? 'auto' : 'none';
+            nextBtn.style.pointerEvents = canRight ? 'auto' : 'none';
+        }
+
+        function applyQuickBarTheme() {
+            const quickBar = document.getElementById('quickBar');
+            if (!quickBar) return;
+
+            if (isQuickBarCollapsed) {
+                quickBar.style.backgroundColor = 'transparent';
+                quickBar.style.borderColor = 'transparent';
+                quickBar.style.boxShadow = 'none';
+            } else {
+                quickBar.style.backgroundColor = currentThemeColor;
+                quickBar.style.borderColor = currentDarkColor;
+                quickBar.style.boxShadow = '0 4px 16px rgba(0,0,0,0.12)';
+            }
+
+            const collapseBtn = document.getElementById('quickCollapseBtn');
+            if (collapseBtn) {
+                collapseBtn.style.backgroundColor = currentThemeColor;
+                collapseBtn.style.borderColor = currentDarkColor;
+                document.getElementById('quickCollapseIcon').style.color = currentDarkColor;
+            }
+
+            ['quickPrevBtn', 'quickNextBtn'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (!btn) return;
+                btn.style.backgroundColor = currentThemeColor;
+                btn.style.borderColor = currentDarkColor;
+                const icon = btn.querySelector('.material-icons');
+                if (icon) icon.style.color = currentDarkColor;
+            });
+
+            document.querySelectorAll('.quick-item').forEach(el => {
+                el.style.color = currentDarkColor;
+                el.style.borderColor = currentDarkColor + '40';
+            });
+
+            document.querySelectorAll('.quick-empty-tip').forEach(el => {
+                el.style.color = currentDarkColor;
+            });
+
+            document.querySelectorAll('.quick-manage-name').forEach(el => el.style.color = currentDarkColor);
+            document.querySelectorAll('.quick-manage-url').forEach(el => el.style.color = currentDarkColor);
+            document.querySelectorAll('.quick-manage-btn .material-icons').forEach(icon => icon.style.color = currentDarkColor);
+            document.querySelectorAll('.quick-add-form input, .quick-add-form button').forEach(el => {
+                el.style.borderColor = currentDarkColor;
+                el.style.color = currentDarkColor;
+            });
+        }
+
+        function bindQuickBarEvents() {
+            const quickBar = document.getElementById('quickBar');
+            const container = document.getElementById('quickItems');
+
+            document.getElementById('quickCollapseBtn').addEventListener('click', function() {
+                isQuickBarCollapsed = !isQuickBarCollapsed;
+                quickBar.classList.toggle('collapsed', isQuickBarCollapsed);
+                document.getElementById('quickCollapseIcon').textContent = isQuickBarCollapsed ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+                this.title = isQuickBarCollapsed ? '展开快捷栏' : '收起快捷栏';
+                saveQuickBarData();
+                applyQuickBarTheme();
+                if (!isQuickBarCollapsed) {
+                    requestAnimationFrame(() => requestAnimationFrame(updateQuickScrollButtons));
+                }
+            });
+
+            document.getElementById('quickPrevBtn').addEventListener('click', function() {
+                container.scrollBy({ left: -260, behavior: 'smooth' });
+            });
+
+            document.getElementById('quickNextBtn').addEventListener('click', function() {
+                container.scrollBy({ left: 260, behavior: 'smooth' });
+            });
+
+            container.addEventListener('wheel', function(e) {
+                if (isQuickBarCollapsed) return;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                if (maxScroll <= 0) return;
+                e.preventDefault();
+                const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+                container.scrollLeft += delta * 1.2;
+            }, { passive: false });
+
+            container.addEventListener('scroll', updateQuickScrollButtons);
+            window.addEventListener('resize', updateQuickScrollButtons);
+
+            document.getElementById('quickBarBtn').addEventListener('click', function() {
+                renderQuickManageList();
+                document.getElementById('quickBarModal').style.display = 'flex';
+            });
+            document.getElementById('closeQuickBarModal').addEventListener('click', function() {
+                document.getElementById('quickBarModal').style.display = 'none';
+            });
+
+            document.getElementById('quickAddBtn').addEventListener('click', addQuickItem);
+            document.getElementById('quickUrlInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') addQuickItem();
+            });
+            document.getElementById('quickNameInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') document.getElementById('quickUrlInput').focus();
+            });
+        }
+
+        function renderQuickManageList() {
+            const list = document.getElementById('quickManageList');
+            list.innerHTML = '';
+
+            if (quickBarItems.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'history-empty';
+                empty.textContent = '暂无快捷方式，请在上方添加';
+                list.appendChild(empty);
+                applyQuickBarTheme();
+                return;
+            }
+
+            quickBarItems.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = 'quick-manage-item';
+
+                const info = document.createElement('div');
+                info.className = 'quick-manage-info';
+
+                const nameEl = document.createElement('div');
+                nameEl.className = 'quick-manage-name';
+                nameEl.textContent = item.name;
+
+                const urlEl = document.createElement('div');
+                urlEl.className = 'quick-manage-url';
+                urlEl.textContent = item.url;
+
+                info.appendChild(nameEl);
+                info.appendChild(urlEl);
+
+                const actions = document.createElement('div');
+                actions.className = 'quick-manage-actions';
+
+                const upBtn = document.createElement('span');
+                upBtn.className = 'quick-manage-btn ripple-container' + (index === 0 ? ' disabled' : '');
+                upBtn.innerHTML = '<span class="material-icons">arrow_upward</span>';
+                upBtn.title = '上移';
+                upBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    moveQuickItem(index, -1);
+                });
+
+                const downBtn = document.createElement('span');
+                downBtn.className = 'quick-manage-btn ripple-container' + (index === quickBarItems.length - 1 ? ' disabled' : '');
+                downBtn.innerHTML = '<span class="material-icons">arrow_downward</span>';
+                downBtn.title = '下移';
+                downBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    moveQuickItem(index, 1);
+                });
+
+                const delBtn = document.createElement('span');
+                delBtn.className = 'quick-manage-btn ripple-container';
+                delBtn.innerHTML = '<span class="material-icons">delete</span>';
+                delBtn.title = '删除';
+                delBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    deleteQuickItem(item.id);
+                });
+
+                actions.appendChild(upBtn);
+                actions.appendChild(downBtn);
+                actions.appendChild(delBtn);
+
+                row.appendChild(info);
+                row.appendChild(actions);
+                list.appendChild(row);
+            });
+
+            applyQuickBarTheme();
+        }
+
+        function addQuickItem() {
+            const nameInput = document.getElementById('quickNameInput');
+            const urlInput = document.getElementById('quickUrlInput');
+            const name = nameInput.value.trim();
+            const url = urlInput.value.trim();
+
+            if (!name) {
+                alert('请输入名称！');
+                nameInput.focus();
+                return;
+            }
+            if (!url) {
+                alert('请输入网址！');
+                urlInput.focus();
+                return;
+            }
+
+            quickBarItems.push({
+                id: 'q' + Date.now() + Math.random().toString(36).substr(2, 5),
+                name: name,
+                url: url
+            });
+
+            nameInput.value = '';
+            urlInput.value = '';
+            nameInput.focus();
+
+            saveQuickBarData();
+            renderQuickManageList();
+            renderQuickBar();
+        }
+
+        function moveQuickItem(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= quickBarItems.length) return;
+            const temp = quickBarItems[index];
+            quickBarItems[index] = quickBarItems[newIndex];
+            quickBarItems[newIndex] = temp;
+            saveQuickBarData();
+            renderQuickManageList();
+            renderQuickBar();
+        }
+
+        function deleteQuickItem(id) {
+            quickBarItems = quickBarItems.filter(item => item.id !== id);
+            saveQuickBarData();
+            renderQuickManageList();
+            renderQuickBar();
+        }
+
+        /* ==================================================
+         *                天气模块核心逻辑
+         * ================================================== */
+
+        function getWeatherIconName(code) {
+            if (code === 0) return 'wb_sunny';
+            if (code === 1 || code === 2) return 'wb_cloudy';
+            if (code === 3) return 'cloud';
+            if (code === 45 || code === 48) return 'blur_on';
+            if (code >= 51 && code <= 67) return 'umbrella';
+            if (code >= 71 && code <= 77) return 'ac_unit';
+            if (code >= 80 && code <= 82) return 'umbrella';
+            if (code >= 85 && code <= 86) return 'ac_unit';
+            if (code >= 95 && code <= 99) return 'flash_on';
+            return 'cloud';
+        }
+
+        function getWeatherDesc(code) {
+            const map = {
+                0: '晴', 1: '基本晴', 2: '多云', 3: '阴',
+                45: '雾', 48: '雾凇',
+                51: '小毛毛雨', 53: '毛毛雨', 55: '大毛毛雨',
+                56: '冻毛毛雨', 57: '冻毛毛雨',
+                61: '小雨', 63: '中雨', 65: '大雨',
+                66: '冻雨', 67: '冻雨',
+                71: '小雪', 73: '中雪', 75: '大雪',
+                77: '雪粒',
+                80: '小阵雨', 81: '中阵雨', 82: '大阵雨',
+                85: '小阵雪', 86: '大阵雪',
+                95: '雷暴', 96: '雷暴伴冰雹', 99: '雷暴伴大冰雹'
+            };
+            return map[code] || '未知';
+        }
+
+        function applyWeatherTheme() {
+            const widget = document.getElementById('weatherWidget');
+            if (!widget) return;
+            widget.style.backgroundColor = currentThemeColor;
+            widget.style.borderColor = currentDarkColor;
+            widget.style.color = currentDarkColor;
+
+            const toggle = document.getElementById('weatherToggle');
+            if (toggle) {
+                toggle.style.borderColor = currentDarkColor;
+                toggle.style.backgroundColor = weatherEnabled ? currentDarkColor : 'transparent';
+            }
+            const switchLabel = document.getElementById('weatherSwitchLabel');
+            if (switchLabel) switchLabel.style.color = currentDarkColor;
+
+            // 天气设置弹窗内元素
+            document.querySelectorAll('#weatherSettingsPanel .radio-option span').forEach(el => {
+                el.style.color = currentDarkColor;
+            });
+            const autoTip = document.getElementById('weatherAutoTip');
+            if (autoTip) autoTip.style.color = currentDarkColor;
+            const locateBtn = document.getElementById('weatherLocateBtn');
+            if (locateBtn) {
+                locateBtn.style.borderColor = currentDarkColor;
+                locateBtn.style.color = currentDarkColor;
+            }
+            document.querySelectorAll('.weather-form input, .weather-form button').forEach(el => {
+                el.style.borderColor = currentDarkColor;
+                el.style.color = currentDarkColor;
+            });
+            const tip = document.getElementById('weatherResultTip');
+            if (tip) tip.style.color = currentDarkColor;
+
+            const iconWrap = document.getElementById('weatherIconWrap');
+            if (iconWrap) {
+                const icon = iconWrap.querySelector('.material-icons');
+                if (icon) icon.style.color = currentDarkColor;
+            }
+        }
+
+        function initWeather() {
+            syncWeatherToggleUI();
+            applyWeatherTheme();
+            bindWeatherEvents();
+
+            if (weatherEnabled) {
+                if (weatherMode === 'auto' && weatherLat !== null && weatherLon !== null) {
+                    showWeatherWidget();
+                    fetchWeather();
+                    startWeatherAutoRefresh();
+                } else if (weatherMode === 'manual' && weatherCity && weatherLat !== null && weatherLon !== null) {
+                    showWeatherWidget();
+                    fetchWeather();
+                    startWeatherAutoRefresh();
+                }
+            }
+        }
+
+        function syncWeatherToggleUI() {
+            const toggle = document.getElementById('weatherToggle');
+            const switchLabel = document.getElementById('weatherSwitchLabel');
+            if (!toggle || !switchLabel) return;
+            if (weatherEnabled) {
+                toggle.classList.add('on');
+                toggle.style.backgroundColor = currentDarkColor;
+                switchLabel.textContent = '显示天气';
+            } else {
+                toggle.classList.remove('on');
+                toggle.style.backgroundColor = 'transparent';
+                switchLabel.textContent = '不显示天气';
+            }
+        }
+
+        function showWeatherWidget() {
+            const widget = document.getElementById('weatherWidget');
+            widget.classList.remove('hidden');
+            applyWeatherTheme();
+        }
+
+        function hideWeatherWidget() {
+            const widget = document.getElementById('weatherWidget');
+            widget.classList.add('hidden');
+        }
+
+        function startWeatherAutoRefresh() {
+            if (weatherTimer) clearInterval(weatherTimer);
+            weatherTimer = setInterval(() => {
+                if (weatherEnabled && weatherLat !== null && weatherLon !== null) {
+                    fetchWeather();
+                }
+            }, 30 * 60 * 1000);
+        }
+
+        function stopWeatherAutoRefresh() {
+            if (weatherTimer) {
+                clearInterval(weatherTimer);
+                weatherTimer = null;
+            }
+        }
+
+        // 切换模式时更新面板显示
+        function updateWeatherModePanels() {
+            document.getElementById('weatherAutoPanel').style.display = weatherMode === 'auto' ? 'block' : 'none';
+            document.getElementById('weatherManualPanel').style.display = weatherMode === 'manual' ? 'block' : 'none';
+        }
+
+        // 自动定位：使用浏览器 Geolocation + BigDataCloud 反向地理编码
+        function autoLocate() {
+            const tip = document.getElementById('weatherAutoTip');
+            if (!navigator.geolocation) {
+                tip.textContent = '当前浏览器不支持定位功能';
+                return;
+            }
+            if (isLocating) return;
+            isLocating = true;
+            tip.textContent = '正在获取位置...';
+
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    isLocating = false;
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    weatherLat = lat;
+                    weatherLon = lon;
+                    reverseGeocode(lat, lon);
+                },
+                function(error) {
+                    isLocating = false;
+                    let msg = '定位失败';
+                    if (error.code === 1) msg = '定位权限被拒绝';
+                    else if (error.code === 2) msg = '无法获取位置';
+                    else if (error.code === 3) msg = '定位超时';
+                    tip.textContent = msg + '，可尝试手动设置';
+                },
+                { timeout: 10000, enableHighAccuracy: false }
+            );
+        }
+
+        // 反向地理编码：经纬度 → 城市名
+        function reverseGeocode(lat, lon) {
+            const tip = document.getElementById('weatherAutoTip');
+            const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=zh`;
+            fetch(url)
+                .then(r => r.json())
+                .then(data => {
+                    const name = data.city || data.locality || data.principalSubdivision || '当前位置';
+                    weatherCity = name;
+                    tip.textContent = `当前位置：${name}`;
+                    saveSettings();
+
+                    if (weatherEnabled) {
+                        showWeatherWidget();
+                        fetchWeather();
+                        startWeatherAutoRefresh();
+                    }
+                })
+                .catch(err => {
+                    console.error('反向地理编码失败:', err);
+                    tip.textContent = '无法获取城市名，请手动设置';
+                });
+        }
+
+        // 搜索城市（Open-Meteo Geocoding API）
+        function geocodeCity(cityName, userTriggered) {
+            const resultTip = document.getElementById('weatherResultTip');
+            const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=zh&format=json`;
+
+            fetch(url)
+                .then(r => r.json())
+                .then(data => {
+                    if (data.results && data.results.length > 0) {
+                        const loc = data.results[0];
+                        weatherLat = loc.latitude;
+                        weatherLon = loc.longitude;
+                        weatherCity = loc.name;
+
+                        if (userTriggered) {
+                            resultTip.textContent = `已定位：${loc.name}（${loc.admin1 || ''} ${loc.country || ''}）`;
+                            resultTip.style.color = currentDarkColor;
+                        }
+                        saveSettings();
+
+                        if (weatherEnabled && weatherMode === 'manual') {
+                            showWeatherWidget();
+                            fetchWeather();
+                            startWeatherAutoRefresh();
+                        }
+                    } else {
+                        if (userTriggered) {
+                            resultTip.textContent = '未找到该城市，请检查名称';
+                            resultTip.style.color = currentDarkColor;
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.error('城市搜索失败:', err);
+                    if (userTriggered) {
+                        resultTip.textContent = '网络请求失败，请检查网络';
+                        resultTip.style.color = currentDarkColor;
+                    }
+                });
+        }
+
+        // Promise 版城市搜索（用于保存时同步等待）
+        function geocodeCityAsync(cityName) {
+            return new Promise((resolve) => {
+                const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=zh&format=json`;
+                fetch(url)
+                    .then(r => r.json())
+                    .then(data => {
+                        if (data.results && data.results.length > 0) {
+                            const loc = data.results[0];
+                            weatherLat = loc.latitude;
+                            weatherLon = loc.longitude;
+                            weatherCity = loc.name;
+                        }
+                        resolve();
+                    })
+                    .catch(() => resolve());
+            });
+        }
+
+        // 获取实时天气（Open-Meteo Forecast API）
+        function fetchWeather() {
+            if (weatherLat === null || weatherLon === null) return;
+
+            document.getElementById('weatherLoading').style.display = '';
+            document.getElementById('weatherContent').style.display = 'none';
+            document.getElementById('weatherError').style.display = 'none';
+
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${weatherLat}&longitude=${weatherLon}&current_weather=true`;
+
+            fetch(url)
+                .then(r => r.json())
+                .then(data => {
+                    if (!data.current_weather) {
+                        throw new Error('数据格式异常');
+                    }
+
+                    const cw = data.current_weather;
+
+                    document.getElementById('weatherTemp').textContent = `${Math.round(cw.temperature)}°C`;
+                    document.getElementById('weatherDesc').textContent = getWeatherDesc(cw.weathercode);
+                    document.getElementById('weatherCity').textContent = weatherCity;
+
+                    const iconWrap = document.getElementById('weatherIconWrap');
+                    iconWrap.innerHTML = '';
+                    const iconEl = document.createElement('span');
+                    iconEl.className = 'material-icons';
+                    iconEl.textContent = getWeatherIconName(cw.weathercode);
+                    iconEl.style.color = currentDarkColor;
+                    iconWrap.appendChild(iconEl);
+
+                    document.getElementById('weatherLoading').style.display = 'none';
+                    document.getElementById('weatherContent').style.display = 'inline-flex';
+                    document.getElementById('weatherError').style.display = 'none';
+
+                    applyWeatherTheme();
+                })
+                .catch(err => {
+                    console.error('天气加载失败:', err);
+                    showWeatherError();
+                });
+        }
+
+        function showWeatherError() {
+            document.getElementById('weatherLoading').style.display = 'none';
+            document.getElementById('weatherContent').style.display = 'none';
+            document.getElementById('weatherError').style.display = '';
+        }
+
+        function bindWeatherEvents() {
+            // 点击天气挂件 → 跳转 Ventusky
+            document.getElementById('weatherWidget').addEventListener('click', function() {
+                window.open(VENTUSKY_URL, '_blank');
+            });
+
+            // 打开天气设置弹窗
+            document.getElementById('weatherBtn').addEventListener('click', function() {
+                syncWeatherToggleUI();
+                // 回填城市输入框
+                document.getElementById('weatherCityInput').value = weatherCity || '';
+                // 同步模式
+                document.querySelector(`input[name="weatherMode"][value="${weatherMode}"]`).checked = true;
+                updateWeatherModePanels();
+                // 更新自动定位提示
+                const autoTip = document.getElementById('weatherAutoTip');
+                if (weatherMode === 'auto') {
+                    if (weatherCity) {
+                        autoTip.textContent = `当前位置：${weatherCity}`;
+                    } else {
+                        autoTip.textContent = '点击下方按钮获取当前位置';
+                    }
+                }
+                document.getElementById('weatherResultTip').textContent = '';
+                // 显示/隐藏设置面板
+                document.getElementById('weatherSettingsPanel').style.display = weatherEnabled ? 'block' : 'none';
+                document.getElementById('weatherModal').style.display = 'flex';
+                applyWeatherTheme();
+                updateSelectedHighlight();
+            });
+
+            document.getElementById('closeWeatherModal').addEventListener('click', function() {
+                document.getElementById('weatherModal').style.display = 'none';
+            });
+
+            // 开关切换
+            document.getElementById('weatherToggle').addEventListener('click', function() {
+                weatherEnabled = !weatherEnabled;
+                syncWeatherToggleUI();
+                const panel = document.getElementById('weatherSettingsPanel');
+                panel.style.display = weatherEnabled ? 'block' : 'none';
+                applyWeatherTheme();
+
+                // 打开开关且为自动模式且没有位置时，尝试自动定位
+                if (weatherEnabled && weatherMode === 'auto' && weatherLat === null) {
+                    autoLocate();
+                }
+            });
+
+            // 模式切换
+            document.querySelectorAll('input[name="weatherMode"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    weatherMode = this.value;
+                    updateWeatherModePanels();
+                    updateSelectedHighlight();
+                });
+            });
+
+            // 定位当前位置按钮
+            document.getElementById('weatherLocateBtn').addEventListener('click', autoLocate);
+
+            // 手动设置搜索城市
+            document.getElementById('weatherSearchBtn').addEventListener('click', function() {
+                const city = document.getElementById('weatherCityInput').value.trim();
+                if (!city) {
+                    document.getElementById('weatherResultTip').textContent = '请输入城市名';
+                    document.getElementById('weatherResultTip').style.color = currentDarkColor;
+                    return;
+                }
+                document.getElementById('weatherResultTip').textContent = '搜索中...';
+                document.getElementById('weatherResultTip').style.color = currentDarkColor;
+                geocodeCity(city, true);
+            });
+
+            document.getElementById('weatherCityInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('weatherSearchBtn').click();
+                }
+            });
+
+            // 保存
+            document.getElementById('confirmWeather').addEventListener('click', async function() {
+                // 读取当前模式
+                const modeRadio = document.querySelector('input[name="weatherMode"]:checked');
+                weatherMode = modeRadio ? modeRadio.value : 'auto';
+
+                // 手动模式下，如果输入了新的城市名，先搜索同步坐标
+                if (weatherMode === 'manual') {
+                    const inputCity = document.getElementById('weatherCityInput').value.trim();
+                    if (inputCity && inputCity !== weatherCity) {
+                        await geocodeCityAsync(inputCity);
+                    }
+                }
+
+                saveSettings();
+                document.getElementById('weatherModal').style.display = 'none';
+                updateWeatherDisplay();
+            });
+        }
+
+        function updateWeatherDisplay() {
+            if (weatherEnabled) {
+                if (weatherLat !== null && weatherLon !== null) {
+                    showWeatherWidget();
+                    fetchWeather();
+                    startWeatherAutoRefresh();
+                } else if (weatherMode === 'auto') {
+                    // 自动模式下没有坐标，尝试定位
+                    showWeatherWidget();
+                    document.getElementById('weatherLoading').style.display = 'none';
+                    document.getElementById('weatherContent').style.display = 'none';
+                    document.getElementById('weatherError').style.display = '';
+                    document.getElementById('weatherError').textContent = '请先定位';
+                } else if (weatherCity) {
+                    showWeatherWidget();
+                    geocodeCity(weatherCity, false);
+                } else {
+                    showWeatherWidget();
+                    document.getElementById('weatherLoading').style.display = 'none';
+                    document.getElementById('weatherContent').style.display = 'none';
+                    document.getElementById('weatherError').style.display = '';
+                    document.getElementById('weatherError').textContent = '请设置城市';
+                }
+            } else {
+                hideWeatherWidget();
+                stopWeatherAutoRefresh();
+            }
+        }
+
+        /* ==================================================
+         *                通用事件绑定
+         * ================================================== */
         function bindEvents() {
-            // 波纹效果事件
             document.querySelectorAll('.ripple-container').forEach(container => {
                 container.addEventListener('click', function(e) {
                     const ripple = document.createElement('span');
@@ -1293,12 +2454,10 @@
                 });
             });
 
-            // 关于按钮
             document.getElementById('aboutBtn').addEventListener('click', () => {
-                alert('抖音-老六说电脑-定制浏览器主页 v1.1\n开发者：抖音-老六说电脑\n官网：https://douyin-lao6pc.github.io/web');
+                alert('抖音-老六说电脑-定制浏览器主页 v1.7\n开发者：抖音-老六说电脑\n官网：https://douyin-lao6pc.github.io/web');
             });
 
-            // 搜索引擎弹窗事件
             document.getElementById('engineBtn').addEventListener('click', () => document.getElementById('engineModal').style.display = 'flex');
             document.getElementById('closeEngineModal').addEventListener('click', () => document.getElementById('engineModal').style.display = 'none');
             document.getElementById('confirmEngine').addEventListener('click', () => {
@@ -1308,7 +2467,6 @@
                 document.getElementById('engineModal').style.display = 'none';
             });
 
-            // 壁纸弹窗事件
             document.getElementById('wallpaperBtn').addEventListener('click', () => {
                 document.getElementById('wallpaperModal').style.display = 'flex';
                 showRefreshBtn(document.querySelector('input[name="wallpaperType"][value="network"]').checked);
@@ -1324,13 +2482,11 @@
                 document.getElementById('wallpaperModal').style.display = 'none';
             });
 
-            // 壁纸刷新按钮
             document.getElementById('refreshWallpaperBtn').addEventListener('click', function(e) {
                 e.stopPropagation();
                 setRandomWallpaper(false);
             });
 
-            // 本地壁纸选择
             document.querySelectorAll('input[name="wallpaperType"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     showRefreshBtn(this.value === 'network');
@@ -1340,7 +2496,6 @@
                 });
             });
 
-            // 本地壁纸文件上传
             document.getElementById('localWallpaper').addEventListener('change', function(e) {
                 const file = e.target.files[0];
                 if (file) {
@@ -1361,7 +2516,6 @@
                 }
             });
 
-            // 主题颜色弹窗事件
             document.getElementById('themeBtn').addEventListener('click', () => {
                 initColorOptions();
                 document.getElementById('themeModal').style.display = 'flex';
@@ -1372,98 +2526,19 @@
                 document.getElementById('themeModal').style.display = 'none';
             });
 
-            // 背景音乐弹窗事件
-            document.getElementById('musicBtn').addEventListener('click', () => {
-                document.getElementById('musicModal').style.display = 'flex';
-                document.getElementById('volumeSlider').value = musicVolume;
-            });
-            document.getElementById('closeMusicModal').addEventListener('click', () => document.getElementById('musicModal').style.display = 'none');
-            document.getElementById('confirmMusic').addEventListener('click', () => {
-                const selectedType = document.querySelector('input[name="musicType"]:checked').value;
-                musicType = selectedType;
-                audioPlayer.pause();
-                isMusicPlaying = false;
-
-                if (musicType === 'none') {
-                    localMusicBase64 = '';
-                    localMusicFileName = '';
-                    document.getElementById('localMusicName').textContent = '';
-                    document.getElementById('musicControlBtn').style.display = 'none';
-                } else if (musicType === 'default') {
-                    audioPlayer.src = 'music.mp3';
-                    document.getElementById('musicControlBtn').style.display = 'flex';
-                    checkMusicModeAndShowPermissionModal();
-                } else if (musicType === 'local' && localMusicBase64) {
-                    audioPlayer.src = localMusicBase64;
-                    document.getElementById('musicControlBtn').style.display = 'flex';
-                    checkMusicModeAndShowPermissionModal();
-                }
-                saveSettings();
-                updateMusicControlButton();
-                document.getElementById('musicModal').style.display = 'none';
-            });
-
-            // 本地音乐选择
-            document.querySelectorAll('input[name="musicType"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    if (this.value === 'local') {
-                        document.getElementById('localMusic').click();
-                    }
-                });
-            });
-
-            // 本地音乐文件上传
-            document.getElementById('localMusic').addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    localMusicFileName = file.name;
-                    fileToBase64(file, (base64) => {
-                        if (base64) {
-                            localMusicBase64 = base64;
-                            document.getElementById('localMusicName').textContent = localMusicFileName;
-                            document.querySelector('input[name="musicType"][value="local"]').checked = true;
-                            updateSelectedHighlight();
-                            saveSettings();
-                            audioPlayer.src = localMusicBase64;
-                            document.getElementById('musicControlBtn').style.display = 'flex';
-                        }
-                    });
-                }
-            });
-
-            // 音量调节
-            document.getElementById('volumeSlider').addEventListener('input', function() {
-                musicVolume = parseFloat(this.value);
-                audioPlayer.volume = musicVolume;
-                saveSettings();
-            });
-
-            // 音乐播放/暂停按钮点击事件
-            document.getElementById('musicControlBtn').addEventListener('click', function() {
-                isMusicPlaying ? pauseMusic() : playMusic();
-            });
-
-            // 音乐权限提示弹窗事件
-            document.getElementById('musicPermissionConfirm').addEventListener('click', function() {
-                playMusic();
-                document.getElementById('musicPermissionModal').style.display = 'none';
-            });
-            document.getElementById('musicPermissionCancel').addEventListener('click', function() {
-                document.getElementById('musicPermissionModal').style.display = 'none';
-            });
-
-            // 搜索按钮和回车事件
             document.getElementById('searchBtn').addEventListener('click', search);
             document.getElementById('searchInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') search();
             });
 
-            // 恢复默认设置弹窗事件 - 新增：清空历史记录
             document.getElementById('resetBtn').addEventListener('click', () => document.getElementById('resetModal').style.display = 'flex');
             document.getElementById('cancelReset').addEventListener('click', () => document.getElementById('resetModal').style.display = 'none');
             document.getElementById('confirmReset').addEventListener('click', () => {
                 localStorage.removeItem('browserHomeSettings');
-                localStorage.removeItem('searchHistory'); // 清空历史记录
+                localStorage.removeItem('searchHistory');
+                localStorage.removeItem('quickBarItems');
+                localStorage.removeItem('quickBarCollapsed');
+
                 currentEngine = 'bing-cn';
                 currentTheme = 'cherry-pink';
                 currentThemeColor = '#FFF0F5';
@@ -1471,22 +2546,30 @@
                 wallpaperType = 'network';
                 localFileName = '';
                 localFileBase64 = '';
-                musicType = 'none';
-                localMusicFileName = '';
-                localMusicBase64 = '';
-                musicVolume = 0.5;
-                searchHistory = []; // 清空内存中的历史记录
-                audioPlayer.pause();
-                isMusicPlaying = false;
-                audioPlayer.src = 'music.mp3';
+                searchHistory = [];
                 isMenuOpen = false;
+
+                weatherEnabled = false;
+                weatherMode = 'auto';
+                weatherCity = '';
+                weatherLat = null;
+                weatherLon = null;
+                stopWeatherAutoRefresh();
+                hideWeatherWidget();
+
+                quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
+                isQuickBarCollapsed = true;
+                const quickBar = document.getElementById('quickBar');
+                quickBar.classList.add('collapsed');
+                document.getElementById('quickCollapseIcon').textContent = 'keyboard_arrow_up';
+                document.getElementById('quickCollapseBtn').title = '展开快捷栏';
+                saveQuickBarData();
+                renderQuickBar();
+                renderQuickManageList();
 
                 document.querySelector('input[name="engine"][value="bing-cn"]').checked = true;
                 document.querySelector('input[name="wallpaperType"][value="network"]').checked = true;
-                document.querySelector('input[name="musicType"][value="none"]').checked = true;
                 document.getElementById('localFilename').textContent = '';
-                document.getElementById('localMusicName').textContent = '';
-                document.getElementById('volumeSlider').value = 0.5;
                 document.getElementById('searchInput').value = '';
                 document.getElementById('searchIcon').textContent = 'search';
 
@@ -1498,21 +2581,21 @@
                 syncAllElementsTheme();
                 updateCurrentEngineText();
                 setRandomWallpaper();
-                renderSearchHistory(); // 重新渲染空的历史记录
+                renderSearchHistory();
+                syncWeatherToggleUI();
+                applyWeatherTheme();
                 document.getElementById('resetModal').style.display = 'none';
-                alert('已成功恢复默认设置，搜索历史已清空！');
+                alert('已成功恢复默认设置，搜索历史、快捷栏与天气设置已重置！');
             });
 
-            // 点击弹窗外部关闭弹窗
             window.addEventListener('click', function(e) {
-                const modals = ['engineModal', 'wallpaperModal', 'themeModal', 'musicModal', 'resetModal', 'musicPermissionModal', 'historyModal']; // 新增：historyModal
+                const modals = ['engineModal', 'wallpaperModal', 'themeModal', 'resetModal', 'historyModal', 'quickBarModal', 'weatherModal'];
                 modals.forEach(modalId => {
                     const modal = document.getElementById(modalId);
                     if (e.target === modal) modal.style.display = 'none';
                 });
             });
 
-            // 单选框变化事件
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     updateSelectedHighlight();
