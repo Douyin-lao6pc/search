@@ -11,21 +11,11 @@
             theme: {
                 extend: {
                     colors: {
-                        'haze-blue': '#E0E9FF',
-                        'mint-green': '#E6FFFA',
-                        'cherry-pink': '#FFF0F5',
-                        'avocado-green': '#E8F5E9',
-                        'carbon-gray': '#1E293B',
-                        'morandi-grayblue': '#94A3B8',
-                        'milk-coffee': '#F5EFE7',
-                        'haze-purple': '#DCD6F7',
-                        'ice-fog-white': '#F8FAFC',
-                        'milk-cream-yellow': '#FFFBEB',
-                        'taro-purple': '#DED7F6',
-                        'haze-gray': '#F1F5F9',
-                        'mango-orange': '#FFF3E0',
-                        'blueberry-jam': '#E3F2FD',
-                        'grapefruit-red': '#FFE0E6'
+                        'haze-blue': '#E0E9FF', 'mint-green': '#E6FFFA', 'cherry-pink': '#FFF0F5',
+                        'avocado-green': '#E8F5E9', 'carbon-gray': '#1E293B', 'morandi-grayblue': '#94A3B8',
+                        'milk-coffee': '#F5EFE7', 'haze-purple': '#DCD6F7', 'ice-fog-white': '#F8FAFC',
+                        'milk-cream-yellow': '#FFFBEB', 'taro-purple': '#DED7F6', 'haze-gray': '#F1F5F9',
+                        'mango-orange': '#FFF3E0', 'blueberry-jam': '#E3F2FD', 'grapefruit-red': '#FFE0E6'
                     },
                     animation: {
                         'ripple': 'ripple 0.6s ease-out',
@@ -242,10 +232,7 @@
         .modal-footer .confirm-btn:hover {
             background-color: rgba(0,0,0,0.05);
         }
-        #localWallpaper {
-            display: none;
-        }
-        /* 折叠菜单核心样式 */
+        #localWallpaper { display: none; }
         .menu-container {
             position: absolute;
             top: 4px;
@@ -267,19 +254,14 @@
             gap: 8px;
             transition: all 0.2s ease;
         }
-        .menu-toggle-btn:active {
-            transform: scale(0.98);
-        }
+        .menu-toggle-btn:active { transform: scale(0.98); }
         .menu-content {
             display: none;
             flex-direction: column;
             gap: 4px;
             margin-top: 4px;
         }
-        .menu-content.show {
-            display: flex;
-        }
-        /* 历史记录项样式 */
+        .menu-content.show { display: flex; }
         .history-item {
             display: flex;
             align-items: flex-start;
@@ -290,10 +272,7 @@
             background-color: rgba(0,0,0,0.05);
             gap: 12px;
         }
-        .history-item-info {
-            flex: 1;
-            text-align: left;
-        }
+        .history-item-info { flex: 1; text-align: left; }
         .history-content {
             font-size: 14px;
             font-weight: 500;
@@ -309,27 +288,14 @@
             gap: 8px;
         }
         .history-delete-btn {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
+            width: 24px; height: 24px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.2s ease; flex-shrink: 0;
         }
-        .history-delete-btn:hover {
-            background-color: rgba(0,0,0,0.1);
-        }
-        .history-empty {
-            text-align: center;
-            padding: 24px 0;
-            font-size: 14px;
-            color: #666;
-        }
+        .history-delete-btn:hover { background-color: rgba(0,0,0,0.1); }
+        .history-empty { text-align: center; padding: 24px 0; font-size: 14px; color: #666; }
 
-        /* ============ 底部快捷栏样式 ============ */
+        /* ============ 快捷栏 ============ */
         .quick-bar {
             position: fixed;
             bottom: 16px;
@@ -338,459 +304,372 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            padding: 8px;
-            border-radius: 9999px;
-            border: 1px solid #000;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-            z-index: 800;
-            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.25s ease;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .quick-bar.collapsed {
-            right: auto;
             padding: 0;
-            border: none;
+            border-radius: 9999px;
             background: transparent !important;
+            border: none;
             box-shadow: none;
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
+            z-index: 800;
+            transition: padding 0.25s ease;
         }
+        .quick-bar.collapsed { right: auto; }
         .quick-bar.collapsed .quick-nav-btn,
-        .quick-bar.collapsed .quick-items {
-            display: none;
+        .quick-bar.collapsed .quick-items { display: none; }
+        .quick-collapse-btn, .quick-nav-btn {
+            width: 32px; height: 32px; border-radius: 50%;
+            border: 1px solid; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; flex-shrink: 0; transition: all 0.2s ease;
+            background: transparent; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-        .quick-collapse-btn,
-        .quick-nav-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 1px solid;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            flex-shrink: 0;
-            transition: all 0.2s ease;
-            background: transparent;
-        }
-        .quick-collapse-btn:active,
-        .quick-nav-btn:active {
-            transform: scale(0.9);
-        }
-        .quick-collapse-btn .material-icons,
-        .quick-nav-btn .material-icons {
-            font-size: 20px;
-        }
+        .quick-collapse-btn:active, .quick-nav-btn:active { transform: scale(0.9); }
+        .quick-collapse-btn .material-icons, .quick-nav-btn .material-icons { font-size: 20px; }
         .quick-bar.collapsed .quick-collapse-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
+            width: 42px; height: 42px; border-radius: 50%;
             box-shadow: 0 4px 14px rgba(0,0,0,0.18);
         }
-        .quick-bar.collapsed .quick-collapse-btn .material-icons {
-            font-size: 24px;
-        }
+        .quick-bar.collapsed .quick-collapse-btn .material-icons { font-size: 24px; }
         .quick-items {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding: 2px 4px;
-            min-width: 0;
+            flex: 1; display: flex; align-items: center; gap: 6px;
+            overflow-x: auto; overflow-y: hidden;
+            scrollbar-width: none; -ms-overflow-style: none;
+            padding: 2px 4px; min-width: 0;
         }
-        .quick-items::-webkit-scrollbar {
-            display: none;
-        }
+        .quick-items::-webkit-scrollbar { display: none; }
         .quick-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            border-radius: 9999px;
-            border: 1px solid rgba(0,0,0,0.12);
-            background: rgba(255,255,255,0.7);
-            cursor: pointer;
-            white-space: nowrap;
-            flex-shrink: 0;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 12px; border-radius: 9999px;
+            border: 1px solid; background: rgba(255,255,255,0.85);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            cursor: pointer; white-space: nowrap; flex-shrink: 0;
             transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.3s ease, border-color 0.3s ease;
-            font-size: 13px;
-            user-select: none;
+            font-size: 13px; user-select: none;
         }
         .quick-item:hover {
             transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-            background: rgba(255,255,255,0.95);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: rgba(255,255,255,1);
         }
-        .quick-item:active {
-            transform: scale(0.96);
-        }
+        .quick-item:active { transform: scale(0.96); }
         .quick-item-icon {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            color: #fff;
-            flex-shrink: 0;
-            overflow: hidden;
-            line-height: 1;
+            width: 18px; height: 18px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700; color: #fff;
+            flex-shrink: 0; overflow: hidden; line-height: 1;
         }
-        .quick-item-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
+        .quick-item-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
         .quick-empty-tip {
-            font-size: 13px;
-            opacity: 0.6;
-            padding: 0 12px;
-            white-space: nowrap;
+            font-size: 13px; padding: 6px 14px; white-space: nowrap;
+            background: rgba(255,255,255,0.85);
+            border-radius: 9999px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
 
         /* 快捷栏管理弹窗 */
-        .quick-add-form {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
+        .quick-add-form { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
         .quick-add-form input {
-            flex: 1;
-            min-width: 90px;
-            padding: 8px 12px;
-            border-radius: 10px;
-            border: 1px solid;
-            outline: none;
-            font-size: 13px;
-            background: transparent;
-            transition: border-color 0.2s ease;
+            flex: 1; min-width: 90px; padding: 8px 12px; border-radius: 10px;
+            border: 1px solid; outline: none; font-size: 13px;
+            background: transparent; transition: border-color 0.2s ease;
         }
-        .quick-add-form input::placeholder {
-            opacity: 0.5;
-        }
+        .quick-add-form input::placeholder { opacity: 0.5; }
         .quick-add-form button {
-            padding: 8px 14px;
-            border-radius: 10px;
-            border: 1px solid;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 13px;
-            background: transparent;
-            transition: background-color 0.2s ease;
-            flex-shrink: 0;
+            padding: 8px 14px; border-radius: 10px; border: 1px solid;
+            cursor: pointer; display: flex; align-items: center; gap: 4px;
+            font-size: 13px; background: transparent;
+            transition: background-color 0.2s ease; flex-shrink: 0;
         }
-        .quick-add-form button:hover {
-            background-color: rgba(0,0,0,0.05);
-        }
-        .quick-add-form button .material-icons {
-            font-size: 16px;
-        }
+        .quick-add-form button:hover { background-color: rgba(0,0,0,0.05); }
+        .quick-add-form button .material-icons { font-size: 16px; }
         .quick-manage-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 12px;
-            border-radius: 12px;
-            margin: 6px 0;
-            background-color: rgba(0,0,0,0.05);
-            gap: 8px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 12px; border-radius: 12px; margin: 6px 0;
+            background-color: rgba(0,0,0,0.05); gap: 8px;
         }
-        .quick-manage-info {
-            flex: 1;
-            min-width: 0;
-            text-align: left;
-        }
+        .quick-manage-info { flex: 1; min-width: 0; text-align: left; }
         .quick-manage-name {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 14px; font-weight: 500; margin-bottom: 2px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .quick-manage-url {
-            font-size: 11px;
-            opacity: 0.65;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 11px; opacity: 0.65;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
-        .quick-manage-actions {
-            display: flex;
-            gap: 2px;
-            flex-shrink: 0;
-        }
+        .quick-manage-actions { display: flex; gap: 2px; flex-shrink: 0; }
         .quick-manage-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.2s ease, opacity 0.2s ease;
+            width: 28px; height: 28px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: background-color 0.2s ease, opacity 0.2s ease;
         }
-        .quick-manage-btn:hover {
-            background-color: rgba(0,0,0,0.1);
+        .quick-manage-btn:hover { background-color: rgba(0,0,0,0.1); }
+        .quick-manage-btn .material-icons { font-size: 16px; }
+        .quick-manage-btn.disabled { opacity: 0.25; pointer-events: none; }
+        .quick-startup-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 16px; margin-top: 8px; text-align: left;
         }
-        .quick-manage-btn .material-icons {
-            font-size: 16px;
+        .quick-startup-title {
+            font-size: 14px; font-weight: 600;
+            margin-bottom: 8px; padding-left: 4px;
         }
-        .quick-manage-btn.disabled {
-            opacity: 0.25;
-            pointer-events: none;
-        }
+        .quick-startup-section .radio-group { margin-bottom: 0; max-height: 180px; }
+        .quick-startup-section .radio-option { padding: 10px 14px; margin: 4px 0; }
 
-        /* ============ 天气模块样式（紧凑横排） ============ */
+        /* ============ 天气 ============ */
         .weather-widget {
-            position: fixed;
-            top: 4px;
-            right: 4px;
-            z-index: 900;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 0 14px;
-            height: 36px;
-            border-radius: 9999px;
-            border: 1px solid;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            position: fixed; top: 4px; right: 4px; z-index: 900;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 0 14px; height: 36px; border-radius: 9999px;
+            border: 1px solid; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
-            user-select: none;
-            cursor: pointer;
-            font-size: 13px;
-            line-height: 1;
-            white-space: nowrap;
-            color: inherit;
-            max-width: 60vw;
-            overflow: hidden;
+            user-select: none; cursor: pointer; font-size: 13px;
+            line-height: 1; white-space: nowrap; color: inherit;
+            max-width: 60vw; overflow: hidden;
         }
-        .weather-widget:hover {
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-        }
-        .weather-widget:active {
-            transform: scale(0.98);
-        }
-        .weather-widget.hidden {
-            opacity: 0;
-            transform: translateY(-8px);
-            pointer-events: none;
-        }
-        .weather-content {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
+        .weather-widget:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+        .weather-widget:active { transform: scale(0.98); }
+        .weather-widget.hidden { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+        .weather-content { display: inline-flex; align-items: center; gap: 6px; }
         .weather-icon-wrap {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 18px; height: 18px; flex-shrink: 0;
         }
-        .weather-icon-wrap .material-icons {
-            font-size: 18px;
-        }
-        .weather-temp {
-            font-weight: 700;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-        .weather-desc {
-            font-size: 12px;
-            opacity: 0.85;
-            flex-shrink: 0;
-        }
+        .weather-icon-wrap .material-icons { font-size: 18px; }
+        .weather-temp { font-weight: 700; font-size: 14px; flex-shrink: 0; }
+        .weather-desc { font-size: 12px; opacity: 0.85; flex-shrink: 0; }
         .weather-city {
-            font-size: 12px;
-            opacity: 0.6;
-            flex-shrink: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 12px; opacity: 0.6; flex-shrink: 1;
+            overflow: hidden; text-overflow: ellipsis;
         }
-        .weather-loading-tip {
-            font-size: 12px;
-            opacity: 0.7;
-            padding: 0 4px;
-        }
+        .weather-loading-tip { font-size: 12px; opacity: 0.7; padding: 0 4px; }
 
-        /* 天气设置弹窗 */
         .weather-switch-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            border-radius: 12px;
-            background-color: rgba(0,0,0,0.05);
-            margin-bottom: 16px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 16px; border-radius: 12px;
+            background-color: rgba(0,0,0,0.05); margin-bottom: 16px;
         }
-        .weather-switch-label {
-            font-size: 14px;
-        }
+        .weather-switch-label { font-size: 14px; }
         .weather-toggle {
-            width: 44px;
-            height: 24px;
-            border-radius: 9999px;
-            border: 1px solid;
-            position: relative;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            flex-shrink: 0;
+            width: 44px; height: 24px; border-radius: 9999px;
+            border: 1px solid; position: relative; cursor: pointer;
+            transition: background-color 0.2s ease; flex-shrink: 0;
         }
         .weather-toggle::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #fff;
-            transition: transform 0.2s ease;
+            content: ''; position: absolute; top: 2px; left: 2px;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: #fff; transition: transform 0.2s ease;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-        .weather-toggle.on::after {
-            transform: translateX(20px);
-        }
-        #weatherSettingsPanel {
-            animation: fadeInPanel 0.25s ease-out;
-        }
+        .weather-toggle.on::after { transform: translateX(20px); }
+        #weatherSettingsPanel { animation: fadeInPanel 0.25s ease-out; }
         @keyframes fadeInPanel {
             from { opacity: 0; transform: translateY(-6px); }
             to { opacity: 1; transform: translateY(0); }
         }
         #weatherSettingsPanel .radio-group {
-            flex: none;
-            max-height: none;
-            overflow: visible;
-            margin-bottom: 12px;
+            flex: none; max-height: none; overflow: visible; margin-bottom: 12px;
         }
         .weather-auto-tip {
-            font-size: 13px;
-            text-align: left;
-            padding: 8px 4px;
-            min-height: 20px;
-            margin-bottom: 10px;
-            opacity: 0.85;
+            font-size: 13px; text-align: left; padding: 8px 4px;
+            min-height: 20px; margin-bottom: 10px; opacity: 0.85;
         }
         .weather-locate-btn {
+            display: flex; align-items: center; justify-content: center;
+            gap: 6px; width: 100%; padding: 10px 16px; border-radius: 10px;
+            border: 1px solid; background: transparent; cursor: pointer;
+            font-size: 13px; transition: background-color 0.2s ease;
+        }
+        .weather-locate-btn:hover { background-color: rgba(0,0,0,0.05); }
+        .weather-locate-btn:active { transform: scale(0.98); }
+        .weather-locate-btn .material-icons { font-size: 16px; }
+        .weather-form { display: flex; gap: 8px; margin-bottom: 12px; }
+        .weather-form input {
+            flex: 1; padding: 8px 12px; border-radius: 10px;
+            border: 1px solid; outline: none; font-size: 13px; background: transparent;
+        }
+        .weather-form input::placeholder { opacity: 0.5; }
+        .weather-form button {
+            padding: 8px 14px; border-radius: 10px; border: 1px solid;
+            cursor: pointer; display: flex; align-items: center; gap: 4px;
+            font-size: 13px; background: transparent;
+            transition: background-color 0.2s ease; flex-shrink: 0;
+        }
+        .weather-form button:hover { background-color: rgba(0,0,0,0.05); }
+        .weather-form button .material-icons { font-size: 16px; }
+        .weather-result-tip {
+            font-size: 12px; min-height: 18px; margin-bottom: 12px; text-align: left;
+        }
+
+        /* ============ 关于弹窗 ============ */
+        .about-content {
+            max-width: 520px !important;
+            padding: 22px 24px 18px !important;
+            text-align: left !important;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 20px;
+            align-items: start;
+            margin-bottom: 16px;
+        }
+        .about-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .about-icon {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            border-radius: 12px;
+            display: block;
+        }
+        .about-icon-fallback {
+            width: 64px;
+            height: 64px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .about-icon-fallback .material-icons { font-size: 48px; }
+        .about-left-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .about-right {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
+        }
+        .about-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .about-divider {
+            height: 1px;
+            background: currentColor;
+            opacity: 0.25;
+            margin-bottom: 8px;
+        }
+        .about-info-row {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            font-size: 13px;
+            line-height: 1.7;
+            min-width: 0;
+        }
+        .about-label {
+            flex-shrink: 0;
+            opacity: 0.75;
+        }
+        .about-value {
+            font-weight: 500;
+            word-break: break-all;
+            min-width: 0;
+        }
+        .about-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            margin-top: 0;
+        }
+        .about-close-btn {
+            padding: 8px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid;
+            background: transparent;
+            font-weight: 500;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+        .about-close-btn:hover { background-color: rgba(0,0,0,0.05); }
+        .about-close-btn:active { transform: scale(0.97); }
+
+        /* ============ 重置与备份弹窗 ============ */
+        .reset-backup-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .reset-backup-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background-color: rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .reset-backup-option:hover {
+            background-color: rgba(0,0,0,0.1);
+        }
+        .reset-backup-option:active {
+            transform: scale(0.98);
+        }
+        .reset-backup-icon-wrap {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            width: 100%;
-            padding: 10px 16px;
-            border-radius: 10px;
-            border: 1px solid;
-            background: transparent;
-            cursor: pointer;
-            font-size: 13px;
-            transition: background-color 0.2s ease;
-        }
-        .weather-locate-btn:hover {
-            background-color: rgba(0,0,0,0.05);
-        }
-        .weather-locate-btn:active {
-            transform: scale(0.98);
-        }
-        .weather-locate-btn .material-icons {
-            font-size: 16px;
-        }
-        .weather-form {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-        .weather-form input {
-            flex: 1;
-            padding: 8px 12px;
-            border-radius: 10px;
-            border: 1px solid;
-            outline: none;
-            font-size: 13px;
-            background: transparent;
-        }
-        .weather-form input::placeholder {
-            opacity: 0.5;
-        }
-        .weather-form button {
-            padding: 8px 14px;
-            border-radius: 10px;
-            border: 1px solid;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 13px;
-            background: transparent;
-            transition: background-color 0.2s ease;
             flex-shrink: 0;
+            border: 1px solid;
         }
-        .weather-form button:hover {
-            background-color: rgba(0,0,0,0.05);
+        .reset-backup-icon-wrap .material-icons {
+            font-size: 20px;
         }
-        .weather-form button .material-icons {
-            font-size: 16px;
-        }
-        .weather-result-tip {
-            font-size: 12px;
-            min-height: 18px;
-            margin-bottom: 12px;
+        .reset-backup-info {
+            flex: 1;
             text-align: left;
+            min-width: 0;
+        }
+        .reset-backup-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .reset-backup-desc {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+        .reset-backup-arrow {
+            font-size: 20px;
+            opacity: 0.5;
+            flex-shrink: 0;
         }
 
         @media (max-width: 768px) {
-            .time-display {
-                font-size: 4rem !important;
-            }
-            .search-input {
-                max-width: 400px;
-            }
-            .quick-bar {
-                bottom: 10px;
-                left: 10px;
-                right: 10px;
-                padding: 6px;
-                gap: 4px;
-            }
-            .quick-item {
-                padding: 5px 10px;
-                font-size: 12px;
-            }
+            .time-display { font-size: 4rem !important; }
+            .search-input { max-width: 400px; }
+            .quick-bar { bottom: 10px; left: 10px; right: 10px; gap: 4px; }
+            .quick-item { padding: 5px 10px; font-size: 12px; }
             .weather-widget {
-                top: 4px;
-                right: 4px;
-                height: 34px;
-                padding: 0 10px;
-                gap: 4px;
+                top: 4px; right: 4px; height: 34px;
+                padding: 0 10px; gap: 4px;
             }
-            .weather-temp {
-                font-size: 13px;
-            }
-            .weather-desc, .weather-city {
-                font-size: 11px;
-            }
-            .weather-icon-wrap {
-                width: 16px;
-                height: 16px;
-            }
-            .weather-icon-wrap .material-icons {
-                font-size: 16px;
-            }
+            .weather-temp { font-size: 13px; }
+            .weather-desc, .weather-city { font-size: 11px; }
+            .weather-icon-wrap { width: 16px; height: 16px; }
+            .weather-icon-wrap .material-icons { font-size: 16px; }
+            .about-content { max-width: 90% !important; padding: 18px !important; }
+            .about-grid { grid-template-columns: 1fr; gap: 14px; }
+            .about-icon { width: 52px; height: 52px; }
+            .about-icon-fallback { width: 52px; height: 52px; }
+            .about-icon-fallback .material-icons { font-size: 40px; }
         }
     </style>
     <link rel="icon" href="icon.ico" type="image/x-icon">
@@ -827,14 +706,14 @@
                 <span class="material-icons">history</span>
                 <span>历史记录</span>
             </button>
-            <button class="capsule-btn ripple-container" id="resetBtn" style="background-color: #FFF0F5;">
-                <span class="material-icons">restore</span>
-                <span>恢复默认</span>
+            <button class="capsule-btn ripple-container" id="resetBackupBtn" style="background-color: #FFF0F5;">
+                <span class="material-icons">settings_backup_restore</span>
+                <span>重置与备份</span>
             </button>
         </div>
     </div>
 
-    <!-- ============ 右上角天气显示（紧凑横排，点击跳转 Ventusky） ============ -->
+    <!-- 右上角天气 -->
     <div class="weather-widget hidden" id="weatherWidget" title="点击打开 Ventusky 天气地图">
         <div id="weatherLoading" class="weather-loading-tip">加载中...</div>
         <div id="weatherContent" class="weather-content" style="display: none;">
@@ -846,7 +725,7 @@
         <div id="weatherError" class="weather-loading-tip" style="display: none;">天气暂不可用</div>
     </div>
 
-    <!-- 页面核心内容区（时间、日期、搜索） -->
+    <!-- 页面核心内容区 -->
     <div class="flex flex-col items-center justify-center min-h-screen px-4" style="padding-bottom: 90px;">
         <div class="cursor-pointer" id="dateTimeContainer" style="user-select: none;">
             <div class="time-display text-7xl font-bold text-gray-800 mb-2" id="time">00:00:00</div>
@@ -855,7 +734,20 @@
         
         <div class="w-full max-w-2xl mb-4">
             <div class="flex items-center justify-center">
-                <input type="text" class="search-input" id="searchInput" placeholder="请输入搜索内容或网址...">
+                <!-- 搜索框：禁用浏览器自动填充与历史记录下拉 -->
+                <input type="text"
+                       class="search-input"
+                       id="searchInput"
+                       placeholder="请输入搜索内容或网址..."
+                       name="lao6-search-no-autofill"
+                       autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       spellcheck="false"
+                       data-form-type="other"
+                       aria-autocomplete="none"
+                       readonly
+                       onfocus="this.removeAttribute('readonly');">
                 <button class="search-btn ripple-container" id="searchBtn" style="background-color: #FFF0F5;">
                     <span class="material-icons" id="searchIcon">search</span>
                 </button>
@@ -869,7 +761,7 @@
         </div>
     </div>
 
-    <!-- ============ 底部快捷栏 ============ -->
+    <!-- 底部快捷栏 -->
     <div class="quick-bar" id="quickBar">
         <button class="quick-collapse-btn ripple-container" id="quickCollapseBtn" title="展开快捷栏">
             <span class="material-icons" id="quickCollapseIcon">keyboard_arrow_up</span>
@@ -883,7 +775,7 @@
         </button>
     </div>
 
-    <!-- 搜索引擎选择弹窗 -->
+    <!-- 搜索引擎弹窗 -->
     <div class="modal" id="engineModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
             <div class="modal-title" style="color: #AA6666;">选择搜索引擎</div>
@@ -920,7 +812,7 @@
         </div>
     </div>
 
-    <!-- 壁纸设置弹窗 -->
+    <!-- 壁纸弹窗 -->
     <div class="modal" id="wallpaperModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
             <div class="modal-title" style="color: #AA6666;">壁纸设置</div>
@@ -950,12 +842,11 @@
         </div>
     </div>
 
-    <!-- 主题颜色设置弹窗 -->
+    <!-- 主题颜色弹窗 -->
     <div class="modal" id="themeModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
             <div class="modal-title" style="color: #AA6666;">Google原生Android主题色</div>
-            <div class="radio-group" id="colorOptions">
-            </div>
+            <div class="radio-group" id="colorOptions"></div>
             <div class="modal-footer">
                 <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeThemeModal">取消</button>
                 <button class="confirm-btn" style="border-color: #AA6666; color: #AA6666;" id="confirmTheme">确认</button>
@@ -963,7 +854,7 @@
         </div>
     </div>
 
-    <!-- ============ 天气设置弹窗 ============ -->
+    <!-- 天气弹窗 -->
     <div class="modal" id="weatherModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
             <div class="modal-title" style="color: #AA6666;">天气显示设置</div>
@@ -1011,8 +902,7 @@
     <div class="modal" id="historyModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
             <div class="modal-title" style="color: #AA6666;">搜索历史记录</div>
-            <div class="radio-group" id="historyList" style="margin-bottom: 16px;">
-            </div>
+            <div class="radio-group" id="historyList" style="margin-bottom: 16px;"></div>
             <div class="modal-footer">
                 <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeHistoryModal">关闭</button>
                 <button class="confirm-btn" style="border-color: #AA6666; color: #AA6666;" id="clearAllHistory">清空全部</button>
@@ -1020,30 +910,128 @@
         </div>
     </div>
 
-    <!-- ============ 快捷栏管理弹窗 ============ -->
+    <!-- 快捷栏管理弹窗 -->
     <div class="modal" id="quickBarModal">
         <div class="modal-content" style="background-color: #FFF0F5; max-width: 460px;">
             <div class="modal-title" style="color: #AA6666;">快捷栏管理</div>
             <div class="quick-add-form">
-                <input type="text" id="quickNameInput" placeholder="名称" maxlength="12">
-                <input type="text" id="quickUrlInput" placeholder="网址，如 github.com">
+                <input type="text" id="quickNameInput" placeholder="名称" maxlength="12" autocomplete="off">
+                <input type="text" id="quickUrlInput" placeholder="网址，如 github.com" autocomplete="off">
                 <button id="quickAddBtn" class="ripple-container">
                     <span class="material-icons">add</span>
                     <span>添加</span>
                 </button>
             </div>
-            <div class="radio-group" id="quickManageList" style="margin-bottom: 16px;">
+            <div class="radio-group" id="quickManageList" style="margin-bottom: 16px; max-height: 220px;"></div>
+            <div class="quick-startup-section">
+                <div class="quick-startup-title" id="quickStartupTitle">启动时快捷栏状态</div>
+                <div class="radio-group">
+                    <label class="radio-option ripple-container selected" id="quickStartupLastOption">
+                        <span>使用上一次的状态</span>
+                        <input type="radio" name="quickStartup" value="last" checked style="border: 2px solid #AA6666; background-color: #AA6666;">
+                    </label>
+                    <label class="radio-option ripple-container" id="quickStartupCollapsedOption">
+                        <span>始终收起</span>
+                        <input type="radio" name="quickStartup" value="collapsed" style="border: 2px solid #AA6666; background-color: transparent;">
+                    </label>
+                    <label class="radio-option ripple-container" id="quickStartupExpandedOption">
+                        <span>始终展开</span>
+                        <input type="radio" name="quickStartup" value="expanded" style="border: 2px solid #AA6666; background-color: transparent;">
+                    </label>
+                </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="margin-top: 16px;">
                 <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeQuickBarModal">关闭</button>
             </div>
         </div>
     </div>
 
-    <!-- 恢复默认设置确认弹窗 -->
+    <!-- 关于弹窗 -->
+    <div class="modal" id="aboutModal">
+        <div class="modal-content about-content" style="background-color: #FFF0F5;">
+            <div class="about-grid">
+                <div class="about-left">
+                    <img src="icon.ico" alt="icon" class="about-icon" id="aboutIcon">
+                    <div class="about-icon-fallback" id="aboutIconFallback">
+                        <span class="material-icons">computer</span>
+                    </div>
+                    <div class="about-left-info">
+                        <div class="about-info-row">
+                            <span class="about-label">开发者：</span>
+                            <span class="about-value">抖音-老六说电脑</span>
+                        </div>
+                        <div class="about-info-row">
+                            <span class="about-label">版本：</span>
+                            <span class="about-value">2.0-20260906</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-right">
+                    <div class="about-title" id="aboutTitle">您的信息</div>
+                    <div class="about-divider"></div>
+                    <div class="about-info-row">
+                        <span class="about-label">浏览器信息：</span>
+                        <span class="about-value" id="aboutBrowser">-</span>
+                    </div>
+                    <div class="about-info-row">
+                        <span class="about-label">操作系统：</span>
+                        <span class="about-value" id="aboutOS">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-footer">
+                <button class="about-close-btn" id="closeAboutModal" style="border-color: #AA6666; color: #AA6666;">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ 重置与备份弹窗 ============ -->
+    <div class="modal" id="resetBackupModal">
+        <div class="modal-content" style="background-color: #FFF0F5; max-width: 420px;">
+            <div class="modal-title" id="resetBackupTitle" style="color: #AA6666;">重置与备份</div>
+            <div class="reset-backup-options">
+                <div class="reset-backup-option ripple-container" id="importConfigOption">
+                    <div class="reset-backup-icon-wrap">
+                        <span class="material-icons">file_upload</span>
+                    </div>
+                    <div class="reset-backup-info">
+                        <div class="reset-backup-name">载入配置</div>
+                        <div class="reset-backup-desc">从 bin 文件恢复所有设置</div>
+                    </div>
+                    <span class="material-icons reset-backup-arrow">chevron_right</span>
+                </div>
+                <div class="reset-backup-option ripple-container" id="exportConfigOption">
+                    <div class="reset-backup-icon-wrap">
+                        <span class="material-icons">file_download</span>
+                    </div>
+                    <div class="reset-backup-info">
+                        <div class="reset-backup-name">导出配置</div>
+                        <div class="reset-backup-desc">将所有设置保存为 bin 文件</div>
+                    </div>
+                    <span class="material-icons reset-backup-arrow">chevron_right</span>
+                </div>
+                <div class="reset-backup-option ripple-container" id="resetAllOption">
+                    <div class="reset-backup-icon-wrap">
+                        <span class="material-icons">delete_forever</span>
+                    </div>
+                    <div class="reset-backup-info">
+                        <div class="reset-backup-name">重置所有设置</div>
+                        <div class="reset-backup-desc">清除所有配置，恢复初始状态</div>
+                    </div>
+                    <span class="material-icons reset-backup-arrow">chevron_right</span>
+                </div>
+            </div>
+            <input type="file" id="importConfigFile" accept=".bin" style="display: none;">
+            <div class="modal-footer" style="margin-top: 16px;">
+                <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="closeResetBackupModal">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 重置确认弹窗 -->
     <div class="modal" id="resetModal">
         <div class="modal-content" style="background-color: #FFF0F5;">
-            <div class="modal-title" style="color: #AA6666;">确认恢复默认设置？</div>
+            <div class="modal-title" style="color: #AA6666;">确认重置所有设置？此操作不可恢复！</div>
             <div class="modal-footer">
                 <button class="cancel-btn" style="border-color: #AA6666; color: #AA6666;" id="cancelReset">否</button>
                 <button class="confirm-btn" style="border-color: #AA6666; color: #AA6666;" id="confirmReset">是</button>
@@ -1060,40 +1048,37 @@
         let currentThemeColor = '#FFF0F5';
         let currentDarkColor = '#AA6666';
         let wallpaperType = 'network';
-        let wallpaperUrl = '';
         let localFileName = '';
         let localFileBase64 = '';
         let isMenuOpen = false;
         let searchHistory = [];
 
-        // ===== 快捷栏全局状态 =====
         const DEFAULT_QUICK_ITEMS = [];
         let quickBarItems = [];
         let isQuickBarCollapsed = true;
+        let quickBarStartupState = 'last';
 
-        // ===== 天气模块全局状态 =====
         let weatherEnabled = false;
-        let weatherMode = 'auto';       // 'auto' 自动定位 / 'manual' 手动设置
-        let weatherCity = '';           // 城市名
-        let weatherLat = null;          // 经纬度
+        let weatherMode = 'auto';
+        let weatherCity = '';
+        let weatherLat = null;
         let weatherLon = null;
-        let weatherTimer = null;        // 自动刷新定时器
-        let isLocating = false;         // 定位中标志
+        let weatherTimer = null;
+        let isLocating = false;
 
-        // Ventusky 官网地址
         const VENTUSKY_URL = 'https://www.ventusky.com/';
+        const CONFIG_VERSION = '2.0-20260906';
+        const CONFIG_MAGIC = 'LAO6HOME_BIN';
 
-        // 搜索引擎配置
         const engineConfig = {
-            'bing-cn': { name: '微软必应-国内版', searchUrl: 'https://cn.bing.com/search?q=', testUrl: 'https://cn.bing.com/favicon.ico', isUnreachable: false },
-            'bing-intl': { name: '微软必应-国际版', searchUrl: 'https://www.bing.com/search?q=', testUrl: 'https://www.bing.com/favicon.ico', isUnreachable: false },
-            'google': { name: 'Google', searchUrl: 'https://www.google.com/search?q=', testUrl: 'https://www.google.com/favicon.ico' },
-            'baidu': { name: '百度', searchUrl: 'https://www.baidu.com/s?wd=', testUrl: 'https://www.baidu.com/favicon.ico', isUnreachable: false },
-            '360': { name: '360', searchUrl: 'https://www.so.com/s?q=', testUrl: 'https://www.so.com/favicon.ico', isUnreachable: false },
-            'sogou': { name: '搜狗', searchUrl: 'https://www.sogou.com/web?query=', testUrl: 'https://www.sogou.com/favicon.ico', isUnreachable: false }
+            'bing-cn': { name: '微软必应-国内版', searchUrl: 'https://cn.bing.com/search?q=', isUnreachable: false },
+            'bing-intl': { name: '微软必应-国际版', searchUrl: 'https://www.bing.com/search?q=', isUnreachable: false },
+            'google': { name: 'Google', searchUrl: 'https://www.google.com/search?q=' },
+            'baidu': { name: '百度', searchUrl: 'https://www.baidu.com/s?wd=', isUnreachable: false },
+            '360': { name: '360', searchUrl: 'https://www.so.com/s?q=', isUnreachable: false },
+            'sogou': { name: '搜狗', searchUrl: 'https://www.sogou.com/web?query=', isUnreachable: false }
         };
 
-        // 主题颜色配置
         const colorMap = {
             '雾霾蓝': ['haze-blue', '#E0E9FF', '#8099CC'],
             '薄荷绿': ['mint-green', '#E6FFFA', '#86CCCC'],
@@ -1112,7 +1097,6 @@
             '西柚红': ['grapefruit-red', '#FFE0E6', '#BB7076']
         };
 
-        // 页面加载完成初始化
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('dateTimeContainer').addEventListener('click', function() {
                 window.location.href = 'https://douyin-lao6pc.github.io/search/date.html';
@@ -1128,12 +1112,9 @@
             initWeather();
         });
 
-        // 文件转Base64
         function fileToBase64(file, callback) {
             const reader = new FileReader();
-            reader.onload = function(e) {
-                callback(e.target.result);
-            };
+            reader.onload = function(e) { callback(e.target.result); };
             reader.onerror = function() {
                 alert('文件读取失败，请选择有效文件！');
                 callback(null);
@@ -1141,7 +1122,6 @@
             reader.readAsDataURL(file);
         }
 
-        // 全局初始化
         function init() {
             loadSettings();
             initColorOptions();
@@ -1159,7 +1139,6 @@
             bindHistoryEvents();
         }
 
-        // 加载本地壁纸
         function loadLocalWallpaperIfExists() {
             if (wallpaperType === 'local' && localFileBase64) {
                 document.body.style.backgroundImage = `url(${localFileBase64})`;
@@ -1172,7 +1151,6 @@
             }
         }
 
-        // 同步所有元素主题颜色
         function syncAllElementsTheme() {
             document.body.className = `${currentTheme}/30`;
             if (wallpaperType === 'none') {
@@ -1182,16 +1160,11 @@
             }
 
             const functionBtns = [
-                document.getElementById('wallpaperBtn'),
-                document.getElementById('themeBtn'),
-                document.getElementById('weatherBtn'),
-                document.getElementById('quickBarBtn'),
-                document.getElementById('aboutBtn'),
-                document.getElementById('historyBtn'),
-                document.getElementById('resetBtn'),
-                document.getElementById('engineBtn'),
-                document.getElementById('searchBtn'),
-                document.getElementById('menuToggleBtn')
+                document.getElementById('wallpaperBtn'), document.getElementById('themeBtn'),
+                document.getElementById('weatherBtn'), document.getElementById('quickBarBtn'),
+                document.getElementById('aboutBtn'), document.getElementById('historyBtn'),
+                document.getElementById('resetBackupBtn'), document.getElementById('engineBtn'),
+                document.getElementById('searchBtn'), document.getElementById('menuToggleBtn')
             ];
             functionBtns.forEach(btn => {
                 if (btn) btn.style.backgroundColor = currentThemeColor;
@@ -1204,10 +1177,12 @@
             const allRadios = document.querySelectorAll('.radio-option input[type="radio"]');
             const searchIcon = document.getElementById('searchIcon');
             const historyDeleteIcons = document.querySelectorAll('.history-delete-btn .material-icons');
+            const startupTitle = document.getElementById('quickStartupTitle');
 
             modals.forEach(modal => modal.style.backgroundColor = currentThemeColor);
             modalTitles.forEach(title => title.style.color = currentDarkColor);
             modalTexts.forEach(text => text.style.color = currentDarkColor);
+            if (startupTitle) startupTitle.style.color = currentDarkColor;
             modalBtns.forEach(btn => {
                 btn.style.borderColor = currentDarkColor;
                 btn.style.color = currentDarkColor;
@@ -1223,22 +1198,13 @@
             updateSelectedHighlight();
             applyQuickBarTheme();
             applyWeatherTheme();
+            applyAboutTheme();
+            applyResetBackupTheme();
         }
 
         function showRefreshBtn(show) {
             const refreshBtn = document.getElementById('refreshWallpaperBtn');
             show ? refreshBtn.classList.add('show') : refreshBtn.classList.remove('show');
-        }
-
-        function darkenColor(hex, percent = 50) {
-            hex = hex.replace(/^#/, '');
-            let r = parseInt(hex.substring(0, 2), 16);
-            let g = parseInt(hex.substring(2, 4), 16);
-            let b = parseInt(hex.substring(4, 6), 16);
-            r = Math.floor(r * (1 - percent / 100));
-            g = Math.floor(g * (1 - percent / 100));
-            b = Math.floor(b * (1 - percent / 100));
-            return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
         }
 
         function updateTimeDate() {
@@ -1261,7 +1227,7 @@
         function setRandomWallpaper(isSave = true) {
             const width = screen.width;
             const height = screen.height;
-            wallpaperUrl = `https://picsum.photos/${width}/${height}?random=${Date.now()}`;
+            const wallpaperUrl = `https://picsum.photos/${width}/${height}?random=${Date.now()}`;
             document.body.style.backgroundImage = `url(${wallpaperUrl})`;
             document.body.style.backgroundColor = '';
             if (isSave) {
@@ -1374,10 +1340,7 @@
             const engine = engineConfig[currentEngine].name;
             const historyItem = {
                 id: Date.now() + Math.random().toString(36).substr(2, 5),
-                content: trimmedContent,
-                type,
-                time,
-                engine
+                content: trimmedContent, type, time, engine
             };
             searchHistory.unshift(historyItem);
             saveSearchHistory();
@@ -1390,9 +1353,7 @@
 
         function loadSearchHistory() {
             const saved = localStorage.getItem('searchHistory');
-            if (saved) {
-                searchHistory = JSON.parse(saved) || [];
-            }
+            if (saved) searchHistory = JSON.parse(saved) || [];
         }
 
         function renderSearchHistory() {
@@ -1462,16 +1423,12 @@
 
         function search() {
             const keyword = document.getElementById('searchInput').value.trim();
-            if (!keyword) {
-                alert('请输入搜索内容或网址！');
-                return;
-            }
+            if (!keyword) { alert('请输入搜索内容或网址！'); return; }
 
             recordSearchHistory(keyword);
 
             if (isUrl(keyword)) {
-                const fullUrl = completeUrl(keyword);
-                window.open(fullUrl, '_self');
+                window.open(completeUrl(keyword), '_self');
                 return;
             }
 
@@ -1495,17 +1452,12 @@
 
             searchInput.addEventListener('input', function() {
                 const value = this.value.trim();
-                if (value && isUrl(value)) {
-                    searchIcon.textContent = 'arrow_forward';
-                } else {
-                    searchIcon.textContent = 'search';
-                }
+                searchIcon.textContent = (value && isUrl(value)) ? 'arrow_forward' : 'search';
             });
-
             searchInput.addEventListener('blur', function() {
-                if (!this.value.trim()) {
-                    searchIcon.textContent = 'search';
-                }
+                if (!this.value.trim()) searchIcon.textContent = 'search';
+                // 失焦后重新加 readonly 属性，防止下次聚焦时浏览器弹出历史下拉
+                this.setAttribute('readonly', 'readonly');
             });
         }
 
@@ -1516,10 +1468,8 @@
                 currentThemeColor,
                 currentDarkColor,
                 wallpaperType,
-                wallpaperUrl,
                 localFileName,
                 localFileBase64,
-                isMenuOpen,
                 weatherEnabled,
                 weatherMode,
                 weatherCity,
@@ -1538,10 +1488,8 @@
                 currentThemeColor = settings.currentThemeColor || '#FFF0F5';
                 currentDarkColor = settings.currentDarkColor || '#AA6666';
                 wallpaperType = settings.wallpaperType || 'network';
-                wallpaperUrl = settings.wallpaperUrl || '';
                 localFileName = settings.localFileName || '';
                 localFileBase64 = settings.localFileBase64 || '';
-                isMenuOpen = settings.isMenuOpen || false;
                 weatherEnabled = settings.weatherEnabled || false;
                 weatherMode = settings.weatherMode || 'auto';
                 weatherCity = settings.weatherCity || '';
@@ -1552,16 +1500,8 @@
                 document.querySelector(`input[name="wallpaperType"][value="${wallpaperType}"]`).checked = true;
                 document.getElementById('localFilename').textContent = localFileName;
 
-                if (isMenuOpen) {
-                    document.getElementById('menuContent').classList.add('show');
-                    document.getElementById('menuToggleText').textContent = '关闭菜单';
-                    document.querySelector('#menuToggleBtn .material-icons').textContent = 'close';
-                }
-
                 updateCurrentEngineText();
-                if (wallpaperType === 'network' && !localFileBase64) {
-                    document.body.style.backgroundImage = `url(${wallpaperUrl})`;
-                } else if (wallpaperType === 'none') {
+                if (wallpaperType === 'none') {
                     document.body.style.backgroundImage = 'none';
                     document.body.style.backgroundColor = currentThemeColor;
                 }
@@ -1571,9 +1511,7 @@
         function updateSelectedHighlight() {
             document.querySelectorAll('.radio-option').forEach(option => {
                 option.classList.remove('selected');
-                if (option.querySelector('input:checked')) {
-                    option.classList.add('selected');
-                }
+                if (option.querySelector('input:checked')) option.classList.add('selected');
             });
         }
 
@@ -1594,7 +1532,6 @@
                     menuToggleText.textContent = '打开菜单';
                     menuIcon.textContent = 'menu';
                 }
-                saveSettings();
             });
 
             window.addEventListener('click', function(e) {
@@ -1604,7 +1541,6 @@
                     menuContent.classList.remove('show');
                     menuToggleText.textContent = '打开菜单';
                     menuIcon.textContent = 'menu';
-                    saveSettings();
                 }
             });
         }
@@ -1614,29 +1550,25 @@
                 renderSearchHistory();
                 document.getElementById('historyModal').style.display = 'flex';
             });
-            document.getElementById('closeHistoryModal').addEventListener('click', function() {
+            document.getElementById('closeHistoryModal').addEventListener('click', () => {
                 document.getElementById('historyModal').style.display = 'none';
             });
             document.getElementById('clearAllHistory').addEventListener('click', clearAllHistory);
         }
 
         /* ==================================================
-         *                快捷栏核心逻辑
+         *                快捷栏逻辑
          * ================================================== */
         function getDomain(url) {
             let u = (url || '').trim();
             u = u.replace(/^https?:\/\//i, '');
-            u = u.split('/')[0];
-            u = u.split('?')[0];
-            u = u.split('#')[0];
+            u = u.split('/')[0].split('?')[0].split('#')[0];
             return u;
         }
 
         function stringToColor(str) {
             let hash = 0;
-            for (let i = 0; i < str.length; i++) {
-                hash = str.charCodeAt(i) + ((hash << 5) - hash);
-            }
+            for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
             const hue = Math.abs(hash) % 360;
             return `hsl(${hue}, 55%, 55%)`;
         }
@@ -1651,20 +1583,27 @@
         function loadQuickBarData() {
             const saved = localStorage.getItem('quickBarItems');
             if (saved) {
-                try {
-                    quickBarItems = JSON.parse(saved) || [];
-                } catch (e) {
-                    quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
-                }
+                try { quickBarItems = JSON.parse(saved) || []; }
+                catch (e) { quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS)); }
             } else {
                 quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
             }
-            if (!Array.isArray(quickBarItems)) {
-                quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
-            }
+            if (!Array.isArray(quickBarItems)) quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
 
-            const savedCollapsed = localStorage.getItem('quickBarCollapsed');
-            isQuickBarCollapsed = savedCollapsed === null ? true : savedCollapsed === 'true';
+            const savedStartupState = localStorage.getItem('quickBarStartupState');
+            quickBarStartupState = savedStartupState || 'last';
+
+            let collapsed;
+            if (quickBarStartupState === 'collapsed') collapsed = true;
+            else if (quickBarStartupState === 'expanded') collapsed = false;
+            else {
+                const savedCollapsed = localStorage.getItem('quickBarCollapsed');
+                collapsed = savedCollapsed === null ? true : savedCollapsed === 'true';
+            }
+            isQuickBarCollapsed = collapsed;
+
+            const startupRadio = document.querySelector(`input[name="quickStartup"][value="${quickBarStartupState}"]`);
+            if (startupRadio) startupRadio.checked = true;
 
             const quickBar = document.getElementById('quickBar');
             if (isQuickBarCollapsed) {
@@ -1681,6 +1620,7 @@
         function saveQuickBarData() {
             localStorage.setItem('quickBarItems', JSON.stringify(quickBarItems));
             localStorage.setItem('quickBarCollapsed', isQuickBarCollapsed ? 'true' : 'false');
+            localStorage.setItem('quickBarStartupState', quickBarStartupState);
         }
 
         function renderQuickBar() {
@@ -1697,10 +1637,7 @@
                 return;
             }
 
-            quickBarItems.forEach(item => {
-                container.appendChild(createQuickItemElement(item));
-            });
-
+            quickBarItems.forEach(item => container.appendChild(createQuickItemElement(item)));
             applyQuickBarTheme();
             requestAnimationFrame(() => requestAnimationFrame(updateQuickScrollButtons));
         }
@@ -1714,7 +1651,6 @@
             iconEl.className = 'quick-item-icon';
 
             const domain = getDomain(item.url);
-
             const iconSources = [];
             if (domain) {
                 iconSources.push(`https://${domain}/favicon.ico`);
@@ -1734,19 +1670,14 @@
 
             img.onerror = function() {
                 sourceIndex++;
-                if (sourceIndex < iconSources.length) {
-                    img.src = iconSources[sourceIndex];
-                } else {
-                    fallbackToLetter();
-                }
+                if (sourceIndex < iconSources.length) img.src = iconSources[sourceIndex];
+                else fallbackToLetter();
             };
 
             if (iconSources.length > 0) {
                 img.src = iconSources[0];
                 iconEl.appendChild(img);
-            } else {
-                fallbackToLetter();
-            }
+            } else fallbackToLetter();
 
             const nameEl = document.createElement('span');
             nameEl.className = 'quick-item-name';
@@ -1754,11 +1685,7 @@
 
             el.appendChild(iconEl);
             el.appendChild(nameEl);
-
-            el.addEventListener('click', function() {
-                window.open(completeUrl(item.url), '_self');
-            });
-
+            el.addEventListener('click', () => window.open(completeUrl(item.url), '_self'));
             return el;
         }
 
@@ -1781,21 +1708,15 @@
         function applyQuickBarTheme() {
             const quickBar = document.getElementById('quickBar');
             if (!quickBar) return;
-
-            if (isQuickBarCollapsed) {
-                quickBar.style.backgroundColor = 'transparent';
-                quickBar.style.borderColor = 'transparent';
-                quickBar.style.boxShadow = 'none';
-            } else {
-                quickBar.style.backgroundColor = currentThemeColor;
-                quickBar.style.borderColor = currentDarkColor;
-                quickBar.style.boxShadow = '0 4px 16px rgba(0,0,0,0.12)';
-            }
+            quickBar.style.backgroundColor = 'transparent';
+            quickBar.style.borderColor = 'transparent';
+            quickBar.style.boxShadow = 'none';
 
             const collapseBtn = document.getElementById('quickCollapseBtn');
             if (collapseBtn) {
                 collapseBtn.style.backgroundColor = currentThemeColor;
                 collapseBtn.style.borderColor = currentDarkColor;
+                collapseBtn.style.boxShadow = '0 2px 6px rgba(0,0,0,0.12)';
                 document.getElementById('quickCollapseIcon').style.color = currentDarkColor;
             }
 
@@ -1804,25 +1725,33 @@
                 if (!btn) return;
                 btn.style.backgroundColor = currentThemeColor;
                 btn.style.borderColor = currentDarkColor;
+                btn.style.boxShadow = '0 2px 6px rgba(0,0,0,0.12)';
                 const icon = btn.querySelector('.material-icons');
                 if (icon) icon.style.color = currentDarkColor;
             });
 
             document.querySelectorAll('.quick-item').forEach(el => {
                 el.style.color = currentDarkColor;
-                el.style.borderColor = currentDarkColor + '40';
+                el.style.borderColor = currentDarkColor + '80';
             });
 
-            document.querySelectorAll('.quick-empty-tip').forEach(el => {
-                el.style.color = currentDarkColor;
-            });
-
+            document.querySelectorAll('.quick-empty-tip').forEach(el => el.style.color = currentDarkColor);
             document.querySelectorAll('.quick-manage-name').forEach(el => el.style.color = currentDarkColor);
             document.querySelectorAll('.quick-manage-url').forEach(el => el.style.color = currentDarkColor);
             document.querySelectorAll('.quick-manage-btn .material-icons').forEach(icon => icon.style.color = currentDarkColor);
             document.querySelectorAll('.quick-add-form input, .quick-add-form button').forEach(el => {
                 el.style.borderColor = currentDarkColor;
                 el.style.color = currentDarkColor;
+            });
+
+            const startupTitle = document.getElementById('quickStartupTitle');
+            if (startupTitle) startupTitle.style.color = currentDarkColor;
+            document.querySelectorAll('#quickBarModal .quick-startup-section .radio-option span').forEach(el => {
+                el.style.color = currentDarkColor;
+            });
+            document.querySelectorAll('#quickBarModal .quick-startup-section input[type="radio"]').forEach(radio => {
+                radio.style.border = `2px solid ${currentDarkColor}`;
+                radio.style.backgroundColor = radio.checked ? currentDarkColor : 'transparent';
             });
         }
 
@@ -1835,20 +1764,15 @@
                 quickBar.classList.toggle('collapsed', isQuickBarCollapsed);
                 document.getElementById('quickCollapseIcon').textContent = isQuickBarCollapsed ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
                 this.title = isQuickBarCollapsed ? '展开快捷栏' : '收起快捷栏';
-                saveQuickBarData();
+                localStorage.setItem('quickBarCollapsed', isQuickBarCollapsed ? 'true' : 'false');
                 applyQuickBarTheme();
                 if (!isQuickBarCollapsed) {
                     requestAnimationFrame(() => requestAnimationFrame(updateQuickScrollButtons));
                 }
             });
 
-            document.getElementById('quickPrevBtn').addEventListener('click', function() {
-                container.scrollBy({ left: -260, behavior: 'smooth' });
-            });
-
-            document.getElementById('quickNextBtn').addEventListener('click', function() {
-                container.scrollBy({ left: 260, behavior: 'smooth' });
-            });
+            document.getElementById('quickPrevBtn').addEventListener('click', () => container.scrollBy({ left: -260, behavior: 'smooth' }));
+            document.getElementById('quickNextBtn').addEventListener('click', () => container.scrollBy({ left: 260, behavior: 'smooth' }));
 
             container.addEventListener('wheel', function(e) {
                 if (isQuickBarCollapsed) return;
@@ -1864,9 +1788,13 @@
 
             document.getElementById('quickBarBtn').addEventListener('click', function() {
                 renderQuickManageList();
+                const startupRadio = document.querySelector(`input[name="quickStartup"][value="${quickBarStartupState}"]`);
+                if (startupRadio) startupRadio.checked = true;
+                updateSelectedHighlight();
                 document.getElementById('quickBarModal').style.display = 'flex';
+                applyQuickBarTheme();
             });
-            document.getElementById('closeQuickBarModal').addEventListener('click', function() {
+            document.getElementById('closeQuickBarModal').addEventListener('click', () => {
                 document.getElementById('quickBarModal').style.display = 'none';
             });
 
@@ -1876,6 +1804,16 @@
             });
             document.getElementById('quickNameInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') document.getElementById('quickUrlInput').focus();
+            });
+
+            document.querySelectorAll('input[name="quickStartup"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (!this.checked) return;
+                    quickBarStartupState = this.value;
+                    localStorage.setItem('quickBarStartupState', quickBarStartupState);
+                    updateSelectedHighlight();
+                    applyQuickBarTheme();
+                });
             });
         }
 
@@ -1917,28 +1855,19 @@
                 upBtn.className = 'quick-manage-btn ripple-container' + (index === 0 ? ' disabled' : '');
                 upBtn.innerHTML = '<span class="material-icons">arrow_upward</span>';
                 upBtn.title = '上移';
-                upBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    moveQuickItem(index, -1);
-                });
+                upBtn.addEventListener('click', e => { e.stopPropagation(); moveQuickItem(index, -1); });
 
                 const downBtn = document.createElement('span');
                 downBtn.className = 'quick-manage-btn ripple-container' + (index === quickBarItems.length - 1 ? ' disabled' : '');
                 downBtn.innerHTML = '<span class="material-icons">arrow_downward</span>';
                 downBtn.title = '下移';
-                downBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    moveQuickItem(index, 1);
-                });
+                downBtn.addEventListener('click', e => { e.stopPropagation(); moveQuickItem(index, 1); });
 
                 const delBtn = document.createElement('span');
                 delBtn.className = 'quick-manage-btn ripple-container';
                 delBtn.innerHTML = '<span class="material-icons">delete</span>';
                 delBtn.title = '删除';
-                delBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    deleteQuickItem(item.id);
-                });
+                delBtn.addEventListener('click', e => { e.stopPropagation(); deleteQuickItem(item.id); });
 
                 actions.appendChild(upBtn);
                 actions.appendChild(downBtn);
@@ -1958,21 +1887,12 @@
             const name = nameInput.value.trim();
             const url = urlInput.value.trim();
 
-            if (!name) {
-                alert('请输入名称！');
-                nameInput.focus();
-                return;
-            }
-            if (!url) {
-                alert('请输入网址！');
-                urlInput.focus();
-                return;
-            }
+            if (!name) { alert('请输入名称！'); nameInput.focus(); return; }
+            if (!url) { alert('请输入网址！'); urlInput.focus(); return; }
 
             quickBarItems.push({
                 id: 'q' + Date.now() + Math.random().toString(36).substr(2, 5),
-                name: name,
-                url: url
+                name, url
             });
 
             nameInput.value = '';
@@ -2003,9 +1923,335 @@
         }
 
         /* ==================================================
-         *                天气模块核心逻辑
+         *                关于弹窗逻辑
          * ================================================== */
+        function detectBrowserKernel() {
+            const ua = navigator.userAgent;
+            let m;
+            if ((m = ua.match(/Edg\/([\d.]+)/))) return 'Chromium ' + m[1];
+            if ((m = ua.match(/OPR\/([\d.]+)/))) return 'Chromium ' + m[1];
+            if ((m = ua.match(/Chrome\/([\d.]+)/))) return 'Chromium ' + m[1];
+            if ((m = ua.match(/Firefox\/([\d.]+)/))) return 'Gecko ' + m[1];
+            if ((m = ua.match(/Version\/([\d.]+).*Safari/))) return 'WebKit ' + m[1];
+            return '未知';
+        }
 
+        function detectOS() {
+            const ua = navigator.userAgent;
+            if (/Windows NT 10\.0/.test(ua)) return 'Microsoft Windows 10/11';
+            if (/Windows NT 6\.3/.test(ua)) return 'Microsoft Windows 8.1';
+            if (/Windows NT 6\.2/.test(ua)) return 'Microsoft Windows 8';
+            if (/Windows NT 6\.1/.test(ua)) return 'Microsoft Windows 7';
+            if (/Windows/.test(ua)) return 'Microsoft Windows';
+            if (/Mac OS X/.test(ua)) return 'Mac OS';
+            if (/Android/.test(ua)) return 'Android';
+            if (/iPhone|iPad|iPod/.test(ua)) return 'iOS';
+            if (/Linux/.test(ua)) return 'Linux';
+            return '未知';
+        }
+
+        function applyAboutTheme() {
+            const content = document.querySelector('#aboutModal .about-content');
+            if (content) content.style.backgroundColor = currentThemeColor;
+            const title = document.getElementById('aboutTitle');
+            if (title) title.style.color = currentDarkColor;
+            document.querySelectorAll('#aboutModal .about-label').forEach(el => el.style.color = currentDarkColor);
+            document.querySelectorAll('#aboutModal .about-value').forEach(el => el.style.color = currentDarkColor);
+            const divider = document.querySelector('#aboutModal .about-divider');
+            if (divider) divider.style.color = currentDarkColor;
+            const closeBtn = document.getElementById('closeAboutModal');
+            if (closeBtn) {
+                closeBtn.style.borderColor = currentDarkColor;
+                closeBtn.style.color = currentDarkColor;
+            }
+            const fallbackIcon = document.querySelector('#aboutIconFallback .material-icons');
+            if (fallbackIcon) fallbackIcon.style.color = currentDarkColor;
+        }
+
+        function openAboutModal() {
+            document.getElementById('aboutBrowser').textContent = detectBrowserKernel();
+            document.getElementById('aboutOS').textContent = detectOS();
+            applyAboutTheme();
+            document.getElementById('aboutModal').style.display = 'flex';
+        }
+
+        function bindAboutEvents() {
+            document.getElementById('aboutBtn').addEventListener('click', openAboutModal);
+            document.getElementById('closeAboutModal').addEventListener('click', function() {
+                document.getElementById('aboutModal').style.display = 'none';
+            });
+            const iconEl = document.getElementById('aboutIcon');
+            const fallbackEl = document.getElementById('aboutIconFallback');
+            iconEl.addEventListener('error', function() {
+                iconEl.style.display = 'none';
+                fallbackEl.style.display = 'flex';
+                applyAboutTheme();
+            });
+        }
+
+        /* ==================================================
+         *                重置与备份逻辑
+         * ================================================== */
+        function applyResetBackupTheme() {
+            const content = document.querySelector('#resetBackupModal .modal-content');
+            if (content) content.style.backgroundColor = currentThemeColor;
+            const title = document.getElementById('resetBackupTitle');
+            if (title) title.style.color = currentDarkColor;
+
+            document.querySelectorAll('#resetBackupModal .reset-backup-option').forEach(el => {
+                el.style.color = currentDarkColor;
+            });
+            document.querySelectorAll('#resetBackupModal .reset-backup-icon-wrap').forEach(el => {
+                el.style.borderColor = currentDarkColor;
+                el.style.color = currentDarkColor;
+                const icon = el.querySelector('.material-icons');
+                if (icon) icon.style.color = currentDarkColor;
+            });
+            document.querySelectorAll('#resetBackupModal .reset-backup-name').forEach(el => el.style.color = currentDarkColor);
+            document.querySelectorAll('#resetBackupModal .reset-backup-desc').forEach(el => el.style.color = currentDarkColor);
+            document.querySelectorAll('#resetBackupModal .reset-backup-arrow').forEach(el => el.style.color = currentDarkColor);
+
+            const closeBtn = document.getElementById('closeResetBackupModal');
+            if (closeBtn) {
+                closeBtn.style.borderColor = currentDarkColor;
+                closeBtn.style.color = currentDarkColor;
+            }
+        }
+
+        function generateTimestampFilename() {
+            const now = new Date();
+            const pad = n => n.toString().padStart(2, '0');
+            return `${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}.bin`;
+        }
+
+        async function exportConfig() {
+            try {
+                const config = {
+                    app: 'lao6-browser-home',
+                    magic: CONFIG_MAGIC,
+                    version: CONFIG_VERSION,
+                    exportTime: new Date().toISOString(),
+                    data: {
+                        browserHomeSettings: localStorage.getItem('browserHomeSettings'),
+                        searchHistory: localStorage.getItem('searchHistory'),
+                        quickBarItems: localStorage.getItem('quickBarItems'),
+                        quickBarCollapsed: localStorage.getItem('quickBarCollapsed'),
+                        quickBarStartupState: localStorage.getItem('quickBarStartupState')
+                    }
+                };
+                const jsonStr = JSON.stringify(config);
+                const bytes = new TextEncoder().encode(jsonStr);
+                const filename = generateTimestampFilename();
+
+                if (window.showSaveFilePicker) {
+                    try {
+                        const handle = await window.showSaveFilePicker({
+                            suggestedName: filename,
+                            types: [{
+                                description: '配置文件 (*.bin)',
+                                accept: { 'application/octet-stream': ['.bin'] }
+                            }]
+                        });
+                        const writable = await handle.createWritable();
+                        await writable.write(bytes);
+                        await writable.close();
+                        return true;
+                    } catch (err) {
+                        if (err && err.name === 'AbortError') {
+                            return false;
+                        }
+                        console.warn('另存为失败，回退到自动下载:', err);
+                    }
+                }
+
+                const blob = new Blob([bytes], { type: 'application/octet-stream' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+                return true;
+            } catch (err) {
+                console.error('导出失败:', err);
+                alert('导出失败：' + err.message);
+                return false;
+            }
+        }
+
+        function importConfig(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    if (!e.target.result || e.target.result.byteLength === 0) {
+                        throw new Error('文件为空');
+                    }
+
+                    const bytes = new Uint8Array(e.target.result);
+                    const jsonStr = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+
+                    let config;
+                    try {
+                        config = JSON.parse(jsonStr);
+                    } catch (parseErr) {
+                        throw new Error('文件内容不是有效的配置格式');
+                    }
+
+                    if (!config || config.magic !== CONFIG_MAGIC) {
+                        throw new Error('这不是本主页导出的配置文件（标识不匹配）');
+                    }
+
+                    if (!config.version || typeof config.version !== 'string') {
+                        throw new Error('配置文件缺少版本信息');
+                    }
+                    if (!config.data || typeof config.data !== 'object') {
+                        throw new Error('配置文件缺少设置数据');
+                    }
+                    if (!config.data.browserHomeSettings) {
+                        throw new Error('配置文件缺少主页核心设置');
+                    }
+
+                    const data = config.data;
+                    const writeIfExists = (key) => {
+                        if (data[key] !== null && data[key] !== undefined) {
+                            localStorage.setItem(key, data[key]);
+                        }
+                    };
+                    writeIfExists('browserHomeSettings');
+                    writeIfExists('searchHistory');
+                    writeIfExists('quickBarItems');
+                    writeIfExists('quickBarCollapsed');
+                    writeIfExists('quickBarStartupState');
+
+                    alert(`配置导入成功！\n版本：${config.version}\n导出时间：${config.exportTime || '未知'}\n页面即将刷新以应用新配置。`);
+                    setTimeout(() => location.reload(), 500);
+                } catch (err) {
+                    console.error('导入失败:', err);
+                    alert('导入失败：' + err.message);
+                }
+            };
+            reader.onerror = function() {
+                alert('文件读取失败，请重新选择！');
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function resetAllSettings() {
+            localStorage.removeItem('browserHomeSettings');
+            localStorage.removeItem('searchHistory');
+            localStorage.removeItem('quickBarItems');
+            localStorage.removeItem('quickBarCollapsed');
+            localStorage.removeItem('quickBarStartupState');
+
+            currentEngine = 'bing-cn';
+            currentTheme = 'cherry-pink';
+            currentThemeColor = '#FFF0F5';
+            currentDarkColor = '#AA6666';
+            wallpaperType = 'network';
+            localFileName = '';
+            localFileBase64 = '';
+            searchHistory = [];
+            isMenuOpen = false;
+
+            weatherEnabled = false;
+            weatherMode = 'auto';
+            weatherCity = '';
+            weatherLat = null;
+            weatherLon = null;
+            stopWeatherAutoRefresh();
+            hideWeatherWidget();
+
+            quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
+            isQuickBarCollapsed = true;
+            quickBarStartupState = 'last';
+            const quickBar = document.getElementById('quickBar');
+            quickBar.classList.add('collapsed');
+            document.getElementById('quickCollapseIcon').textContent = 'keyboard_arrow_up';
+            document.getElementById('quickCollapseBtn').title = '展开快捷栏';
+            saveQuickBarData();
+            renderQuickBar();
+            renderQuickManageList();
+
+            const defaultStartupRadio = document.querySelector('input[name="quickStartup"][value="last"]');
+            if (defaultStartupRadio) defaultStartupRadio.checked = true;
+
+            document.querySelector('input[name="engine"][value="bing-cn"]').checked = true;
+            document.querySelector('input[name="wallpaperType"][value="network"]').checked = true;
+            document.getElementById('localFilename').textContent = '';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchIcon').textContent = 'search';
+
+            document.getElementById('menuContent').classList.remove('show');
+            document.getElementById('menuToggleText').textContent = '打开菜单';
+            document.querySelector('#menuToggleBtn .material-icons').textContent = 'menu';
+
+            initColorOptions();
+            syncAllElementsTheme();
+            updateCurrentEngineText();
+            setRandomWallpaper();
+            renderSearchHistory();
+            syncWeatherToggleUI();
+            applyWeatherTheme();
+        }
+
+        function bindResetBackupEvents() {
+            document.getElementById('resetBackupBtn').addEventListener('click', function() {
+                applyResetBackupTheme();
+                document.getElementById('resetBackupModal').style.display = 'flex';
+            });
+            document.getElementById('closeResetBackupModal').addEventListener('click', function() {
+                document.getElementById('resetBackupModal').style.display = 'none';
+            });
+
+            document.getElementById('importConfigOption').addEventListener('click', function() {
+                document.getElementById('importConfigFile').click();
+            });
+            document.getElementById('importConfigFile').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    if (!file.name.toLowerCase().endsWith('.bin')) {
+                        if (!confirm('文件扩展名不是 .bin，是否仍要尝试导入？')) {
+                            e.target.value = '';
+                            return;
+                        }
+                    }
+                    importConfig(file);
+                    document.getElementById('resetBackupModal').style.display = 'none';
+                }
+                e.target.value = '';
+            });
+
+            document.getElementById('exportConfigOption').addEventListener('click', async function() {
+                try {
+                    const success = await exportConfig();
+                    if (success) {
+                        document.getElementById('resetBackupModal').style.display = 'none';
+                    }
+                } catch (e) {
+                    // 内部已处理错误
+                }
+            });
+
+            document.getElementById('resetAllOption').addEventListener('click', function() {
+                document.getElementById('resetBackupModal').style.display = 'none';
+                document.getElementById('resetModal').style.display = 'flex';
+            });
+
+            document.getElementById('cancelReset').addEventListener('click', function() {
+                document.getElementById('resetModal').style.display = 'none';
+            });
+            document.getElementById('confirmReset').addEventListener('click', function() {
+                resetAllSettings();
+                document.getElementById('resetModal').style.display = 'none';
+                alert('已成功重置所有设置！');
+            });
+        }
+
+        /* ==================================================
+         *                天气逻辑
+         * ================================================== */
         function getWeatherIconName(code) {
             if (code === 0) return 'wb_sunny';
             if (code === 1 || code === 2) return 'wb_cloudy';
@@ -2022,15 +2268,10 @@
         function getWeatherDesc(code) {
             const map = {
                 0: '晴', 1: '基本晴', 2: '多云', 3: '阴',
-                45: '雾', 48: '雾凇',
-                51: '小毛毛雨', 53: '毛毛雨', 55: '大毛毛雨',
-                56: '冻毛毛雨', 57: '冻毛毛雨',
-                61: '小雨', 63: '中雨', 65: '大雨',
-                66: '冻雨', 67: '冻雨',
-                71: '小雪', 73: '中雪', 75: '大雪',
-                77: '雪粒',
-                80: '小阵雨', 81: '中阵雨', 82: '大阵雨',
-                85: '小阵雪', 86: '大阵雪',
+                45: '雾', 48: '雾凇', 51: '小毛毛雨', 53: '毛毛雨', 55: '大毛毛雨',
+                56: '冻毛毛雨', 57: '冻毛毛雨', 61: '小雨', 63: '中雨', 65: '大雨',
+                66: '冻雨', 67: '冻雨', 71: '小雪', 73: '中雪', 75: '大雪', 77: '雪粒',
+                80: '小阵雨', 81: '中阵雨', 82: '大阵雨', 85: '小阵雪', 86: '大阵雪',
                 95: '雷暴', 96: '雷暴伴冰雹', 99: '雷暴伴大冰雹'
             };
             return map[code] || '未知';
@@ -2051,10 +2292,7 @@
             const switchLabel = document.getElementById('weatherSwitchLabel');
             if (switchLabel) switchLabel.style.color = currentDarkColor;
 
-            // 天气设置弹窗内元素
-            document.querySelectorAll('#weatherSettingsPanel .radio-option span').forEach(el => {
-                el.style.color = currentDarkColor;
-            });
+            document.querySelectorAll('#weatherSettingsPanel .radio-option span').forEach(el => el.style.color = currentDarkColor);
             const autoTip = document.getElementById('weatherAutoTip');
             if (autoTip) autoTip.style.color = currentDarkColor;
             const locateBtn = document.getElementById('weatherLocateBtn');
@@ -2083,13 +2321,9 @@
 
             if (weatherEnabled) {
                 if (weatherMode === 'auto' && weatherLat !== null && weatherLon !== null) {
-                    showWeatherWidget();
-                    fetchWeather();
-                    startWeatherAutoRefresh();
+                    showWeatherWidget(); fetchWeather(); startWeatherAutoRefresh();
                 } else if (weatherMode === 'manual' && weatherCity && weatherLat !== null && weatherLon !== null) {
-                    showWeatherWidget();
-                    fetchWeather();
-                    startWeatherAutoRefresh();
+                    showWeatherWidget(); fetchWeather(); startWeatherAutoRefresh();
                 }
             }
         }
@@ -2110,45 +2344,31 @@
         }
 
         function showWeatherWidget() {
-            const widget = document.getElementById('weatherWidget');
-            widget.classList.remove('hidden');
+            document.getElementById('weatherWidget').classList.remove('hidden');
             applyWeatherTheme();
         }
-
         function hideWeatherWidget() {
-            const widget = document.getElementById('weatherWidget');
-            widget.classList.add('hidden');
+            document.getElementById('weatherWidget').classList.add('hidden');
         }
 
         function startWeatherAutoRefresh() {
             if (weatherTimer) clearInterval(weatherTimer);
             weatherTimer = setInterval(() => {
-                if (weatherEnabled && weatherLat !== null && weatherLon !== null) {
-                    fetchWeather();
-                }
+                if (weatherEnabled && weatherLat !== null && weatherLon !== null) fetchWeather();
             }, 30 * 60 * 1000);
         }
-
         function stopWeatherAutoRefresh() {
-            if (weatherTimer) {
-                clearInterval(weatherTimer);
-                weatherTimer = null;
-            }
+            if (weatherTimer) { clearInterval(weatherTimer); weatherTimer = null; }
         }
 
-        // 切换模式时更新面板显示
         function updateWeatherModePanels() {
             document.getElementById('weatherAutoPanel').style.display = weatherMode === 'auto' ? 'block' : 'none';
             document.getElementById('weatherManualPanel').style.display = weatherMode === 'manual' ? 'block' : 'none';
         }
 
-        // 自动定位：使用浏览器 Geolocation + BigDataCloud 反向地理编码
         function autoLocate() {
             const tip = document.getElementById('weatherAutoTip');
-            if (!navigator.geolocation) {
-                tip.textContent = '当前浏览器不支持定位功能';
-                return;
-            }
+            if (!navigator.geolocation) { tip.textContent = '当前浏览器不支持定位功能'; return; }
             if (isLocating) return;
             isLocating = true;
             tip.textContent = '正在获取位置...';
@@ -2156,11 +2376,9 @@
             navigator.geolocation.getCurrentPosition(
                 function(position) {
                     isLocating = false;
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    weatherLat = lat;
-                    weatherLon = lon;
-                    reverseGeocode(lat, lon);
+                    weatherLat = position.coords.latitude;
+                    weatherLon = position.coords.longitude;
+                    reverseGeocode(weatherLat, weatherLon);
                 },
                 function(error) {
                     isLocating = false;
@@ -2174,91 +2392,67 @@
             );
         }
 
-        // 反向地理编码：经纬度 → 城市名
         function reverseGeocode(lat, lon) {
             const tip = document.getElementById('weatherAutoTip');
             const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=zh`;
-            fetch(url)
-                .then(r => r.json())
-                .then(data => {
-                    const name = data.city || data.locality || data.principalSubdivision || '当前位置';
-                    weatherCity = name;
-                    tip.textContent = `当前位置：${name}`;
-                    saveSettings();
-
-                    if (weatherEnabled) {
-                        showWeatherWidget();
-                        fetchWeather();
-                        startWeatherAutoRefresh();
-                    }
-                })
-                .catch(err => {
-                    console.error('反向地理编码失败:', err);
-                    tip.textContent = '无法获取城市名，请手动设置';
-                });
+            fetch(url).then(r => r.json()).then(data => {
+                const name = data.city || data.locality || data.principalSubdivision || '当前位置';
+                weatherCity = name;
+                tip.textContent = `当前位置：${name}`;
+                saveSettings();
+                if (weatherEnabled) { showWeatherWidget(); fetchWeather(); startWeatherAutoRefresh(); }
+            }).catch(err => {
+                console.error('反向地理编码失败:', err);
+                tip.textContent = '无法获取城市名，请手动设置';
+            });
         }
 
-        // 搜索城市（Open-Meteo Geocoding API）
         function geocodeCity(cityName, userTriggered) {
             const resultTip = document.getElementById('weatherResultTip');
             const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=zh&format=json`;
 
-            fetch(url)
-                .then(r => r.json())
-                .then(data => {
-                    if (data.results && data.results.length > 0) {
-                        const loc = data.results[0];
-                        weatherLat = loc.latitude;
-                        weatherLon = loc.longitude;
-                        weatherCity = loc.name;
+            fetch(url).then(r => r.json()).then(data => {
+                if (data.results && data.results.length > 0) {
+                    const loc = data.results[0];
+                    weatherLat = loc.latitude;
+                    weatherLon = loc.longitude;
+                    weatherCity = loc.name;
 
-                        if (userTriggered) {
-                            resultTip.textContent = `已定位：${loc.name}（${loc.admin1 || ''} ${loc.country || ''}）`;
-                            resultTip.style.color = currentDarkColor;
-                        }
-                        saveSettings();
-
-                        if (weatherEnabled && weatherMode === 'manual') {
-                            showWeatherWidget();
-                            fetchWeather();
-                            startWeatherAutoRefresh();
-                        }
-                    } else {
-                        if (userTriggered) {
-                            resultTip.textContent = '未找到该城市，请检查名称';
-                            resultTip.style.color = currentDarkColor;
-                        }
-                    }
-                })
-                .catch(err => {
-                    console.error('城市搜索失败:', err);
                     if (userTriggered) {
-                        resultTip.textContent = '网络请求失败，请检查网络';
+                        resultTip.textContent = `已定位：${loc.name}（${loc.admin1 || ''} ${loc.country || ''}）`;
                         resultTip.style.color = currentDarkColor;
                     }
-                });
-        }
-
-        // Promise 版城市搜索（用于保存时同步等待）
-        function geocodeCityAsync(cityName) {
-            return new Promise((resolve) => {
-                const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=zh&format=json`;
-                fetch(url)
-                    .then(r => r.json())
-                    .then(data => {
-                        if (data.results && data.results.length > 0) {
-                            const loc = data.results[0];
-                            weatherLat = loc.latitude;
-                            weatherLon = loc.longitude;
-                            weatherCity = loc.name;
-                        }
-                        resolve();
-                    })
-                    .catch(() => resolve());
+                    saveSettings();
+                    if (weatherEnabled && weatherMode === 'manual') {
+                        showWeatherWidget(); fetchWeather(); startWeatherAutoRefresh();
+                    }
+                } else if (userTriggered) {
+                    resultTip.textContent = '未找到该城市，请检查名称';
+                    resultTip.style.color = currentDarkColor;
+                }
+            }).catch(err => {
+                console.error('城市搜索失败:', err);
+                if (userTriggered) {
+                    resultTip.textContent = '网络请求失败，请检查网络';
+                    resultTip.style.color = currentDarkColor;
+                }
             });
         }
 
-        // 获取实时天气（Open-Meteo Forecast API）
+        function geocodeCityAsync(cityName) {
+            return new Promise(resolve => {
+                const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=1&language=zh&format=json`;
+                fetch(url).then(r => r.json()).then(data => {
+                    if (data.results && data.results.length > 0) {
+                        weatherLat = data.results[0].latitude;
+                        weatherLon = data.results[0].longitude;
+                        weatherCity = data.results[0].name;
+                    }
+                    resolve();
+                }).catch(() => resolve());
+            });
+        }
+
         function fetchWeather() {
             if (weatherLat === null || weatherLon === null) return;
 
@@ -2268,37 +2462,30 @@
 
             const url = `https://api.open-meteo.com/v1/forecast?latitude=${weatherLat}&longitude=${weatherLon}&current_weather=true`;
 
-            fetch(url)
-                .then(r => r.json())
-                .then(data => {
-                    if (!data.current_weather) {
-                        throw new Error('数据格式异常');
-                    }
+            fetch(url).then(r => r.json()).then(data => {
+                if (!data.current_weather) throw new Error('数据格式异常');
+                const cw = data.current_weather;
 
-                    const cw = data.current_weather;
+                document.getElementById('weatherTemp').textContent = `${Math.round(cw.temperature)}°C`;
+                document.getElementById('weatherDesc').textContent = getWeatherDesc(cw.weathercode);
+                document.getElementById('weatherCity').textContent = weatherCity;
 
-                    document.getElementById('weatherTemp').textContent = `${Math.round(cw.temperature)}°C`;
-                    document.getElementById('weatherDesc').textContent = getWeatherDesc(cw.weathercode);
-                    document.getElementById('weatherCity').textContent = weatherCity;
+                const iconWrap = document.getElementById('weatherIconWrap');
+                iconWrap.innerHTML = '';
+                const iconEl = document.createElement('span');
+                iconEl.className = 'material-icons';
+                iconEl.textContent = getWeatherIconName(cw.weathercode);
+                iconEl.style.color = currentDarkColor;
+                iconWrap.appendChild(iconEl);
 
-                    const iconWrap = document.getElementById('weatherIconWrap');
-                    iconWrap.innerHTML = '';
-                    const iconEl = document.createElement('span');
-                    iconEl.className = 'material-icons';
-                    iconEl.textContent = getWeatherIconName(cw.weathercode);
-                    iconEl.style.color = currentDarkColor;
-                    iconWrap.appendChild(iconEl);
-
-                    document.getElementById('weatherLoading').style.display = 'none';
-                    document.getElementById('weatherContent').style.display = 'inline-flex';
-                    document.getElementById('weatherError').style.display = 'none';
-
-                    applyWeatherTheme();
-                })
-                .catch(err => {
-                    console.error('天气加载失败:', err);
-                    showWeatherError();
-                });
+                document.getElementById('weatherLoading').style.display = 'none';
+                document.getElementById('weatherContent').style.display = 'inline-flex';
+                document.getElementById('weatherError').style.display = 'none';
+                applyWeatherTheme();
+            }).catch(err => {
+                console.error('天气加载失败:', err);
+                showWeatherError();
+            });
         }
 
         function showWeatherError() {
@@ -2308,55 +2495,36 @@
         }
 
         function bindWeatherEvents() {
-            // 点击天气挂件 → 跳转 Ventusky
-            document.getElementById('weatherWidget').addEventListener('click', function() {
-                window.open(VENTUSKY_URL, '_blank');
-            });
+            document.getElementById('weatherWidget').addEventListener('click', () => window.open(VENTUSKY_URL, '_blank'));
 
-            // 打开天气设置弹窗
             document.getElementById('weatherBtn').addEventListener('click', function() {
                 syncWeatherToggleUI();
-                // 回填城市输入框
                 document.getElementById('weatherCityInput').value = weatherCity || '';
-                // 同步模式
                 document.querySelector(`input[name="weatherMode"][value="${weatherMode}"]`).checked = true;
                 updateWeatherModePanels();
-                // 更新自动定位提示
                 const autoTip = document.getElementById('weatherAutoTip');
                 if (weatherMode === 'auto') {
-                    if (weatherCity) {
-                        autoTip.textContent = `当前位置：${weatherCity}`;
-                    } else {
-                        autoTip.textContent = '点击下方按钮获取当前位置';
-                    }
+                    autoTip.textContent = weatherCity ? `当前位置：${weatherCity}` : '点击下方按钮获取当前位置';
                 }
                 document.getElementById('weatherResultTip').textContent = '';
-                // 显示/隐藏设置面板
                 document.getElementById('weatherSettingsPanel').style.display = weatherEnabled ? 'block' : 'none';
                 document.getElementById('weatherModal').style.display = 'flex';
                 applyWeatherTheme();
                 updateSelectedHighlight();
             });
 
-            document.getElementById('closeWeatherModal').addEventListener('click', function() {
+            document.getElementById('closeWeatherModal').addEventListener('click', () => {
                 document.getElementById('weatherModal').style.display = 'none';
             });
 
-            // 开关切换
             document.getElementById('weatherToggle').addEventListener('click', function() {
                 weatherEnabled = !weatherEnabled;
                 syncWeatherToggleUI();
-                const panel = document.getElementById('weatherSettingsPanel');
-                panel.style.display = weatherEnabled ? 'block' : 'none';
+                document.getElementById('weatherSettingsPanel').style.display = weatherEnabled ? 'block' : 'none';
                 applyWeatherTheme();
-
-                // 打开开关且为自动模式且没有位置时，尝试自动定位
-                if (weatherEnabled && weatherMode === 'auto' && weatherLat === null) {
-                    autoLocate();
-                }
+                if (weatherEnabled && weatherMode === 'auto' && weatherLat === null) autoLocate();
             });
 
-            // 模式切换
             document.querySelectorAll('input[name="weatherMode"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     weatherMode = this.value;
@@ -2365,10 +2533,8 @@
                 });
             });
 
-            // 定位当前位置按钮
             document.getElementById('weatherLocateBtn').addEventListener('click', autoLocate);
 
-            // 手动设置搜索城市
             document.getElementById('weatherSearchBtn').addEventListener('click', function() {
                 const city = document.getElementById('weatherCityInput').value.trim();
                 if (!city) {
@@ -2382,23 +2548,16 @@
             });
 
             document.getElementById('weatherCityInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    document.getElementById('weatherSearchBtn').click();
-                }
+                if (e.key === 'Enter') document.getElementById('weatherSearchBtn').click();
             });
 
-            // 保存
             document.getElementById('confirmWeather').addEventListener('click', async function() {
-                // 读取当前模式
                 const modeRadio = document.querySelector('input[name="weatherMode"]:checked');
                 weatherMode = modeRadio ? modeRadio.value : 'auto';
 
-                // 手动模式下，如果输入了新的城市名，先搜索同步坐标
                 if (weatherMode === 'manual') {
                     const inputCity = document.getElementById('weatherCityInput').value.trim();
-                    if (inputCity && inputCity !== weatherCity) {
-                        await geocodeCityAsync(inputCity);
-                    }
+                    if (inputCity && inputCity !== weatherCity) await geocodeCityAsync(inputCity);
                 }
 
                 saveSettings();
@@ -2410,11 +2569,8 @@
         function updateWeatherDisplay() {
             if (weatherEnabled) {
                 if (weatherLat !== null && weatherLon !== null) {
-                    showWeatherWidget();
-                    fetchWeather();
-                    startWeatherAutoRefresh();
+                    showWeatherWidget(); fetchWeather(); startWeatherAutoRefresh();
                 } else if (weatherMode === 'auto') {
-                    // 自动模式下没有坐标，尝试定位
                     showWeatherWidget();
                     document.getElementById('weatherLoading').style.display = 'none';
                     document.getElementById('weatherContent').style.display = 'none';
@@ -2454,9 +2610,8 @@
                 });
             });
 
-            document.getElementById('aboutBtn').addEventListener('click', () => {
-                alert('抖音-老六说电脑-定制浏览器主页 v1.7\n开发者：抖音-老六说电脑\n官网：https://douyin-lao6pc.github.io/web');
-            });
+            bindAboutEvents();
+            bindResetBackupEvents();
 
             document.getElementById('engineBtn').addEventListener('click', () => document.getElementById('engineModal').style.display = 'flex');
             document.getElementById('closeEngineModal').addEventListener('click', () => document.getElementById('engineModal').style.display = 'none');
@@ -2474,11 +2629,8 @@
             document.getElementById('closeWallpaperModal').addEventListener('click', () => document.getElementById('wallpaperModal').style.display = 'none');
             document.getElementById('confirmWallpaper').addEventListener('click', () => {
                 const selectedType = document.querySelector('input[name="wallpaperType"]:checked').value;
-                if (selectedType === 'network') {
-                    setRandomWallpaper();
-                } else if (selectedType === 'none') {
-                    setNoWallpaper();
-                }
+                if (selectedType === 'network') setRandomWallpaper();
+                else if (selectedType === 'none') setNoWallpaper();
                 document.getElementById('wallpaperModal').style.display = 'none';
             });
 
@@ -2490,9 +2642,7 @@
             document.querySelectorAll('input[name="wallpaperType"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     showRefreshBtn(this.value === 'network');
-                    if (this.value === 'local') {
-                        document.getElementById('localWallpaper').click();
-                    }
+                    if (this.value === 'local') document.getElementById('localWallpaper').click();
                 });
             });
 
@@ -2531,65 +2681,8 @@
                 if (e.key === 'Enter') search();
             });
 
-            document.getElementById('resetBtn').addEventListener('click', () => document.getElementById('resetModal').style.display = 'flex');
-            document.getElementById('cancelReset').addEventListener('click', () => document.getElementById('resetModal').style.display = 'none');
-            document.getElementById('confirmReset').addEventListener('click', () => {
-                localStorage.removeItem('browserHomeSettings');
-                localStorage.removeItem('searchHistory');
-                localStorage.removeItem('quickBarItems');
-                localStorage.removeItem('quickBarCollapsed');
-
-                currentEngine = 'bing-cn';
-                currentTheme = 'cherry-pink';
-                currentThemeColor = '#FFF0F5';
-                currentDarkColor = '#AA6666';
-                wallpaperType = 'network';
-                localFileName = '';
-                localFileBase64 = '';
-                searchHistory = [];
-                isMenuOpen = false;
-
-                weatherEnabled = false;
-                weatherMode = 'auto';
-                weatherCity = '';
-                weatherLat = null;
-                weatherLon = null;
-                stopWeatherAutoRefresh();
-                hideWeatherWidget();
-
-                quickBarItems = JSON.parse(JSON.stringify(DEFAULT_QUICK_ITEMS));
-                isQuickBarCollapsed = true;
-                const quickBar = document.getElementById('quickBar');
-                quickBar.classList.add('collapsed');
-                document.getElementById('quickCollapseIcon').textContent = 'keyboard_arrow_up';
-                document.getElementById('quickCollapseBtn').title = '展开快捷栏';
-                saveQuickBarData();
-                renderQuickBar();
-                renderQuickManageList();
-
-                document.querySelector('input[name="engine"][value="bing-cn"]').checked = true;
-                document.querySelector('input[name="wallpaperType"][value="network"]').checked = true;
-                document.getElementById('localFilename').textContent = '';
-                document.getElementById('searchInput').value = '';
-                document.getElementById('searchIcon').textContent = 'search';
-
-                document.getElementById('menuContent').classList.remove('show');
-                document.getElementById('menuToggleText').textContent = '打开菜单';
-                document.querySelector('#menuToggleBtn .material-icons').textContent = 'menu';
-
-                initColorOptions();
-                syncAllElementsTheme();
-                updateCurrentEngineText();
-                setRandomWallpaper();
-                renderSearchHistory();
-                syncWeatherToggleUI();
-                applyWeatherTheme();
-                document.getElementById('resetModal').style.display = 'none';
-                alert('已成功恢复默认设置，搜索历史、快捷栏与天气设置已重置！');
-            });
-
             window.addEventListener('click', function(e) {
-                const modals = ['engineModal', 'wallpaperModal', 'themeModal', 'resetModal', 'historyModal', 'quickBarModal', 'weatherModal'];
+                const modals = ['engineModal', 'wallpaperModal', 'themeModal', 'resetModal', 'historyModal', 'quickBarModal', 'weatherModal', 'aboutModal', 'resetBackupModal'];
                 modals.forEach(modalId => {
                     const modal = document.getElementById(modalId);
                     if (e.target === modal) modal.style.display = 'none';
@@ -2602,10 +2695,7 @@
                     if (this.name === 'themeColor') {
                         let tempDark = currentDarkColor;
                         for (const [name, [cls, code, darkCode]] of Object.entries(colorMap)) {
-                            if (cls === this.value) {
-                                tempDark = darkCode;
-                                break;
-                            }
+                            if (cls === this.value) { tempDark = darkCode; break; }
                         }
                         document.querySelectorAll('.radio-option input[type="radio"]').forEach(r => {
                             r.style.border = `2px solid ${tempDark}`;
